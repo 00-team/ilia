@@ -1,0 +1,15 @@
+[Unit]
+Description=ilia Gunicorn
+After=syslog.target
+
+[Service]
+ExecStart=/ilia/.env/bin/gunicorn --config /ilia/config/gunicorn.py
+RuntimeDirectory=ilia_gunicorn
+Restart=always
+KillSignal=SIGQUIT
+Type=notify
+StandardError=syslog
+NotifyAccess=all
+
+[Install]
+WantedBy=multi-user.target
