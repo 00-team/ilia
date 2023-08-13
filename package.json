@@ -1,0 +1,15 @@
+{
+    "name": "ilia",
+    "version": "1.0.0",
+    "description": "",
+    "main": "index.js",
+    "scripts": {},
+    "author": "00-team",
+    "license": "GPL-3",
+    "dependencies": {},
+    "devDependencies": {
+        "sass": "^1.65.1",
+        "typescript": "^5.1.6",
+        "webpack": "^5.88.2"
+    }
+}
