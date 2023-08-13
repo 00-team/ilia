@@ -161,3 +161,13 @@ cython_debug/
 
 node_modules/
 package-lock.json
+
+.secrets*
+static/templates/head.html
+db/files/
+db/versions/
+records/
+media/
+static/style/
+static/js/mark/
+mark/tmpl/head.html
