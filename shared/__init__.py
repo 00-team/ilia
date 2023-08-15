@@ -49,7 +49,7 @@ else:
 
 redis = Redis(
     password=settings.redis_pass,
-    unix_socket_path='/run/redis_ilia.sock'
+    unix_socket_path='/run/redis/ilia.sock'
 )
 
 sqlx = Database(SQL_URL, factory=Connection)
