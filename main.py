@@ -61,11 +61,7 @@ async def rapidoc(response: Response):
     show-header="false" /></body> </html>'''
 
 
-class XMLResponse(Response):
-    media_type = 'application/xml'
-
-
-@app.get('/robots.txt', response_class=PlainTextResponse)
+@app.get('/robots.txt', include_in_schema=False)
 async def robots(request: Request, response: Response):
     host = request.url.hostname
     content = (
@@ -73,10 +69,10 @@ async def robots(request: Request, response: Response):
         'Disallow:\n'
         f'Sitemap: https://{host}/sitemap.xml'
     )
-    return '\n'.join(content)
+    return PlainTextResponse('\n'.join(content))
 
 
-@app.get('/sitemap.xml', response_class=XMLResponse)
+@app.get('/sitemap.xml', include_in_schema=False)
 async def sitemap(request: Request):
     host = request.url.hostname
     out = StringIO()
@@ -96,7 +92,7 @@ async def sitemap(request: Request):
     out.write('</urlset>')
 
     out.seek(0)
-    return out.read()
+    return Response(out.read(), media_type='application/xml')
 
 
 @app.get('/', response_class=HTMLResponse, include_in_schema=False)
