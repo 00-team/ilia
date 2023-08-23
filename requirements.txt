@@ -2,10 +2,6 @@ aiosqlite==0.19.0
 alembic==1.11.2
 annotated-types==0.5.0
 anyio==3.7.1
-click==8.1.6
-databases==0.7.0
-dnspython==2.4.2
-email-validator==2.0.0.post2
 fastapi==0.101.0
 greenlet==2.0.2
 h11==0.14.0
