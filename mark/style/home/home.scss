@@ -74,6 +74,40 @@ main.home {
 
                 .typer-wrapper {
                     margin-bottom: -1vh;
+
+                    .typer-word {
+                        display: inline-block;
+
+                        position: relative;
+                        isolation: isolate;
+
+                        .cursor {
+                            position: absolute;
+                            top: 0;
+                            left: -0.2vmin;
+
+                            width: 2px;
+                            height: 100%;
+
+                            background-color: black;
+
+                            transform-origin: center center;
+
+                            animation: cursor-effect 1s ease-in-out infinite;
+
+                            @keyframes cursor-effect {
+                                0% {
+                                    transform: scaleY(1);
+                                }
+                                50% {
+                                    transform: scaleY(0);
+                                }
+                                100% {
+                                    transform: scaleY(1);
+                                }
+                            }
+                        }
+                    }
                 }
 
                 .company {
