@@ -32,6 +32,66 @@ main.home {
             backdrop-filter: blur(3px);
 
             z-index: 1;
+
+            .hero-data {
+                display: flex;
+                justify-content: center;
+                flex-direction: column;
+                gap: 2vh;
+
+                margin-right: 30%;
+
+                width: 100%;
+                height: 100%;
+
+                color: black;
+
+                .typer-wrapper {
+                    margin-bottom: -1vh;
+                }
+
+                .company {
+                    span {
+                        color: #009ad9;
+                    }
+                }
+                .detial {
+                    width: 60%;
+                    text-wrap: balance;
+                }
+
+                .cta-wrapper {
+                    display: flex;
+                    gap: calc(3vw + 10px);
+                    margin-top: 3vh;
+
+                    .hero-btn {
+                        border: 0;
+                        height: 100%;
+                        padding: 1rem 3rem;
+                        border-radius: 10px;
+
+                        background-color: unset;
+
+                        font: inherit;
+                        font-family: iranBold;
+                        white-space: nowrap;
+                        cursor: pointer;
+
+                        &.main {
+                            background-color: var(--sixty-percent);
+                            color: black;
+                            box-shadow: 0px 20px 15px -20px #000;
+                        }
+
+                        &.sec {
+                            box-shadow: none;
+                            border: 1px solid #000;
+                            color: #000;
+                        }
+                    }
+                }
+            }
         }
     }
 
