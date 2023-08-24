@@ -40,9 +40,17 @@ main.home {
 
         background-size: cover;
         background-repeat: no-repeat;
-        background-size: 103% 103%;
 
         overflow: hidden;
+
+        @media screen and (max-width: 768px) {
+            background-size: cover;
+            background-position: bottom center;
+        }
+
+        @media screen and (min-width: 1440px) {
+            background-size: 103% 103%;
+        }
 
         .hero-wrapper {
             position: absolute;
@@ -59,6 +67,16 @@ main.home {
 
             z-index: 1;
 
+            @media screen and (max-width: 768px) {
+                transform: translate(20%, -20%);
+                width: 700px;
+            }
+
+            @media screen and (max-width: 425px) {
+                transform: translate(17%, -17%);
+                width: 500px;
+            }
+
             .hero-data {
                 display: flex;
                 justify-content: center;
@@ -71,6 +89,10 @@ main.home {
                 height: 100%;
 
                 color: black;
+
+                @media screen and (max-width: 768px) {
+                    margin-right: 20%;
+                }
 
                 .typer-wrapper {
                     display: flex;
