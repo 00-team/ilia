@@ -218,7 +218,7 @@ main.home {
 
                     @keyframes aboutheader-slidein {
                         from {
-                            transform: translateY(-200%);
+                            transform: translateY(-300%);
                         }
                         to {
                             transform: translateY(0);
@@ -227,20 +227,20 @@ main.home {
                 }
                 span {
                     &:nth-child(1) {
-                        animation-delay: 1.2s;
+                        animation-delay: 0.2s;
                     }
                     &:nth-child(2) {
-                        animation-delay: 1.4s;
+                        animation-delay: 0.4s;
                     }
                 }
                 svg {
                     animation: aboutheadersvg-slidein 0.7s
                         cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
-                    animation-delay: 1.6s;
+                    animation-delay: 0.6s;
 
                     @keyframes aboutheadersvg-slidein {
                         from {
-                            transform: translateY(-250%) scaleX(-1);
+                            transform: translateY(-300%) scaleX(-1);
                         }
                         to {
                             transform: translateY(0) scaleX(-1);
