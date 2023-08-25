@@ -1,5 +1,6 @@
 export {}
 
+// hero section
 const heroSection = document.querySelector(
     'section.hero-section'
 ) as HTMLElement
@@ -14,8 +15,6 @@ const isMobile = () => {
     heroSection.addEventListener('mousemove', (e: MouseEvent) => {
         var moveinX = (e.clientX * -1) / 100
         var moveinY = (e.clientY * -1) / 100
-
-        console.log(moveinX, moveinY)
 
         heroSection.style.backgroundPosition = `${moveinX}px ${moveinY}px`
     })
@@ -69,3 +68,27 @@ function deleteMessage(str) {
     }, 50)
 }
 typeMessage()
+
+// hero section end
+
+// about us
+
+const aboutWrapper = document.querySelector('section.about-us') as HTMLElement
+
+document.addEventListener('DOMContentLoaded', () => {
+    var observer = new IntersectionObserver(
+        ([entry]) => {
+            if (entry && entry.isIntersecting) {
+                aboutWrapper.className += ' active'
+                observer.disconnect()
+            }
+        },
+        {
+            threshold: 0.4,
+        }
+    )
+
+    observer.observe(aboutWrapper)
+})
+
+// about us end
