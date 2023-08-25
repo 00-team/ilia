@@ -74,13 +74,16 @@ typeMessage()
 // about us
 
 const aboutWrapper = document.querySelector('section.about-us') as HTMLElement
+const aboutColumns = document.querySelectorAll(
+    'div.about-column'
+) as NodeListOf<HTMLElement>
 
 document.addEventListener('DOMContentLoaded', () => {
-    var observer = new IntersectionObserver(
+    let observer = new IntersectionObserver(
         ([entry]) => {
             if (entry && entry.isIntersecting) {
-                aboutWrapper.className += ' active'
-                observer.disconnect()
+                entry.target.className += ' active'
+                observer.unobserve(entry.target)
             }
         },
         {
@@ -89,6 +92,7 @@ document.addEventListener('DOMContentLoaded', () => {
     )
 
     observer.observe(aboutWrapper)
+    aboutColumns.forEach(column => observer.observe(column))
 })
 
 // about us end
