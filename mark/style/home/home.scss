@@ -178,37 +178,15 @@ main.home {
         }
     }
     section.about-us {
-        // debug
-        height: 100vh;
-
         display: flex;
         flex-direction: column;
         align-items: center;
-        gap: 4vh;
+        gap: 8vh;
 
         background-color: white;
         color: black;
 
         padding: 5vh 3vw;
-
-        h3.about-header {
-            * {
-                display: inline-block;
-
-                transform: translateY(-200%);
-            }
-            span {
-                &:nth-child(1) {
-                    animation-delay: 1.2s;
-                }
-                &:nth-child(2) {
-                    animation-delay: 1.4s;
-                }
-            }
-            svg {
-                transform: translateY(-250%) scaleX(-1);
-            }
-        }
 
         &.active {
             h3.about-header {
@@ -246,6 +224,66 @@ main.home {
                             transform: translateY(0) scaleX(-1);
                         }
                     }
+                }
+            }
+        }
+
+        h3.about-header {
+            * {
+                display: inline-block;
+
+                transform: translateY(-200%);
+            }
+            span {
+                &:nth-child(1) {
+                    animation-delay: 1.2s;
+                }
+                &:nth-child(2) {
+                    animation-delay: 1.4s;
+                }
+            }
+            svg {
+                transform: translateY(-250%) scaleX(-1);
+            }
+        }
+
+        .about-wrapper {
+            width: 100%;
+            flex: 1 0 0;
+
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 8vh;
+
+            .about-column {
+                display: flex;
+                align-items: center;
+                justify-content: space-between;
+
+                width: clamp(0px, 100%, 1500px);
+
+                img.about-img {
+                    width: clamp(0px, 100%, 600px);
+                    aspect-ratio: 2/1;
+                    border-radius: 10px;
+                    object-fit: cover;
+                }
+                .column-data {
+                    display: flex;
+                    flex-direction: column;
+                    gap: 2vh;
+
+                    height: 100%;
+
+                    width: clamp(0px, 100%, 500px);
+                    .detial {
+                        text-wrap: balance;
+                    }
+                }
+
+                &:nth-child(even) {
+                    flex-direction: row-reverse;
                 }
             }
         }
