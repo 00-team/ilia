@@ -181,7 +181,7 @@ main.home {
         display: flex;
         flex-direction: column;
         align-items: center;
-        gap: 8vh;
+        gap: 12vh;
 
         background-color: white;
         color: black;
@@ -259,7 +259,11 @@ main.home {
             .about-column {
                 display: flex;
                 align-items: center;
-                justify-content: space-between;
+                justify-content: center;
+                flex-wrap: wrap-reverse;
+
+                column-gap: calc(15vw + 15px);
+                row-gap: 4vh;
 
                 width: clamp(0px, 100%, 1500px);
 
@@ -274,9 +278,8 @@ main.home {
                     flex-direction: column;
                     gap: 2vh;
 
-                    height: 100%;
-
                     width: clamp(0px, 100%, 500px);
+
                     .detial {
                         text-wrap: balance;
                     }
@@ -284,6 +287,46 @@ main.home {
 
                 &:nth-child(even) {
                     flex-direction: row-reverse;
+
+                    img.about-img {
+                        transform: translate(1000px, 0);
+                    }
+
+                    &.active {
+                        img.about-img {
+                            animation: aboutimg-slidein-even 1s forwards
+                                cubic-bezier(0.175, 0.885, 0.32, 1.275);
+                            @keyframes aboutimg-slidein-even {
+                                from {
+                                    transform: translate(1000px, 0);
+                                }
+                                to {
+                                    transform: translate(0);
+                                }
+                            }
+                        }
+                    }
+                }
+                &:nth-child(odd) {
+                    img.about-img {
+                        transform: translate(-1000px, 0);
+                    }
+
+                    &.active {
+                        img.about-img {
+                            animation: aboutimg-slidein-odd 1s forwards
+                                cubic-bezier(0.175, 0.885, 0.32, 1.275);
+
+                            @keyframes aboutimg-slidein-odd {
+                                from {
+                                    transform: translate(-1000px, 0);
+                                }
+                                to {
+                                    transform: translate(0);
+                                }
+                            }
+                        }
+                    }
                 }
             }
         }
