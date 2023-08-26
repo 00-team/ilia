@@ -324,9 +324,6 @@ main.home {
         }
     }
     section.why-cyprus {
-        // debug
-        height: 100vh;
-
         display: flex;
         flex-direction: column;
         align-items: center;
@@ -379,6 +376,56 @@ main.home {
                 &::before,
                 &::after {
                     width: 100%;
+                }
+            }
+        }
+
+        .cyprus-wrapper {
+            width: 100%;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+            column-gap: calc(4vw + 10px);
+
+            .cyprus-card {
+                display: flex;
+                flex-direction: column;
+
+                width: clamp(0px, 100%, 350px);
+                aspect-ratio: 1/1.5;
+
+                background-color: white;
+                border-radius: 10px;
+
+                overflow: hidden;
+
+                .card-img {
+                    position: relative;
+                    isolation: isolate;
+
+                    height: 50%;
+                    width: 100%;
+
+                    clip-path: polygon(0 0, 100% 0, 100% 85%, 0 100%);
+                    background-color: white;
+
+                    img {
+                        width: 100%;
+                        height: 100%;
+                        object-fit: cover;
+                    }
+                }
+
+                .card-detail {
+                    width: 100%;
+                    height: 100%;
+
+                    display: flex;
+                    flex-direction: column;
+                    gap: 2vh;
+                    padding: 1rem 2rem;
                 }
             }
         }
