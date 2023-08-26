@@ -444,6 +444,33 @@ main.home {
             }
         }
     }
+    section.education {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+
+        padding: 5vh 3vw;
+
+        // debug
+        height: 100vh;
+
+        h3.education-header {
+            width: 50%;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .education-wrapper {
+            width: 50%;
+            height: 100%;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+    }
 
     section {
         width: 100%;
