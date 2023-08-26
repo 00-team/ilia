@@ -323,6 +323,20 @@ main.home {
             }
         }
     }
+    section.why-cyprus {
+        // debug
+        height: 100vh;
+
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 12vh;
+
+        background-color: white;
+        color: black;
+
+        padding: 5vh 3vw;
+    }
 
     section {
         width: 100%;
