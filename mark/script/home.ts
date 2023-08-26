@@ -4,6 +4,26 @@ export {}
 const heroSection = document.querySelector(
     'section.hero-section'
 ) as HTMLElement
+const stickyButton = document.querySelector(
+    'button.hero-btn.main'
+) as HTMLElement
+
+stickyButton.addEventListener('mousemove', e => {
+    stickyButton.className += ' active'
+
+    const pos = stickyButton.getBoundingClientRect()
+    const mx = e.clientX - pos.left - pos.width / 2
+    const my = e.clientY - pos.top - pos.height / 2
+
+    stickyButton.style.transform = `
+        translate(${mx * 0.15}px ,${my * 0.3}px)
+        rotate3d(${mx * -0.1}, ${my * -0.3}, 0, 12deg)
+    `
+})
+stickyButton.addEventListener('mouseleave', e => {
+    stickyButton.className = 'hero-btn main'
+    stickyButton.style.transform = ''
+})
 
 const isMobile = () => {
     const regex =
