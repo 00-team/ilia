@@ -86,6 +86,22 @@ const cyprusWrapper = document.querySelector(
     'section.why-cyprus'
 ) as HTMLElement
 
+document.addEventListener('DOMContentLoaded', () => {
+    let observer = new IntersectionObserver(
+        ([entry]) => {
+            if (entry && entry.isIntersecting) {
+                entry.target.className += ' active'
+                observer.unobserve(entry.target)
+            }
+        },
+        {
+            rootMargin: '-200px',
+        }
+    )
+
+    observer.observe(cyprusWrapper)
+})
+
 // why cyprus end
 
 // global
