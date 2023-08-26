@@ -78,6 +78,17 @@ const aboutColumns = document.querySelectorAll(
     'div.about-column'
 ) as NodeListOf<HTMLElement>
 
+// about us end
+
+// why cyprus
+
+const cyprusWrapper = document.querySelector(
+    'section.why-cyprus'
+) as HTMLElement
+
+// why cyprus end
+
+// global
 document.addEventListener('DOMContentLoaded', () => {
     let observer = new IntersectionObserver(
         ([entry]) => {
@@ -93,6 +104,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
     observer.observe(aboutWrapper)
     aboutColumns.forEach(column => observer.observe(column))
+    observer.observe(cyprusWrapper)
 })
-
-// about us end
+// global end
