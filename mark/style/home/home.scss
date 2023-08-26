@@ -332,9 +332,6 @@ main.home {
         align-items: center;
         gap: 12vh;
 
-        background-color: white;
-        color: black;
-
         padding: 5vh 3vw;
 
         h3.cyprus-header {
@@ -345,12 +342,21 @@ main.home {
             justify-content: center;
             gap: calc(2vw + 5px);
 
+            transform: translateY(300px);
+            opacity: 0;
+
+            transition:
+                transform 1.2s ease-in-out,
+                opacity 1.2s ease-in-out;
+
             &::before,
             &::after {
                 content: '';
 
                 height: 2px;
-                width: 100%;
+                width: 0;
+
+                transition: width 1.5s 1s ease-in-out;
             }
 
             &::after {
@@ -364,10 +370,24 @@ main.home {
                 white-space: nowrap;
             }
         }
+
+        &.active {
+            h3.cyprus-header {
+                transform: translateY(0);
+                opacity: 1;
+
+                &::before,
+                &::after {
+                    width: 100%;
+                }
+            }
+        }
     }
 
     section {
         width: 100%;
         overflow: hidden;
+
+        color: black;
     }
 }
