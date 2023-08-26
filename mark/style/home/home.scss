@@ -331,6 +331,28 @@ main.home {
 
         padding: 5vh 3vw;
 
+        h3.cyprus-header,
+        .cyprus-wrapper {
+            transform: translateY(300px);
+            opacity: 0;
+
+            transition:
+                transform 1.2s ease-in-out,
+                opacity 1.2s ease-in-out;
+        }
+        &.active {
+            h3.cyprus-header,
+            .cyprus-wrapper {
+                transform: translateY(0);
+                opacity: 1;
+
+                &::before,
+                &::after {
+                    width: 100%;
+                }
+            }
+        }
+
         h3.cyprus-header {
             width: 100%;
 
@@ -338,13 +360,6 @@ main.home {
             align-items: center;
             justify-content: center;
             gap: calc(2vw + 5px);
-
-            transform: translateY(300px);
-            opacity: 0;
-
-            transition:
-                transform 1.2s ease-in-out,
-                opacity 1.2s ease-in-out;
 
             &::before,
             &::after {
@@ -365,18 +380,6 @@ main.home {
 
             span {
                 white-space: nowrap;
-            }
-        }
-
-        &.active {
-            h3.cyprus-header {
-                transform: translateY(0);
-                opacity: 1;
-
-                &::before,
-                &::after {
-                    width: 100%;
-                }
             }
         }
 
