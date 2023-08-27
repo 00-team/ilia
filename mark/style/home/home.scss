@@ -500,6 +500,58 @@ main.home {
                         object-fit: cover;
                     }
                 }
+
+                .card-data {
+                    width: 100%;
+
+                    display: flex;
+                    flex-direction: column;
+                    gap: 2vh;
+
+                    padding: 2rem;
+
+                    .stars {
+                        display: flex;
+                    }
+                    .details {
+                        display: flex;
+                        gap: 5vw;
+                        align-items: center;
+                        justify-content: center;
+
+                        margin-top: 2vh;
+                        margin-left: auto;
+
+                        .adv,
+                        .disadv {
+                            display: flex;
+                            flex-direction: column;
+                            gap: 1vh;
+
+                            h5 {
+                                display: flex;
+                                align-items: center;
+                                gap: 5px;
+
+                                margin-bottom: 1vh;
+                            }
+                        }
+                        .adv {
+                            h5 {
+                                svg {
+                                    color: rgb(67, 160, 71);
+                                }
+                            }
+                        }
+                        .disadv {
+                            h5 {
+                                svg {
+                                    color: var(--alert-error);
+                                }
+                            }
+                        }
+                    }
+                }
             }
         }
     }
