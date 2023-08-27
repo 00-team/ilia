@@ -451,9 +451,14 @@ main.home {
 
         padding: 0 3vw;
 
-        // debug
-        height: 100vh;
+        min-height: 100vh;
 
+        @media screen and (max-width: 1024px) {
+            flex-direction: column;
+            row-gap: 8vh;
+
+            padding: 5vh 3vw;
+        }
         .education-header {
             width: 50%;
 
@@ -462,6 +467,10 @@ main.home {
             justify-content: center;
             flex-direction: column;
             gap: 4vh;
+
+            @media screen and (max-width: 1024px) {
+                width: 100%;
+            }
 
             h3 {
                 display: flex;
@@ -497,6 +506,10 @@ main.home {
             align-items: center;
             justify-content: center;
 
+            @media screen and (max-width: 1024px) {
+                width: 100%;
+            }
+
             .education-card {
                 width: clamp(0px, 100%, 650px);
                 aspect-ratio: 1.7/1;
@@ -506,6 +519,13 @@ main.home {
 
                 position: relative;
                 isolation: isolate;
+
+                @media screen and (max-width: 1024px) {
+                    display: flex;
+                    flex-direction: column;
+
+                    padding: 1rem;
+                }
 
                 .card-img {
                     position: absolute;
@@ -520,6 +540,14 @@ main.home {
                     aspect-ratio: 1/1;
 
                     overflow: hidden;
+
+                    @media screen and (max-width: 1024px) {
+                        position: static;
+                        width: 100%;
+                        max-height: 300px;
+
+                        transform: none;
+                    }
 
                     img {
                         width: 100%;
@@ -548,6 +576,11 @@ main.home {
 
                         margin-top: 2vh;
                         margin-left: auto;
+
+                        @media screen and (max-width: 1024px) {
+                            justify-content: space-between;
+                            margin-left: unset;
+                        }
 
                         .adv,
                         .disadv {
