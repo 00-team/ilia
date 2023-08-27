@@ -90,6 +90,9 @@ main.home {
                 color: black;
 
                 @media screen and (max-width: 768px) {
+                    margin-right: 25%;
+                }
+                @media screen and (max-width: 375px) {
                     margin-right: 20%;
                 }
 
