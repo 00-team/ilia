@@ -1027,6 +1027,29 @@ main.home {
                         }
                     }
                 }
+                .call-wrapper {
+                    display: flex;
+                    flex-direction: column;
+                    gap: 4vh;
+
+                    .call {
+                        width: 100%;
+
+                        display: flex;
+                        align-items: center;
+                        justify-content: space-between;
+
+                        .holder {
+                            display: flex;
+                            align-items: center;
+                            gap: 1rem;
+                        }
+
+                        .data {
+                            direction: ltr;
+                        }
+                    }
+                }
             }
         }
     }
