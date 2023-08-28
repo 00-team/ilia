@@ -781,6 +781,64 @@ main.home {
         }
     }
 
+    section.contact {
+        display: flex;
+        align-items: center;
+        flex-direction: column;
+
+        padding: 5vh 3vw;
+
+        // debug
+        height: 100vh;
+
+        background-color: white;
+
+        h3.contact-header {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 1vw;
+
+            width: 100%;
+
+            span {
+                display: inline-block;
+
+                transform: translateY(-400%);
+
+                white-space: nowrap;
+
+                transition: transform 1s cubic-bezier(0.45, 0.02, 0.09, 0.98);
+            }
+
+            &::before,
+            &::after {
+                content: '';
+                height: 2px;
+                width: 0;
+                transition: width 1.5s 1s cubic-bezier(0.45, 0.02, 0.09, 0.98);
+            }
+            &::before {
+                background-image: linear-gradient(90deg, #000, transparent);
+            }
+            &::after {
+                background-image: linear-gradient(90deg, transparent, #000);
+            }
+        }
+
+        &.active {
+            h3.contact-header {
+                span {
+                    transform: translateY(0);
+                }
+                &::before,
+                &::after {
+                    width: 100%;
+                }
+            }
+        }
+    }
+
     section {
         width: 100%;
         overflow: hidden;
