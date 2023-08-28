@@ -161,6 +161,10 @@ console.log(educationCards)
 
 // education end
 
+// contact
+const contactWrapper = document.querySelector('section.contact') as HTMLElement
+// contact end
+
 // global
 document.addEventListener('DOMContentLoaded', () => {
     let observer = new IntersectionObserver(
@@ -178,5 +182,6 @@ document.addEventListener('DOMContentLoaded', () => {
     observer.observe(aboutWrapper)
     aboutColumns.forEach(column => observer.observe(column))
     observer.observe(cyprusWrapper)
+    observer.observe(contactWrapper)
 })
 // global end
