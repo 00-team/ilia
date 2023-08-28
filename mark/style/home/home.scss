@@ -186,6 +186,7 @@ main.home {
             }
         }
     }
+
     section.about-us {
         display: flex;
         flex-direction: column;
@@ -332,6 +333,7 @@ main.home {
             }
         }
     }
+
     section.why-cyprus {
         display: flex;
         flex-direction: column;
@@ -446,6 +448,7 @@ main.home {
             }
         }
     }
+
     section.education {
         display: flex;
         align-items: center;
@@ -1064,6 +1067,71 @@ main.home {
                                 color: rgba(0, 0, 255, 0.685);
                             }
                         }
+                    }
+                }
+            }
+        }
+    }
+
+    section.blogs {
+        // debug
+        height: 100vh;
+
+        display: flex;
+        align-items: center;
+        flex-direction: column;
+        gap: 12vh;
+
+        padding: 5vh 3vw;
+
+        h3.blogs-header {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 2rem;
+
+            overflow: hidden;
+
+            &::before,
+            &::after {
+                content: '';
+                height: 2px;
+                width: 100px;
+
+                background-color: black;
+
+                transform: translateX(200%);
+
+                transition: 1s cubic-bezier(0.45, 0.02, 0.09, 0.98);
+            }
+
+            .title_wrapper {
+                overflow: hidden;
+                background-color: var(--sixty-percent);
+
+                z-index: 2;
+
+                span {
+                    display: inline-block;
+
+                    white-space: nowrap;
+
+                    transform: translateX(200%);
+
+                    transition: 1s cubic-bezier(0.45, 0.02, 0.09, 0.98);
+                }
+            }
+        }
+        &.active {
+            h3.blogs-header {
+                &::before,
+                &::after {
+                    transform: translateX(0);
+                }
+
+                .title_wrapper {
+                    span {
+                        transform: translateX(0);
                     }
                 }
             }
