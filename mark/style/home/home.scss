@@ -1047,6 +1047,13 @@ main.home {
 
                         .data {
                             direction: ltr;
+
+                            cursor: pointer;
+
+                            @media screen and (max-width768px) {
+                                text-decoration: underline;
+                                color: rgba(0, 0, 255, 0.685);
+                            }
                         }
                     }
                 }
