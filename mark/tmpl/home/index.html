@@ -490,7 +490,33 @@
                 ارتباط با ما
             </span>
         </h3>
-        <div class="contact-wrapper"></div>
+        <div class="contact-wrapper">
+            <form method="post" action="#" class="email">
+                <div class="name title_small">
+                    <div class="holder title_smaller">
+                        <svg stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 448 512" height='25' width='25' xmlns="http://www.w3.org/2000/svg"><path d="M224 256c70.7 0 128-57.3 128-128S294.7 0 224 0 96 57.3 96 128s57.3 128 128 128zm89.6 32h-16.7c-22.2 10.2-46.9 16-72.9 16s-50.6-5.8-72.9-16h-16.7C60.2 288 0 348.2 0 422.4V464c0 26.5 21.5 48 48 48h352c26.5 0 48-21.5 48-48v-41.6c0-74.2-60.2-134.4-134.4-134.4z"></path></svg>
+                        نام و نام خانوادگی
+                    </div>
+                    <input type="text" name="username">
+                </div>
+                <div class="email title_small"> 
+                    <div class="holder title_smaller">
+                        <svg stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 24 24" height='25' width='25' xmlns="http://www.w3.org/2000/svg"><path fill="none" d="M0 0h24v24H0z"></path><path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"></path></svg>                        ایمیل
+                    </div>
+                    <input type="text">
+                    
+                </div>
+                <div class="subject title_small">
+                    <div class="holder title_smaller">
+                        <svg stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 24 24" height='25' width='25' xmlns="http://www.w3.org/2000/svg"><path d="M6.45455 19L2 22.5V4C2 3.44772 2.44772 3 3 3H21C21.5523 3 22 3.44772 22 4V18C22 18.5523 21.5523 19 21 19H6.45455ZM11 14V16H13V14H11ZM8.56731 8.81346L10.5288 9.20577C10.6656 8.51823 11.2723 8 12 8C12.8284 8 13.5 8.67157 13.5 9.5C13.5 10.3284 12.8284 11 12 11H11V13H12C13.933 13 15.5 11.433 15.5 9.5C15.5 7.567 13.933 6 12 6C10.302 6 8.88637 7.20919 8.56731 8.81346Z"></path></svg>                        موضوع
+                    </div>
+                    <input type="text" name="useremail">
+
+                </div>
+                <textarea class="title_small" name="" id="" cols="30" rows="10"></textarea>
+                <button class="basic-button title form-btn" type="submit">ارسال</button>
+            </form>
+        </div>
     </section>
 </main>
 {% endblock content %}
