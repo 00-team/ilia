@@ -129,6 +129,7 @@ document.addEventListener('DOMContentLoaded', () => {
 const educationCards = document.querySelectorAll('.education-card')
 
 let activieEducation = 1
+const CHANGE_EDU_CARD = 5000
 
 const getEducationCardClass = (index: number) => {
     if (activieEducation === index) return 'active'
@@ -145,6 +146,7 @@ const setEducationCardClass = () => {
     })
 }
 
+setEducationCardClass()
 setInterval(() => {
     if (activieEducation + 2 > educationCards.length) {
         activieEducation = 1
@@ -153,7 +155,7 @@ setInterval(() => {
     }
 
     return setEducationCardClass()
-}, 2000)
+}, CHANGE_EDU_CARD)
 
 console.log(educationCards)
 
