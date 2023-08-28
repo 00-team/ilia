@@ -522,6 +522,87 @@ main.home {
                 position: relative;
                 isolation: isolate;
 
+                &:not(.active, .prev, .next) {
+                    position: absolute;
+                    z-index: -1;
+                    opacity: 0;
+                    scale: 0.6;
+                }
+                &.prev,
+                &.next {
+                    position: absolute;
+                }
+
+                &.next {
+                    animation: card-next 1.5s
+                        cubic-bezier(0.45, 0.02, 0.09, 0.98) forwards;
+                    @keyframes card-next {
+                        0% {
+                            position: absolute;
+                            z-index: 1;
+                            scale: 1;
+                            translate: 0;
+                        }
+                        50% {
+                            position: absolute;
+                            transform: scale(0.6);
+                            translate: -50% 50%;
+                            z-index: -1;
+                        }
+                        100% {
+                            position: absolute;
+                            transform: scale(0.6);
+                            translate: -50% 50%;
+                            z-index: -1;
+                            filter: blur(2px);
+                        }
+                    }
+                }
+                &.active {
+                    animation: card-active 1.5s
+                        cubic-bezier(0.45, 0.02, 0.09, 0.98) forwards;
+                    @keyframes card-active {
+                        0% {
+                            filter: blur(2px);
+                            translate: -50% 50%;
+                            scale: 0.6;
+                        }
+                        80% {
+                            filter: blur(0);
+                            position: relative;
+                            translate: 0;
+                        }
+                        100% {
+                            filter: blur(0);
+                            position: relative;
+                            translate: 0;
+                            scale: 1;
+                            z-index: 1;
+                        }
+                    }
+                }
+                &.prev {
+                    animation: card-prev 1.5s
+                        cubic-bezier(0.45, 0.02, 0.09, 0.98) forwards;
+                    @keyframes card-prev {
+                        0% {
+                            z-index: -1;
+                            opacity: 0;
+                            scale: 0.6;
+                        }
+                        80% {
+                            opacity: 1;
+                            translate: -50% -50%;
+                        }
+                        100% {
+                            opacity: 1;
+                            translate: -50% -50%;
+                            scale: 0.6;
+                            filter: blur(2px);
+                        }
+                    }
+                }
+
                 @media screen and (max-width: 1024px) {
                     display: flex;
                     flex-direction: column;
