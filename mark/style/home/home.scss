@@ -785,19 +785,32 @@ main.home {
         display: flex;
         align-items: center;
         flex-direction: column;
+        gap: 8vh;
 
         padding: 5vh 3vw;
 
         // debug
         height: 100vh;
 
-        background-color: white;
+        background-color: rgb(2, 2, 2);
+
+        &.active {
+            h3.contact-header {
+                span {
+                    transform: translateY(0);
+                }
+                &::before,
+                &::after {
+                    width: 100%;
+                }
+            }
+        }
 
         h3.contact-header {
             display: flex;
             align-items: center;
             justify-content: center;
-            gap: 1vw;
+            gap: 2vw;
 
             width: 100%;
 
@@ -826,16 +839,18 @@ main.home {
             }
         }
 
-        &.active {
-            h3.contact-header {
-                span {
-                    transform: translateY(0);
-                }
-                &::before,
-                &::after {
-                    width: 100%;
-                }
-            }
+        .contact-wrapper {
+            width: clamp(0px, 100%, 1500px);
+            aspect-ratio: 2/1;
+
+            border-radius: 10px;
+            backdrop-filter: blur(5px);
+            background-color: rgba(255, 255, 255, 0.5);
+
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            flex-wrap: wrap;
         }
     }
 
