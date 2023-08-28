@@ -124,6 +124,41 @@ document.addEventListener('DOMContentLoaded', () => {
 
 // why cyprus end
 
+// education
+
+const educationCards = document.querySelectorAll('.education-card')
+
+let activieEducation = 1
+
+const getEducationCardClass = (index: number) => {
+    if (activieEducation === index) return 'active'
+    if (activieEducation - 1 === index) return 'next'
+    if (activieEducation + 1 === index) return 'prev'
+    if (activieEducation === educationCards.length - 1 && index === 0)
+        return 'prev'
+    return ''
+}
+
+const setEducationCardClass = () => {
+    educationCards.forEach((card, index) => {
+        card.className = `education-card ${getEducationCardClass(index)}`
+    })
+}
+
+setInterval(() => {
+    if (activieEducation + 2 > educationCards.length) {
+        activieEducation = 1
+    } else {
+        activieEducation += 1
+    }
+
+    return setEducationCardClass()
+}, 2000)
+
+console.log(educationCards)
+
+// education end
+
 // global
 document.addEventListener('DOMContentLoaded', () => {
     let observer = new IntersectionObserver(
