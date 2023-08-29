@@ -1,0 +1,42 @@
+nav.nav-container {
+    position: sticky;
+    top: 0;
+
+    z-index: 999;
+    .mobile-container {
+        width: 100%;
+        padding: 1rem 2rem;
+
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+
+        background-color: white;
+
+        .mobile-open {
+            height: 100%;
+            padding: 1rem;
+        }
+
+        img {
+            width: 70px;
+            aspect-ratio: 1/1;
+            border-radius: 5px;
+
+            object-fit: cover;
+        }
+    }
+    .pc-container {
+    }
+
+    @media screen and (max-width: 768px) {
+        .pc-container {
+            display: none;
+        }
+    }
+    @media screen and (min-width: 768px) {
+        .mobile-container {
+            display: none;
+        }
+    }
+}
