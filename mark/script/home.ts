@@ -177,7 +177,7 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         },
         {
-            rootMargin: '-150px',
+            rootMargin: '-175px',
         }
     )
 
