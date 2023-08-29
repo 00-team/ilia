@@ -104,22 +104,6 @@ const cyprusWrapper = document.querySelector(
     'section.why-cyprus'
 ) as HTMLElement
 
-document.addEventListener('DOMContentLoaded', () => {
-    let observer = new IntersectionObserver(
-        ([entry]) => {
-            if (entry && entry.isIntersecting) {
-                entry.target.className += ' active'
-                observer.unobserve(entry.target)
-            }
-        },
-        {
-            rootMargin: '-200px',
-        }
-    )
-
-    observer.observe(cyprusWrapper)
-})
-
 // why cyprus end
 
 // education
@@ -167,11 +151,11 @@ const blogs = document.querySelector('section.blogs')
 
 // global
 document.addEventListener('DOMContentLoaded', () => {
-    let observer = new IntersectionObserver(
+    let observer1 = new IntersectionObserver(
         ([entry]) => {
             if (entry && entry.isIntersecting) {
                 entry.target.className += ' active'
-                observer.unobserve(entry.target)
+                observer1.unobserve(entry.target)
             }
         },
         {
@@ -179,10 +163,26 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     )
 
-    observer.observe(aboutWrapper)
-    aboutColumns.forEach(column => observer.observe(column))
-    observer.observe(cyprusWrapper)
-    observer.observe(contactWrapper)
-    observer.observe(blogs)
+    observer1.observe(aboutWrapper)
+    aboutColumns.forEach(column => observer1.observe(column))
+    observer1.observe(contactWrapper)
 })
+
+document.addEventListener('DOMContentLoaded', () => {
+    let observer2 = new IntersectionObserver(
+        ([entry]) => {
+            if (entry && entry.isIntersecting) {
+                entry.target.className += ' active'
+                observer2.unobserve(entry.target)
+            }
+        },
+        {
+            rootMargin: '-150px',
+        }
+    )
+
+    observer2.observe(cyprusWrapper)
+    observer2.observe(blogs)
+})
+
 // global end
