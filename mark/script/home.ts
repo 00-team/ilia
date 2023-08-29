@@ -4,9 +4,7 @@ export {}
 const heroSection = document.querySelector(
     'section.hero-section'
 ) as HTMLElement
-const stickyButton = document.querySelector(
-    'button.hero-btn.main'
-) as HTMLElement
+const stickyButton = document.querySelector('a.hero-btn.main') as HTMLElement
 
 stickyButton.addEventListener('mousemove', e => {
     stickyButton.className += ' active'
@@ -156,8 +154,6 @@ setInterval(() => {
 
     return setEducationCardClass()
 }, CHANGE_EDU_CARD)
-
-console.log(educationCards)
 
 // education end
 
