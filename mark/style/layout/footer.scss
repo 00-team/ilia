@@ -1,32 +1,109 @@
 footer.footer-container {
     width: 100%;
 
-    // debug
-    height: 50vh;
-
     display: flex;
-    align-items: center;
-    flex-wrap: wrap;
+    flex-direction: column;
 
     background-color: white;
 
-    position: relative;
-    isolation: isolate;
+    .footer-wrapper {
+        display: flex;
+        align-items: center;
+        column-gap: 5vw;
+        row-gap: 8vh;
 
-    &::before {
-        content: '';
+        position: relative;
+        isolation: isolate;
 
-        position: absolute;
-        top: 0;
+        padding: 5vh 3vw;
 
-        width: 100%;
-        height: 2px;
+        @media screen and (max-width: 768px) {
+            flex-direction: column;
 
-        background-image: linear-gradient(
-            90deg,
-            transparent,
-            #000,
-            transparent
-        );
+            align-items: center;
+        }
+
+        .footer-column {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: 4vh;
+
+            .column-title {
+                margin-bottom: 1vh;
+            }
+
+            .column-link {
+                display: flex;
+                align-items: center;
+                justify-content: center;
+
+                position: relative;
+                isolation: isolate;
+
+                &::after {
+                    content: '';
+                    position: absolute;
+                    bottom: 0;
+                    left: 0;
+
+                    width: 100%;
+                    height: 1px;
+
+                    background-color: black;
+                    transform-origin: right center;
+
+                    transform: scaleX(0);
+
+                    transition: transform 1s cubic-bezier(0.19, 1, 0.22, 1);
+                }
+
+                &:hover::after {
+                    transition-duration: 0.4s;
+                    transform: scaleX(1);
+                    transform-origin: left center;
+                }
+            }
+        }
+
+        .footer-logo {
+            margin-right: auto;
+
+            width: clamp(0px, 100%, 300px);
+            max-height: 500px;
+
+            @media screen and (max-width: 768px) {
+                margin-right: unset;
+            }
+
+            img {
+                width: 100%;
+                height: 100%;
+
+                object-fit: cover;
+
+                border-radius: 5px;
+            }
+        }
+    }
+
+    .team-00 {
+        padding: 1rem;
+
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 1vmin;
+
+        direction: ltr;
+
+        a {
+            border-bottom: 1px solid black;
+        }
+
+        .heart {
+            color: red;
+        }
     }
 }
