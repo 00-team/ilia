@@ -451,166 +451,100 @@ main.home {
 
     section.education {
         display: flex;
+        flex-direction: column;
         align-items: center;
-        justify-content: space-between;
+        gap: 8vh;
 
-        padding: 0 3vw;
+        padding: 10vh 3vw;
 
-        min-height: 100vh;
-
-        @media screen and (max-width: 1024px) {
-            flex-direction: column;
-            row-gap: 8vh;
-
-            padding: 5vh 3vw;
-        }
-        .education-header {
-            width: 50%;
+        .education-container {
+            width: 100%;
 
             display: flex;
             align-items: center;
-            justify-content: center;
-            flex-direction: column;
-            gap: 4vh;
+            justify-content: space-between;
+
+            min-height: 80vh;
 
             @media screen and (max-width: 1024px) {
-                width: 100%;
+                flex-direction: column;
+                row-gap: 12vh;
+
+                padding: 5vh 3vw;
             }
 
-            h3 {
+            .education-header {
+                width: 50%;
+
                 display: flex;
                 align-items: center;
-
-                width: 100%;
-
-                &::after {
-                    content: '';
-                    width: 100%;
-                    height: 2px;
-
-                    background-image: linear-gradient(
-                        -90deg,
-                        #000,
-                        transparent
-                    );
-                }
-
-                span {
-                    white-space: nowrap;
-
-                    padding-left: 1em;
-                }
-            }
-        }
-
-        .education-wrapper {
-            width: 50%;
-            height: 100%;
-
-            display: flex;
-            align-items: center;
-            justify-content: center;
-
-            @media screen and (max-width: 1024px) {
-                width: 100%;
-            }
-
-            .education-card {
-                width: clamp(0px, 100%, 650px);
-                aspect-ratio: 1.7/1;
-
-                border-radius: 10px;
-                background: white;
-
-                position: relative;
-                isolation: isolate;
-
-                &:not(.active, .prev, .next) {
-                    position: absolute;
-                    z-index: -1;
-                    opacity: 0;
-                    scale: 0.6;
-                }
-                &.prev,
-                &.next {
-                    position: absolute;
-                }
-
-                &.next {
-                    animation: card-next 1.5s
-                        cubic-bezier(0.45, 0.02, 0.09, 0.98) forwards;
-                    @keyframes card-next {
-                        0% {
-                            position: absolute;
-                            translate: 0;
-                            z-index: -1;
-                            transform: scale(0.6);
-                        }
-                        50% {
-                            position: absolute;
-                            transform: scale(0.6);
-                            translate: -50% 50%;
-                            z-index: -1;
-                        }
-                        100% {
-                            position: absolute;
-                            transform: scale(0.6);
-                            translate: -50% 50%;
-                            z-index: -1;
-                            filter: blur(2px);
-                        }
-                    }
-                }
-                &.active {
-                    animation: card-active 1.5s
-                        cubic-bezier(0.45, 0.02, 0.09, 0.98) forwards;
-                    @keyframes card-active {
-                        0% {
-                            filter: blur(2px);
-                            translate: -50% 50%;
-                            scale: 0.6;
-                        }
-                        80% {
-                            filter: blur(0);
-                            position: relative;
-                            translate: 0;
-                        }
-                        100% {
-                            filter: blur(0);
-                            position: relative;
-                            translate: 0;
-                            scale: 1;
-                            z-index: 1;
-                        }
-                    }
-                }
-                &.prev {
-                    animation: card-prev 1.5s
-                        cubic-bezier(0.45, 0.02, 0.09, 0.98) forwards;
-                    @keyframes card-prev {
-                        0% {
-                            filter: blur(0);
-                            translate: 0;
-                            scale: 1;
-                            z-index: 1;
-                        }
-                        80% {
-                            filter: blur(2px);
-                            z-index: -1;
-                            scale: 0.6;
-
-                            translate: -50% -50%;
-                        }
-                        100% {
-                            opacity: 1;
-                            translate: -50% -50%;
-                            scale: 0.6;
-                            filter: blur(2px);
-                        }
-                    }
-                }
+                justify-content: center;
+                flex-direction: column;
+                gap: 4vh;
 
                 @media screen and (max-width: 1024px) {
+                    width: 100%;
+                }
+
+                h3 {
+                    display: flex;
+                    align-items: center;
+
+                    width: 100%;
+
+                    &::after {
+                        content: '';
+                        width: 100%;
+                        height: 2px;
+
+                        background-image: linear-gradient(
+                            -90deg,
+                            #000,
+                            transparent
+                        );
+                    }
+
+                    span {
+                        white-space: nowrap;
+
+                        padding-left: 1em;
+                    }
+                }
+            }
+
+            .education-wrapper {
+                width: 50%;
+                height: 100%;
+
+                display: flex;
+                align-items: center;
+                justify-content: center;
+
+                @media screen and (max-width: 1024px) {
+                    width: 100%;
+                }
+
+                .education-card {
+                    width: clamp(0px, 100%, 650px);
+                    aspect-ratio: 1.7/1;
+
+                    border-radius: 10px;
+                    background: white;
+
+                    position: relative;
+                    isolation: isolate;
+
+                    &:not(.active, .prev, .next) {
+                        position: absolute;
+                        z-index: -1;
+                        opacity: 0;
+                        scale: 0.6;
+                    }
+                    &.prev,
+                    &.next {
+                        position: absolute;
+                    }
+
                     &.next {
                         animation: card-next 1.5s
                             cubic-bezier(0.45, 0.02, 0.09, 0.98) forwards;
@@ -674,112 +608,195 @@ main.home {
                                 z-index: -1;
                                 scale: 0.6;
 
-                                translate: 50% 50%;
+                                translate: -50% -50%;
                             }
                             100% {
                                 opacity: 1;
-                                translate: 50% 50%;
+                                translate: -50% -50%;
                                 scale: 0.6;
                                 filter: blur(2px);
                             }
                         }
                     }
-                }
-
-                @media screen and (max-width: 1024px) {
-                    display: flex;
-                    flex-direction: column;
-
-                    padding: 1rem;
-                }
-
-                .card-img {
-                    position: absolute;
-                    top: 50%;
-                    left: 0;
-                    transform: translateX(-50%) translateY(-50%);
-
-                    border-radius: 10px;
-                    box-shadow: 0px 16px 16px -5px rgba(0, 0, 0, 0.25);
-
-                    height: 75%;
-                    aspect-ratio: 1/1;
-
-                    overflow: hidden;
 
                     @media screen and (max-width: 1024px) {
-                        position: static;
-                        width: 100%;
-                        max-height: 300px;
+                        &.next {
+                            animation: card-next 1.5s
+                                cubic-bezier(0.45, 0.02, 0.09, 0.98) forwards;
+                            @keyframes card-next {
+                                0% {
+                                    position: absolute;
+                                    translate: 0;
+                                    z-index: -1;
+                                    transform: scale(0.6);
+                                }
+                                50% {
+                                    position: absolute;
+                                    transform: scale(0.6);
+                                    translate: -50% 50%;
+                                    z-index: -1;
+                                }
+                                100% {
+                                    position: absolute;
+                                    transform: scale(0.6);
+                                    translate: -50% 50%;
+                                    z-index: -1;
+                                    filter: blur(2px);
+                                }
+                            }
+                        }
+                        &.active {
+                            animation: card-active 1.5s
+                                cubic-bezier(0.45, 0.02, 0.09, 0.98) forwards;
+                            @keyframes card-active {
+                                0% {
+                                    filter: blur(2px);
+                                    translate: -50% 50%;
+                                    scale: 0.6;
+                                }
+                                80% {
+                                    filter: blur(0);
+                                    position: relative;
+                                    translate: 0;
+                                }
+                                100% {
+                                    filter: blur(0);
+                                    position: relative;
+                                    translate: 0;
+                                    scale: 1;
+                                    z-index: 1;
+                                }
+                            }
+                        }
+                        &.prev {
+                            animation: card-prev 1.5s
+                                cubic-bezier(0.45, 0.02, 0.09, 0.98) forwards;
+                            @keyframes card-prev {
+                                0% {
+                                    filter: blur(0);
+                                    translate: 0;
+                                    scale: 1;
+                                    z-index: 1;
+                                }
+                                80% {
+                                    filter: blur(2px);
+                                    z-index: -1;
+                                    scale: 0.6;
 
-                        border-radius: 5px;
-
-                        transform: none;
+                                    translate: 50% 50%;
+                                }
+                                100% {
+                                    opacity: 1;
+                                    translate: 50% 50%;
+                                    scale: 0.6;
+                                    filter: blur(2px);
+                                }
+                            }
+                        }
                     }
 
-                    img {
-                        width: 100%;
-                        height: 100%;
-                        object-fit: cover;
-                    }
-                }
-
-                .card-data {
-                    width: 100%;
-
-                    display: flex;
-                    flex-direction: column;
-                    gap: 2vh;
-
-                    padding: 2rem;
-
-                    .stars {
+                    @media screen and (max-width: 1024px) {
                         display: flex;
-                    }
-                    .details {
-                        display: flex;
-                        gap: 5vw;
-                        align-items: center;
-                        justify-content: center;
+                        flex-direction: column;
 
-                        margin-top: 2vh;
-                        margin-left: auto;
+                        padding: 1rem;
+                    }
+
+                    .card-img {
+                        position: absolute;
+                        top: 50%;
+                        left: 0;
+                        transform: translateX(-50%) translateY(-50%);
+
+                        border-radius: 10px;
+                        box-shadow: 0px 16px 16px -5px rgba(0, 0, 0, 0.25);
+
+                        height: 75%;
+                        aspect-ratio: 1/1;
+
+                        overflow: hidden;
 
                         @media screen and (max-width: 1024px) {
-                            justify-content: space-between;
-                            margin-left: unset;
+                            position: static;
+                            width: 100%;
+                            max-height: 300px;
+
+                            border-radius: 5px;
+
+                            transform: none;
                         }
 
-                        .adv,
-                        .disadv {
+                        img {
+                            width: 100%;
+                            height: 100%;
+                            object-fit: cover;
+                        }
+                    }
+
+                    .card-data {
+                        width: 100%;
+
+                        display: flex;
+                        flex-direction: column;
+                        gap: 2vh;
+
+                        padding: 2rem;
+
+                        .stars {
                             display: flex;
-                            flex-direction: column;
-                            gap: 1vh;
-
-                            h5 {
-                                display: flex;
-                                align-items: center;
-                                gap: 5px;
-
-                                margin-bottom: 1vh;
-                            }
                         }
-                        .adv {
-                            h5 {
-                                svg {
-                                    color: rgb(67, 160, 71);
+                        .details {
+                            display: flex;
+                            gap: 5vw;
+                            align-items: center;
+                            justify-content: center;
+
+                            margin-top: 2vh;
+                            margin-left: auto;
+
+                            @media screen and (max-width: 1024px) {
+                                justify-content: space-between;
+                                margin-left: unset;
+                            }
+
+                            .adv,
+                            .disadv {
+                                display: flex;
+                                flex-direction: column;
+                                gap: 1vh;
+
+                                h5 {
+                                    display: flex;
+                                    align-items: center;
+                                    gap: 5px;
+
+                                    margin-bottom: 1vh;
                                 }
                             }
-                        }
-                        .disadv {
-                            h5 {
-                                svg {
-                                    color: var(--alert-error);
+                            .adv {
+                                h5 {
+                                    svg {
+                                        color: rgb(67, 160, 71);
+                                    }
+                                }
+                            }
+                            .disadv {
+                                h5 {
+                                    svg {
+                                        color: var(--alert-error);
+                                    }
                                 }
                             }
                         }
                     }
                 }
+            }
+        }
+        .education-btn {
+            margin-top: -5vh;
+
+            @media screen and (max-width: 768px) {
+                margin-top: 15vh;
             }
         }
     }
