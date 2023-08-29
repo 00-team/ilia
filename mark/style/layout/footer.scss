@@ -1,0 +1,32 @@
+footer.footer-container {
+    width: 100%;
+
+    // debug
+    height: 50vh;
+
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+
+    background-color: white;
+
+    position: relative;
+    isolation: isolate;
+
+    &::before {
+        content: '';
+
+        position: absolute;
+        top: 0;
+
+        width: 100%;
+        height: 2px;
+
+        background-image: linear-gradient(
+            90deg,
+            transparent,
+            #000,
+            transparent
+        );
+    }
+}
