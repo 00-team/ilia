@@ -351,6 +351,10 @@ main.home {
                 transform 1.2s ease-in-out,
                 opacity 1.2s ease-in-out;
         }
+        .cyprus-wrapper {
+            transition-duration: 1.5s;
+            transition-delay: 1.5s;
+        }
         &.active {
             h3.cyprus-header,
             .cyprus-wrapper {
