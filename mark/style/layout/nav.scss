@@ -1,4 +1,4 @@
-$NAV_TRANSFORMX: -60vw;
+$NAV_WIDTH: 60vw;
 $NAV_TRANSFORMY: 15vh;
 
 nav.nav-container {
@@ -6,6 +6,26 @@ nav.nav-container {
     top: 0;
 
     z-index: 999;
+
+    &.mobile-active {
+        .mobile-container {
+            .buttons-container {
+                .mobile-close {
+                    transform: translateY(0);
+                }
+                .mobile-open {
+                    transform: translateY(-100px);
+                }
+            }
+        }
+        .mobile-wrapper {
+            transform: translateX(0);
+
+            a.nav-link {
+                transform: translateX(0);
+            }
+        }
+    }
 
     .mobile-container {
         width: 100%;
@@ -18,14 +38,6 @@ nav.nav-container {
         background-color: white;
 
         transition: 1s transform cubic-bezier(0.45, 0.02, 0.09, 0.98);
-
-        &.active {
-            .buttons-container {
-                .mobile-close {
-                    transform: translateX(0);
-                }
-            }
-        }
 
         .buttons-container {
             display: flex;
@@ -70,16 +82,43 @@ nav.nav-container {
 
             object-fit: cover;
         }
+    }
 
-        &.active {
-            .mobile-close {
-                transform: translateY(0);
-            }
-            .mobile-open {
-                transform: translateY(-100px);
-            }
+    .mobile-wrapper {
+        position: absolute;
+        z-index: -1;
+
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        gap: 4vh;
+
+        padding: 1rem;
+        margin-top: -10vh;
+
+        width: $NAV_WIDTH;
+        height: 100vh;
+        margin-left: auto;
+
+        transform: translateX(100%);
+        color: black;
+
+        transition: 0.5s transform cubic-bezier(0.45, 0.02, 0.09, 0.98);
+
+        a.nav-link {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 1rem;
+
+            font: inherit;
+
+            transform: translateX(200px);
+            transition: 1s transform cubic-bezier(0.45, 0.02, 0.09, 0.98);
         }
     }
+
     .pc-container {
     }
 
@@ -92,6 +131,9 @@ nav.nav-container {
         .mobile-container {
             display: none;
         }
+        .mobile-wrapper {
+            display: none;
+        }
     }
 }
 
@@ -100,6 +142,6 @@ main {
     transition: transform 1s cubic-bezier(0.45, 0.02, 0.09, 0.98);
 
     &.mobile-active {
-        transform: translate($NAV_TRANSFORMX, $NAV_TRANSFORMY);
+        transform: translate(-$NAV_WIDTH, $NAV_TRANSFORMY);
     }
 }
