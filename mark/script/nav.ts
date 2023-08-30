@@ -28,7 +28,7 @@ mobileMenuClose.addEventListener('click', () => {
     document.querySelector('nav.nav-container').className = mobileClass
 })
 
-const navLinks = document.querySelectorAll('a.nav-link')
+const navLinks = document.querySelectorAll('.nav-link')
 
 navLinks.forEach((link: HTMLElement, index) => {
     return (link.style.transitionDelay = `${index * 100}ms`)
