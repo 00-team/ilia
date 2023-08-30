@@ -150,30 +150,13 @@ const blogs = document.querySelector('section.blogs')
 // blogs end
 
 // global
+
 document.addEventListener('DOMContentLoaded', () => {
-    let observer1 = new IntersectionObserver(
+    let observer = new IntersectionObserver(
         ([entry]) => {
             if (entry && entry.isIntersecting) {
                 entry.target.className += ' active'
-                observer1.unobserve(entry.target)
-            }
-        },
-        {
-            threshold: 0.4,
-        }
-    )
-
-    observer1.observe(aboutWrapper)
-    aboutColumns.forEach(column => observer1.observe(column))
-    observer1.observe(contactWrapper)
-})
-
-document.addEventListener('DOMContentLoaded', () => {
-    let observer2 = new IntersectionObserver(
-        ([entry]) => {
-            if (entry && entry.isIntersecting) {
-                entry.target.className += ' active'
-                observer2.unobserve(entry.target)
+                observer.unobserve(entry.target)
             }
         },
         {
@@ -181,8 +164,11 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     )
 
-    observer2.observe(cyprusWrapper)
-    observer2.observe(blogs)
+    observer.observe(aboutWrapper)
+    aboutColumns.forEach(column => observer.observe(column))
+    observer.observe(contactWrapper)
+    observer.observe(cyprusWrapper)
+    observer.observe(blogs)
 })
 
 // global end
