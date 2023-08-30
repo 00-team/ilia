@@ -167,6 +167,9 @@ nav.nav-container {
             align-items: center;
             justify-content: center;
 
+            position: relative;
+            isolation: isolate;
+
             .nav-link {
                 display: flex;
                 align-items: center;
@@ -180,6 +183,22 @@ nav.nav-container {
 
                 position: relative;
                 isolation: isolate;
+
+                &:nth-child(1) {
+                    padding-right: 0;
+                }
+            }
+
+            .line {
+                position: absolute;
+                bottom: 0;
+                right: 0;
+
+                width: 100px;
+                height: 1px;
+                background-color: black;
+
+                transition: 0.5s cubic-bezier(0.45, 0.02, 0.09, 0.98);
             }
         }
         .nav-img {
