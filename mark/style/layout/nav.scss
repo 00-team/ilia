@@ -1,4 +1,4 @@
-$NAV_TRANSFORMX: -55vw;
+$NAV_TRANSFORMX: -60vw;
 $NAV_TRANSFORMY: 15vh;
 
 nav.nav-container {
@@ -20,37 +20,47 @@ nav.nav-container {
         transition: 1s transform cubic-bezier(0.45, 0.02, 0.09, 0.98);
 
         &.active {
-            .mobile-close {
-                transform: translateX(0);
+            .buttons-container {
+                .mobile-close {
+                    transform: translateX(0);
+                }
             }
         }
 
-        .mobile-open {
-            height: 100%;
-            padding: 1rem;
+        .buttons-container {
+            display: flex;
+            align-items: center;
+            justify-content: center;
 
-            background-color: transparent;
-            color: black;
-        }
+            position: relative;
+            isolation: isolate;
 
-        .mobile-close {
-            position: absolute;
-            top: 25px;
-            right: 50px;
+            .mobile-open {
+                height: 100%;
+                padding: 1rem;
 
-            padding: 1rem;
-            background-color: transparent;
+                background-color: transparent;
+                color: black;
+            }
 
-            transform: translateY(-100px);
+            .mobile-close {
+                position: absolute;
+                inset: 0;
 
-            color: black;
+                padding: 1rem;
+                background-color: transparent;
 
-            z-index: 999;
-        }
+                transform: translateY(-100px);
 
-        .mobile-close,
-        .mobile-open {
-            transition: 0.3s cubic-bezier(0.45, 0.02, 0.09, 0.98);
+                color: black;
+
+                z-index: 999;
+            }
+
+            .mobile-close,
+            .mobile-open {
+                transition: 0.3s cubic-bezier(0.45, 0.02, 0.09, 0.98);
+            }
         }
 
         img {
