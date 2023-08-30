@@ -36,11 +36,15 @@ function onMobile() {
         return (link.style.transitionDelay = `${index * 100}ms`)
     })
 }
+// mobile end
 
+// pc
 function onPc() {}
+// pc end
 
+// global
 innerWidth <= 768 ? onMobile() : onPc()
 window.onresize = () => {
     innerWidth <= 768 ? onMobile() : onPc()
 }
-// mobile end
+// global end
