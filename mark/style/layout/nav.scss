@@ -2,8 +2,12 @@ $NAV_WIDTH: 60vw;
 $NAV_TRANSFORMY: 15vh;
 
 nav.nav-container {
-    position: sticky;
+    position: fixed;
     top: 0;
+
+    background-color: white;
+
+    width: 100%;
 
     z-index: 999;
 
@@ -39,8 +43,6 @@ nav.nav-container {
         display: flex;
         align-items: center;
         justify-content: space-between;
-
-        background-color: white;
 
         transition: 1s transform cubic-bezier(0.45, 0.02, 0.09, 0.98);
 
@@ -147,6 +149,46 @@ nav.nav-container {
     }
 
     .pc-container {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        width: 100%;
+
+        padding: 1rem 2rem;
+
+        position: relative;
+        isolation: isolate;
+
+        .pc-wrapper {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            .nav-link {
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                gap: 5px;
+
+                padding: 1rem 2rem;
+                cursor: pointer;
+
+                font: inherit;
+            }
+        }
+        .nav-img {
+            position: absolute;
+            top: 50%;
+            left: 0;
+            transform: translateY(-50%);
+
+            border-radius: 5px;
+
+            width: 100px;
+            aspect-ratio: 1/1;
+            object-fit: cover;
+        }
     }
 
     @media screen and (max-width: 768px) {
