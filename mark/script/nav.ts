@@ -43,6 +43,21 @@ function onMobile() {
 // pc
 function onPc() {
     setMarginTop()
+
+    const links = document.querySelectorAll('a.nav-link')
+    const line = document.querySelector('div.line') as HTMLElement
+
+    links.forEach((link: HTMLElement) => {
+        link.addEventListener('mouseover', e => {
+            const linkRight = link.getBoundingClientRect().x
+            const linkWidth = link.getBoundingClientRect().width
+
+            const lineWidth = link.getBoundingClientRect().width
+
+            line.style.right = `${innerWidth - linkRight - linkWidth}px`
+            line.style.width = `${lineWidth - 20}px`
+        })
+    })
 }
 // pc end
 
