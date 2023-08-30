@@ -44,6 +44,7 @@ function onMobile() {
 function onPc() {
     setMarginTop()
 
+    const container = document.querySelector('.pc-container') as HTMLElement
     const links = document.querySelectorAll('a.nav-link')
     const line = document.querySelector('div.line') as HTMLElement
 
@@ -57,6 +58,9 @@ function onPc() {
             line.style.right = `${innerWidth - linkRight - linkWidth - 25}px`
             line.style.width = `${lineWidth - 40}px`
         })
+    })
+    container.addEventListener('mouseleave', () => {
+        line.style.width = `0px`
     })
 }
 // pc end
