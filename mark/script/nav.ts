@@ -54,8 +54,8 @@ function onPc() {
 
             const lineWidth = link.getBoundingClientRect().width
 
-            line.style.right = `${innerWidth - linkRight - linkWidth}px`
-            line.style.width = `${lineWidth - 20}px`
+            line.style.right = `${innerWidth - linkRight - linkWidth - 25}px`
+            line.style.width = `${lineWidth - 40}px`
         })
     })
 }
