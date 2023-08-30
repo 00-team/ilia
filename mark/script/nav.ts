@@ -1,5 +1,7 @@
 // mobile
 function onMobile() {
+    setMarginTop()
+
     const mobileMenuOpen = document.querySelector(
         'button.mobile-open'
     ) as HTMLElement
@@ -39,10 +41,20 @@ function onMobile() {
 // mobile end
 
 // pc
-function onPc() {}
+function onPc() {
+    setMarginTop()
+}
 // pc end
 
 // global
+function setMarginTop() {
+    const navHeight = document
+        .querySelector('nav.nav-container')
+        .getBoundingClientRect().height
+    const main = document.querySelector('main') as HTMLElement
+    main.style.marginTop = `${navHeight}px`
+}
+
 innerWidth <= 768 ? onMobile() : onPc()
 window.onresize = () => {
     innerWidth <= 768 ? onMobile() : onPc()
