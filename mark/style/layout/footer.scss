@@ -52,7 +52,7 @@ footer.footer-container {
                     height: 1px;
 
                     background-color: black;
-                    transform-origin: right center;
+                    transform-origin: left center;
 
                     transform: scaleX(0);
 
@@ -62,7 +62,7 @@ footer.footer-container {
                 &:hover::after {
                     transition-duration: 0.4s;
                     transform: scaleX(1);
-                    transform-origin: left center;
+                    transform-origin: right center;
                 }
             }
         }
