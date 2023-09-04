@@ -10,4 +10,17 @@ main.about {
     position: relative;
     isolation: isolate;
     overflow: hidden;
+
+    header.about-page-header {
+        display: grid;
+        place-items: center;
+
+        width: 100%;
+        aspect-ratio: 1/0.19;
+
+        background-size: cover;
+        background-repeat: no-repeat;
+
+        color: white;
+    }
 }
