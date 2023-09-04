@@ -9,8 +9,6 @@ function onMobile() {
         'button.mobile-close'
     ) as HTMLElement
 
-    console.log(mobileMenuClose)
-
     mobileMenuOpen.addEventListener('click', () => {
         console.log(document.querySelector('main'))
         document.querySelector('main').className += ' mobile-active'
@@ -70,6 +68,7 @@ function setMarginTop() {
     const navHeight = document
         .querySelector('nav.nav-container')
         .getBoundingClientRect().height
+
     const main = document.querySelector('main') as HTMLElement
     main.style.marginTop = `${navHeight}px`
 }
