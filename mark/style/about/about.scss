@@ -110,6 +110,9 @@ main.about {
 
         padding: 5vh 3vw;
 
-        background-color: white;
+        background-color: var(--sixty-percent);
+
+        // debug
+        height: 100vh;
     }
 }
