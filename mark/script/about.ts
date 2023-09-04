@@ -1,7 +1,12 @@
-import { C } from '@00-team/utils'
+const serviceCards = document.querySelectorAll('.service-card')
+const serviceCardsWrapper = document.querySelector(
+    '.services-wrapper'
+) as HTMLElement
 
-const cards = document.querySelectorAll('.service-card')
-const cardWrapper = document.querySelector('.services-wrapper')
+const salesCards = document.querySelectorAll('.sales-card')
+const salesCardsWrapper = document.querySelector(
+    '.sales-wrapper'
+) as HTMLElement
 
 document.addEventListener('DOMContentLoaded', () => {
     let observer = new IntersectionObserver(
@@ -17,7 +22,13 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     )
 
-    innerWidth <= 768
-        ? cards.forEach(card => observer.observe(card))
-        : observer.observe(cardWrapper)
+    if (innerWidth <= 768) {
+        serviceCards.forEach(card => observer.observe(card))
+        salesCards.forEach(card => observer.observe(card))
+    } else {
+        console.log(serviceCardsWrapper)
+        console.log(salesCardsWrapper)
+        observer.observe(serviceCardsWrapper)
+        observer.observe(salesCardsWrapper)
+    }
 })
