@@ -12,7 +12,6 @@ document.addEventListener('DOMContentLoaded', () => {
     let observer = new IntersectionObserver(
         ([entry]) => {
             if (entry && entry.isIntersecting) {
-                console.log(entry)
                 entry.target.className += ' active'
                 observer.unobserve(entry.target)
             }
@@ -26,8 +25,6 @@ document.addEventListener('DOMContentLoaded', () => {
         serviceCards.forEach(card => observer.observe(card))
         salesCards.forEach(card => observer.observe(card))
     } else {
-        console.log(serviceCardsWrapper)
-        console.log(salesCardsWrapper)
         observer.observe(serviceCardsWrapper)
         observer.observe(salesCardsWrapper)
     }
