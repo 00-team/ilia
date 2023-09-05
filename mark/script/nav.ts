@@ -10,14 +10,12 @@ function onMobile() {
     ) as HTMLElement
 
     mobileMenuOpen.addEventListener('click', () => {
-        console.log(document.querySelector('main'))
         document.querySelector('main').className += ' mobile-active'
         document.querySelector('nav.nav-container').className +=
             ' mobile-active'
     })
 
     mobileMenuClose.addEventListener('click', () => {
-        console.log('slm')
         let mainClass = document
             .querySelector('main')
             .className.replace('mobile-active', '')
