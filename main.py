@@ -102,10 +102,19 @@ async def index(request: Request):
         {'request': request}
     )
 
+
 @app.get('/about', response_class=HTMLResponse, include_in_schema=False)
 async def index(request: Request):
     return templates.TemplateResponse(
         'about/index.html',
+        {'request': request}
+    )
+
+
+@app.get('/cyprus', response_class=HTMLResponse, include_in_schema=False)
+async def index(request: Request):
+    return templates.TemplateResponse(
+        'cyprus/index.html',
         {'request': request}
     )
 
