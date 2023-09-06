@@ -8,24 +8,38 @@ const salesCardsWrapper = document.querySelector(
     '.sales-wrapper'
 ) as HTMLElement
 
-document.addEventListener('DOMContentLoaded', () => {
-    let observer = new IntersectionObserver(
-        ([entry]) => {
-            if (entry && entry.isIntersecting) {
-                entry.target.className += ' active'
-                observer.unobserve(entry.target)
+if (innerWidth <= 768) {
+    document.addEventListener('DOMContentLoaded', () => {
+        let observer = new IntersectionObserver(
+            ([entry]) => {
+                if (entry && entry.isIntersecting) {
+                    entry.target.className += ' active'
+                    observer.unobserve(entry.target)
+                }
+            },
+            {
+                threshold: 0.7,
             }
-        },
-        {
-            threshold: 0.7,
-        }
-    )
+        )
 
-    if (innerWidth <= 768) {
         serviceCards.forEach(card => observer.observe(card))
         salesCards.forEach(card => observer.observe(card))
-    } else {
+    })
+} else {
+    document.addEventListener('DOMContentLoaded', () => {
+        let observer = new IntersectionObserver(
+            ([entry]) => {
+                if (entry && entry.isIntersecting) {
+                    entry.target.className += ' active'
+                    observer.unobserve(entry.target)
+                }
+            },
+            {
+                rootMargin: '-250px',
+            }
+        )
+
         observer.observe(serviceCardsWrapper)
         observer.observe(salesCardsWrapper)
-    }
-})
+    })
+}
