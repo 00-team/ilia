@@ -96,6 +96,9 @@ main.cyprus {
                             transition: ease 1s;
                         }
                     }
+                    p {
+                        font-family: 'yekan';
+                    }
                 }
                 img {
                     width: clamp(0px, 100%, 600px);
