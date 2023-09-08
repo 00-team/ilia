@@ -1,4 +1,4 @@
-const sections = document.querySelectorAll('section')
+const articles = document.querySelectorAll('article')
 
 document.addEventListener('DOMContentLoaded', () => {
     let observer = new IntersectionObserver(
@@ -13,5 +13,6 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     )
 
-    sections.forEach(section => observer.observe(section))
+    articles.forEach(section => observer.observe(section))
+    articles.forEach(section => console.log(section))
 })
