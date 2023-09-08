@@ -1,3 +1,66 @@
 main.cyprus {
+    height: 100%;
     width: 100%;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+
+    position: relative;
+    isolation: isolate;
+    overflow: hidden;
+
+    header.cyprus-header {
+        display: grid;
+        place-items: center;
+
+        width: 100%;
+        aspect-ratio: 1/0.25;
+
+        background-size: cover;
+        background-repeat: no-repeat;
+
+        color: white;
+    }
+
+    section {
+        width: 100%;
+
+        display: flex;
+        align-items: center;
+        justify-content: flex-start;
+        flex-direction: column;
+        row-gap: 4vh;
+
+        padding: 5vh 1vw;
+
+        min-height: 100vh;
+
+        .section-main {
+            width: 100%;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-wrap: wrap;
+            column-gap: calc(2vw + 5px);
+            row-gap: calc(2vh + 5px);
+
+            .data {
+                width: 45%;
+
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                gap: 2vh;
+            }
+            img {
+                width: 40%;
+                aspect-ratio: 2/1;
+                object-fit: cover;
+                border-radius: 10px;
+            }
+        }
+    }
 }
