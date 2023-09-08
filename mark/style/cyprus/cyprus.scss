@@ -145,4 +145,26 @@ main.cyprus {
             }
         }
     }
+    section.invest {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 2vh;
+
+        width: 100%;
+        // debug
+        height: 100vh;
+
+        padding: 5vh 3vw;
+
+        h3,
+        h4 {
+            display: flex;
+            align-items: center;
+            gap: -0.2vmin;
+
+            text-align: center;
+            text-wrap: balance;
+        }
+    }
 }
