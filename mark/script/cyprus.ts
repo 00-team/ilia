@@ -1,5 +1,4 @@
 const articles = document.querySelectorAll('article')
-const investSection = document.querySelector('section.invest')
 
 const typer1 = document.querySelector('span.type-title') as HTMLElement
 const typer2 = document.querySelector('span.type-title2') as HTMLElement
@@ -53,5 +52,4 @@ document.addEventListener('DOMContentLoaded', () => {
     )
 
     articles.forEach(section => observer.observe(section))
-    observer.observe(investSection)
 })
