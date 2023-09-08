@@ -236,7 +236,7 @@ main.cyprus {
 
                 width: 100%;
 
-                @media screen and (min-width: 1024px) {
+                @media screen and (min-width: 1025px) {
                     margin-top: 12vh;
                 }
 
@@ -252,7 +252,7 @@ main.cyprus {
                     border-radius: 10px;
                     box-shadow: 0px 7px 15px 0px rgba(0, 0, 0, 0.2);
 
-                    @media screen and (min-width: 1024px) {
+                    @media screen and (min-width: 1025px) {
                         &:nth-child(2) {
                             transform: translateY(-10%);
                         }
