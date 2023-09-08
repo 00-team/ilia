@@ -2,11 +2,6 @@ main.cyprus {
     height: 100%;
     width: 100%;
 
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: flex-start;
-
     position: relative;
     isolation: isolate;
     overflow: hidden;
@@ -24,67 +19,126 @@ main.cyprus {
         color: white;
     }
 
-    section {
+    section.articles {
         width: 100%;
+        padding: 5vh 3vw;
 
         display: flex;
+        flex-direction: column;
         align-items: center;
         justify-content: flex-start;
-        flex-direction: column;
-        row-gap: 4vh;
 
-        padding: 5vh 1vw;
-
-        min-height: 100vh;
-
-        .section-main {
-            width: 100%;
+        article {
+            width: clamp(0px, 100%, 1500px);
 
             display: flex;
             align-items: center;
-            justify-content: center;
-            flex-wrap: wrap;
-            column-gap: calc(2vw + 5px);
-            row-gap: calc(2vh + 5px);
+            justify-content: flex-start;
+            flex-direction: column;
+            row-gap: 4vh;
 
-            .data {
-                width: 45%;
+            padding: 5vh 3vw;
+            background: var(--sixty-percent);
+            border-radius: 20px;
+
+            .section-main {
+                width: 100%;
 
                 display: flex;
-                flex-direction: column;
-                justify-content: center;
-                gap: 2vh;
+                align-items: center;
+                justify-content: space-between;
+                flex-wrap: wrap;
+                column-gap: calc(2vw + 5px);
+                row-gap: calc(2vh + 15px);
 
-                h3.section_title {
+                .data {
+                    width: 45%;
+
                     display: flex;
-                    align-items: center;
-                    gap: 1rem;
+                    flex-direction: column;
+                    justify-content: center;
+                    gap: 2vh;
 
-                    position: relative;
-                    isolation: isolate;
-                    overflow: hidden;
+                    margin: 0 auto;
 
-                    &::after {
-                        content: '';
+                    @media screen and (max-width: 1024px) {
                         width: 100%;
-                        height: 2px;
-
-                        background-image: linear-gradient(
-                            90deg,
-                            #000,
-                            transparent
-                        );
                     }
-                    span {
-                        white-space: nowrap;
+
+                    h3.section_title {
+                        display: flex;
+                        align-items: center;
+                        gap: 1.5rem;
+
+                        position: relative;
+                        isolation: isolate;
+                        overflow: hidden;
+
+                        &::after {
+                            content: '';
+                            width: 0;
+                            height: 2px;
+
+                            background-image: linear-gradient(
+                                -90deg,
+                                #000,
+                                transparent
+                            );
+
+                            transition: ease 1s 1s;
+                        }
+                        span {
+                            white-space: nowrap;
+
+                            display: inline-block;
+
+                            transform: translateY(200%);
+                            transition: ease 1s;
+                        }
                     }
                 }
+                img {
+                    width: clamp(0px, 100%, 600px);
+                    aspect-ratio: 2/1;
+                    object-fit: cover;
+                    border-radius: 10px;
+
+                    margin: 0 auto;
+                }
             }
-            img {
-                width: 40%;
-                aspect-ratio: 2/1;
-                object-fit: cover;
-                border-radius: 10px;
+            .section-extra {
+                width: 100%;
+
+                display: flex;
+                align-items: center;
+                justify-content: space-between;
+                flex-wrap: wrap;
+                column-gap: calc(2vw + 5px);
+                row-gap: calc(2vh + 5px);
+
+                img {
+                    width: clamp(0px, 100%, 600px);
+                    aspect-ratio: 2/1;
+                    object-fit: cover;
+                    border-radius: 10px;
+
+                    margin: 0 auto;
+                }
+            }
+
+            &.active {
+                .section-main {
+                    .data {
+                        h3.section_title {
+                            &::after {
+                                width: 100%;
+                            }
+                            span {
+                                transform: translateY(0);
+                            }
+                        }
+                    }
+                }
             }
         }
     }
