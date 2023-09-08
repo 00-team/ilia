@@ -20,7 +20,7 @@ function typeTitle1() {
             part += title1[currentLetter++]
             typer1.innerHTML = part
         }
-    }, 100)
+    }, 75)
 }
 
 function typeTitle2() {
