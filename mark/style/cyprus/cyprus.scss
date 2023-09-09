@@ -334,4 +334,102 @@ main.cyprus {
             }
         }
     }
+    section.security {
+        width: 100%;
+
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+
+        padding: 5vh 3vw;
+
+        background-color: white;
+
+        position: relative;
+        isolation: isolate;
+        overflow: hidden;
+
+        @media screen and (max-width: 1024px) {
+            gap: 8vh;
+        }
+
+        &.active {
+            img {
+                &:nth-child(1) {
+                    transform: translateY(0);
+                }
+                &:nth-child(2) {
+                    transform: translateY(0);
+                }
+            }
+        }
+
+        img {
+            width: 100px;
+            aspect-ratio: 1/1;
+
+            transition: 1s cubic-bezier(0.45, 0.02, 0.09, 0.98);
+
+            &:nth-child(1) {
+                position: absolute;
+
+                right: 30%;
+                top: 0;
+
+                rotate: 180deg;
+
+                transform: translateY(200%);
+
+                @media screen and (max-width: 768px) {
+                    right: 15%;
+                }
+            }
+            &:nth-child(2) {
+                position: fixed;
+                bottom: 0;
+                left: 30%;
+                top: unset;
+
+                transform: translateY(200%);
+            }
+        }
+
+        article.security-wrapper {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            column-gap: calc(2vw + 10px);
+            row-gap: calc(2vh + 10px);
+
+            width: clamp(0px, 100%, 1500px);
+
+            border-radius: 15px;
+
+            padding: 2rem;
+
+            .svg-wrapper {
+                width: clamp(0px, 100%, 600px);
+                aspect-ratio: 2/1;
+                object-fit: cover;
+                border-radius: 10px;
+                margin: 0 auto;
+            }
+            p {
+                width: 45%;
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                gap: 2vh;
+                margin: 0 auto;
+            }
+            @media screen and (max-width: 768px) {
+                flex-direction: column;
+                padding: 1rem;
+
+                p {
+                    width: 100%;
+                }
+            }
+        }
+    }
 }
