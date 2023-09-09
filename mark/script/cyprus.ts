@@ -53,3 +53,25 @@ document.addEventListener('DOMContentLoaded', () => {
 
     articles.forEach(section => observer.observe(section))
 })
+
+const security = document.querySelector('section.security') as HTMLElement
+const thiefImgs = document.querySelectorAll('img.security')
+
+document.addEventListener('DOMContentLoaded', () => {
+    let observer = new IntersectionObserver(
+        ([entry]) => {
+            if (entry.isIntersecting) {
+                entry.target.className += ' active'
+            } else {
+                const currrentClass = security.className.replace('active', '')
+
+                entry.target.className = currrentClass
+            }
+        },
+        {
+            rootMargin: innerWidth <= 768 ? '-100px' : '-200px',
+        }
+    )
+
+    observer.observe(security)
+})
