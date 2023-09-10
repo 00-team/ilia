@@ -508,6 +508,8 @@ main.cyprus {
 
         h3 {
             text-align: center;
+
+            z-index: 1;
         }
 
         .improvments-upper {
@@ -524,14 +526,13 @@ main.cyprus {
             padding: 2rem;
 
             .svg-wrapper {
-                width: clamp(0px, 100%, 600px);
+                width: clamp(0px, 100%, 500px);
                 aspect-ratio: 1/1;
 
                 border-radius: 10px;
                 margin: 0 auto;
 
-                position: relative;
-                isolation: isolate;
+                z-index: -1;
 
                 svg {
                     transition: 0.3s linear;
@@ -544,6 +545,8 @@ main.cyprus {
                 justify-content: center;
                 gap: 2vh;
                 margin: 0 auto;
+
+                z-index: 1;
             }
             @media screen and (max-width: 768px) {
                 flex-direction: column;
