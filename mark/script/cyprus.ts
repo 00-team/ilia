@@ -91,26 +91,3 @@ window.onscroll = () => {
         )}%, ${100 + space / 6}%)`
     }
 }
-
-// document.addEventListener('DOMContentLoaded', () => {
-//     let observer = new IntersectionObserver(
-//         ([entry]) => {
-//             if (entry && entry.isIntersecting) {
-//                 // upperSvg.style.top = `${
-//                 //     100 - Math.round(entry.intersectionRatio * 100)
-//                 // }%`
-//                 // upperSvg.style.right = `${
-//                 //     100 - Math.round(entry.intersectionRatio * 100)
-//                 // }%`
-//                 upperSvg.style.transform = `translate(${Math.round(
-//                     -(100 - entry.intersectionRatio * 100)
-//                 )}%, ${100 - Math.round(entry.intersectionRatio * 100)}%)`
-//             }
-//         },
-//         {
-//             threshold: [0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1],
-//         }
-//     )
-
-//     observer.observe(improvementsUpper)
-// })
