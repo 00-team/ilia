@@ -528,10 +528,17 @@ main.cyprus {
 
             .svg-wrapper {
                 width: clamp(0px, 100%, 600px);
-                aspect-ratio: 2/1;
-                object-fit: cover;
+                aspect-ratio: 1/1;
+
                 border-radius: 10px;
                 margin: 0 auto;
+
+                position: relative;
+                isolation: isolate;
+
+                svg {
+                    transition: 0.3s linear;
+                }
             }
             p {
                 width: 45%;
