@@ -17,6 +17,10 @@ main.cyprus {
         background-repeat: no-repeat;
 
         color: white;
+
+        @media screen and (max-width: 768px) {
+            aspect-ratio: 1/0.5;
+        }
     }
 
     section.articles {
@@ -160,7 +164,9 @@ main.cyprus {
         h4 {
             display: flex;
             align-items: center;
-            gap: -0.2vmin;
+            gap: 0.2vmin;
+
+            text-align: center;
 
             text-wrap: balance;
 
@@ -502,5 +508,47 @@ main.cyprus {
         position: relative;
         isolation: isolate;
         overflow: hidden;
+
+        h3 {
+            text-align: center;
+        }
+
+        .improvments-upper {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            column-gap: calc(2vw + 10px);
+            row-gap: calc(2vh + 10px);
+
+            width: clamp(0px, 100%, 1500px);
+
+            border-radius: 15px;
+
+            padding: 2rem;
+
+            .svg-wrapper {
+                width: clamp(0px, 100%, 600px);
+                aspect-ratio: 2/1;
+                object-fit: cover;
+                border-radius: 10px;
+                margin: 0 auto;
+            }
+            p {
+                width: 45%;
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                gap: 2vh;
+                margin: 0 auto;
+            }
+            @media screen and (max-width: 768px) {
+                flex-direction: column;
+                padding: 1rem;
+
+                p {
+                    width: 100%;
+                }
+            }
+        }
     }
 }

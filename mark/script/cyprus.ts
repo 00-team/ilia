@@ -75,3 +75,22 @@ document.addEventListener('DOMContentLoaded', () => {
 
     observer.observe(security)
 })
+
+const improvementsUpper = document.querySelector(
+    '.improvments-upper'
+) as HTMLElement
+
+document.addEventListener('DOMContentLoaded', () => {
+    let observer = new IntersectionObserver(
+        ([entry]) => {
+            if (entry && entry.isIntersecting) {
+                console.log(entry.intersectionRatio)
+            }
+        },
+        {
+            threshold: [0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1],
+        }
+    )
+
+    observer.observe(improvementsUpper)
+})
