@@ -561,8 +561,9 @@ main.cyprus {
             display: flex;
             align-items: center;
             justify-content: center;
-            column-gap: calc(2vw + 10px);
+            column-gap: 1vw;
             row-gap: calc(2vh + 10px);
+            flex-wrap: wrap;
 
             width: clamp(0px, 100%, 1500px);
 
