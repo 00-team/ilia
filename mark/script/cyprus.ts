@@ -81,25 +81,36 @@ const improvementsUpper = document.querySelector(
 ) as HTMLElement
 const upperSvg = document.querySelector('svg.upper-svg') as HTMLElement
 
-document.addEventListener('DOMContentLoaded', () => {
-    let observer = new IntersectionObserver(
-        ([entry]) => {
-            if (entry && entry.isIntersecting) {
-                // upperSvg.style.top = `${
-                //     100 - Math.round(entry.intersectionRatio * 100)
-                // }%`
-                // upperSvg.style.right = `${
-                //     100 - Math.round(entry.intersectionRatio * 100)
-                // }%`
-                upperSvg.style.transform = `translate(${Math.round(
-                    -(100 - entry.intersectionRatio * 100)
-                )}%, ${100 - Math.round(entry.intersectionRatio * 100)}%)`
-            }
-        },
-        {
-            threshold: [0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1],
-        }
-    )
+window.onscroll = () => {
+    const space = improvementsUpper.getBoundingClientRect().top - innerHeight
+    if (space <= 0 && space >= -1000) {
+        console.log(100 + space / 5.2)
 
-    observer.observe(improvementsUpper)
-})
+        upperSvg.style.transform = `translate(${Math.round(
+            -(100 + space / 6)
+        )}%, ${100 + space / 6}%)`
+    }
+}
+
+// document.addEventListener('DOMContentLoaded', () => {
+//     let observer = new IntersectionObserver(
+//         ([entry]) => {
+//             if (entry && entry.isIntersecting) {
+//                 // upperSvg.style.top = `${
+//                 //     100 - Math.round(entry.intersectionRatio * 100)
+//                 // }%`
+//                 // upperSvg.style.right = `${
+//                 //     100 - Math.round(entry.intersectionRatio * 100)
+//                 // }%`
+//                 upperSvg.style.transform = `translate(${Math.round(
+//                     -(100 - entry.intersectionRatio * 100)
+//                 )}%, ${100 - Math.round(entry.intersectionRatio * 100)}%)`
+//             }
+//         },
+//         {
+//             threshold: [0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1],
+//         }
+//     )
+
+//     observer.observe(improvementsUpper)
+// })
