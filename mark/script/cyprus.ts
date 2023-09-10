@@ -79,12 +79,21 @@ document.addEventListener('DOMContentLoaded', () => {
 const improvementsUpper = document.querySelector(
     '.improvments-upper'
 ) as HTMLElement
+const upperSvg = document.querySelector('svg.upper-svg') as HTMLElement
 
 document.addEventListener('DOMContentLoaded', () => {
     let observer = new IntersectionObserver(
         ([entry]) => {
             if (entry && entry.isIntersecting) {
-                console.log(entry.intersectionRatio)
+                // upperSvg.style.top = `${
+                //     100 - Math.round(entry.intersectionRatio * 100)
+                // }%`
+                // upperSvg.style.right = `${
+                //     100 - Math.round(entry.intersectionRatio * 100)
+                // }%`
+                upperSvg.style.transform = `translate(${Math.round(
+                    -(100 - entry.intersectionRatio * 100)
+                )}%, ${100 - Math.round(entry.intersectionRatio * 100)}%)`
             }
         },
         {
