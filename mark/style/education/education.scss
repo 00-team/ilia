@@ -35,7 +35,7 @@ main.education {
 
         border-radius: 15px;
 
-        padding: 2rem;
+        padding: 5vw 3vw;
 
         aside.data {
             width: 45%;
@@ -51,6 +51,63 @@ main.education {
             object-fit: cover;
             border-radius: 10px;
             margin: 0 auto;
+        }
+    }
+    section.emu {
+        width: 100%;
+
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 8vh;
+
+        padding: 5vh 3vw;
+
+        // debug
+        height: 100vh;
+
+        h3 {
+            display: flex;
+            align-items: center;
+            gap: 0.3vmin;
+            .emu-text {
+                margin: 0 0.3vmin;
+
+                display: flex;
+                align-items: center;
+                gap: 0.3vmin;
+
+                direction: ltr;
+
+                span {
+                    display: inline-block;
+
+                    opacity: 0;
+
+                    transition: 0.7s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+
+                    &:nth-child(odd) {
+                        transform: translateY(150%);
+                    }
+                    &:nth-child(even) {
+                        transform: translateY(-150%);
+                    }
+                }
+            }
+        }
+        &.active {
+            .emu-text {
+                span {
+                    opacity: 1;
+
+                    &:nth-child(odd) {
+                        transform: translateY(0);
+                    }
+                    &:nth-child(even) {
+                        transform: translateY(0);
+                    }
+                }
+            }
         }
     }
 }
