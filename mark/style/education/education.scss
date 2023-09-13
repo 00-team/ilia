@@ -44,6 +44,23 @@ main.education {
             justify-content: center;
             gap: 2vh;
             margin: 0 auto;
+
+            .univs {
+                display: flex;
+                flex-direction: column;
+                gap: 1vh;
+                align-items: center;
+
+                margin-top: 1vh;
+
+                a {
+                    width: 100%;
+                    padding: 0.75rem 1.5rem;
+                    border-radius: 5px;
+                    background-color: var(--sixty-percent);
+                    text-align: center;
+                }
+            }
         }
         aside.svg-wrapper {
             width: clamp(0px, 100%, 600px);
@@ -63,8 +80,20 @@ main.education {
 
         padding: 5vh 3vw;
 
-        // debug
-        height: 100vh;
+        &.active {
+            .emu-text {
+                span {
+                    opacity: 1;
+
+                    &:nth-child(odd) {
+                        transform: translateY(0);
+                    }
+                    &:nth-child(even) {
+                        transform: translateY(0);
+                    }
+                }
+            }
+        }
 
         h3 {
             display: flex;
@@ -95,18 +124,35 @@ main.education {
                 }
             }
         }
-        &.active {
-            .emu-text {
-                span {
-                    opacity: 1;
+        article.emu-wrapper {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            column-gap: calc(2vw + 10px);
+            row-gap: calc(2vh + 10px);
+            width: clamp(0px, 100%, 1500px);
+            border-radius: 15px;
+            padding: 5vw 3vw;
 
-                    &:nth-child(odd) {
-                        transform: translateY(0);
-                    }
-                    &:nth-child(even) {
-                        transform: translateY(0);
-                    }
+            .emu-img {
+                width: clamp(0px, 100%, 600px);
+                aspect-ratio: 2/1;
+                object-fit: cover;
+                border-radius: 10px;
+                margin: 0 auto;
+
+                img {
+                    width: 100%;
+                    object-fit: cover;
                 }
+            }
+            p {
+                width: 45%;
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                gap: 2vh;
+                margin: 0 auto;
             }
         }
     }
