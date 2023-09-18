@@ -23,6 +23,10 @@ main.education {
         background-position: center;
 
         color: white;
+
+        @media screen and (max-width: 768px) {
+            aspect-ratio: 1/0.5;
+        }
     }
     section.stay {
         display: flex;
@@ -346,6 +350,7 @@ main.education {
                     h4 {
                         display: flex;
                         align-items: center;
+                        flex-wrap: wrap;
                         gap: 0.5vmin;
 
                         span {
@@ -444,6 +449,64 @@ main.education {
                         transform: translateY(-150%);
                     }
                 }
+            }
+        }
+    }
+
+    section.services {
+        width: 100%;
+
+        // debug
+        height: 100vh;
+
+        display: flex;
+        flex-direction: column;
+        gap: 8vh;
+        align-items: center;
+
+        padding: 3vh 3vw;
+
+        background-color: var(--sixty-percent);
+
+        overflow: hidden;
+
+        &.active {
+            h3 {
+                transform: translateY(0);
+            }
+        }
+
+        h3 {
+            position: relative;
+            isolation: isolate;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            transform: translateY(-200%);
+
+            transition: 1s cubic-bezier(0.29, 1.74, 0.32, 1.27);
+
+            &::before,
+            &::after {
+                content: '';
+
+                position: absolute;
+
+                background-color: black;
+
+                width: 1px;
+                height: 150px;
+            }
+
+            &::before {
+                bottom: 50%;
+                right: calc(0px + 0.2vmin);
+            }
+            &::after {
+                bottom: 50%;
+                left: calc(0px + 0.5vmin);
             }
         }
     }
