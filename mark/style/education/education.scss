@@ -96,7 +96,7 @@ main.education {
         padding: 5vh 0;
 
         &.active {
-            .emu-text {
+            .univ-text {
                 span {
                     opacity: 1;
 
@@ -133,7 +133,7 @@ main.education {
             transform-style: preserve-3d;
             perspective: 1000px;
 
-            .emu-text {
+            .univ-text {
                 margin: 0 0.3vmin;
 
                 display: flex;
@@ -147,7 +147,8 @@ main.education {
 
                     opacity: 0;
 
-                    transition: 0.7s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+                    transition: 0.7s 0.25s
+                        cubic-bezier(0.175, 0.885, 0.32, 1.275);
 
                     &:nth-child(odd) {
                         transform: translateY(150%);
@@ -370,6 +371,78 @@ main.education {
                     object-fit: cover;
                     border-radius: 10px;
                     margin: 0 auto;
+                }
+            }
+        }
+    }
+    section.ciu {
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 4vh;
+        padding: 5vh 0;
+
+        &.active {
+            .univ-text {
+                span {
+                    opacity: 1;
+
+                    &:nth-child(odd) {
+                        transform: translateY(0);
+                    }
+                    &:nth-child(even) {
+                        transform: translateY(0);
+                    }
+                }
+            }
+        }
+        h3 {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.3vmin;
+
+            width: 100%;
+            height: 30vh;
+
+            color: white;
+
+            background-image: linear-gradient(
+                    rgba(0, 0, 0, 0.5),
+                    rgba(0, 0, 0, 0.1)
+                ),
+                url('/static/image/education/emu2.webp');
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+            background-position: center -75%;
+            transform-style: preserve-3d;
+            perspective: 1000px;
+
+            .univ-text {
+                margin: 0 0.3vmin;
+
+                display: flex;
+                align-items: center;
+                gap: 0.3vmin;
+
+                direction: ltr;
+
+                span {
+                    display: inline-block;
+
+                    opacity: 0;
+
+                    transition: 0.7s 0.25s
+                        cubic-bezier(0.175, 0.885, 0.32, 1.275);
+
+                    &:nth-child(odd) {
+                        transform: translateY(150%);
+                    }
+                    &:nth-child(even) {
+                        transform: translateY(-150%);
+                    }
                 }
             }
         }
