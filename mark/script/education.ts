@@ -3,6 +3,7 @@ const emuImg = document.querySelector('.emu-img') as HTMLElement
 const honors = document.querySelectorAll('.honors')
 const extra = document.querySelector('.extra')
 const ciu = document.querySelector('section.ciu')
+const nearEast = document.querySelector('section.near-east')
 const services = document.querySelector('section.services')
 
 document.addEventListener('DOMContentLoaded', () => {
@@ -25,6 +26,7 @@ document.addEventListener('DOMContentLoaded', () => {
     observer.observe(emuImg)
     observer.observe(extra)
     observer.observe(ciu)
+    observer.observe(nearEast)
     observer.observe(services)
 
     honors.forEach(honor => observer.observe(honor))
