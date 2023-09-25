@@ -52,5 +52,13 @@ async def index(request: Request):
     )
 
 
+@app.get('/projects', response_class=HTMLResponse, include_in_schema=False)
+async def index(request: Request):
+    return templates.TemplateResponse(
+        'projects/index.html',
+        {'request': request}
+    )
+
+
 if __name__ == '__main__':
     uvicorn.run(app, port=7201)
