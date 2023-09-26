@@ -44,12 +44,6 @@ main.projects {
                 aspect-ratio: 1/1;
                 border-radius: 100vmax;
 
-                svg {
-                    width: 100%;
-
-                    height: 100%;
-                }
-
                 &:hover {
                     svg {
                         animation: shake 0.5s
@@ -73,6 +67,17 @@ main.projects {
                             }
                         }
                     }
+                }
+
+                @media screen and (max-width: 768px) {
+                    padding: 0.75rem;
+                    height: 55px;
+                }
+
+                svg {
+                    width: 100%;
+
+                    height: 100%;
                 }
             }
 
