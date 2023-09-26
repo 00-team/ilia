@@ -159,20 +159,23 @@ main.projects {
     }
 
     .projects-wrapper {
-        width: 100%;
-        height: 100%;
-
         display: grid;
-        grid-template-columns: repeat(auto-fill, minmax(min(400px, 100%), 1fr));
-
         grid-column-gap: calc(5vw + 10px);
         grid-row-gap: 4vh;
+        direction: rtl;
+        grid-template-columns: repeat(auto-fill, minmax(min(300px, 100%), 1fr));
         justify-items: center;
+
+        padding: 0.5rem;
+        width: 100%;
+
+        overflow-y: auto;
 
         .project {
             display: flex;
             align-items: center;
             flex-direction: column;
+            justify-content: space-between;
 
             width: clamp(0px, 100%, 350px);
             aspect-ratio: 1/1.5;
@@ -197,6 +200,7 @@ main.projects {
                 display: flex;
                 flex-direction: column;
                 align-items: center;
+                gap: 2vh;
 
                 .data-wrapper {
                     width: 100%;
@@ -210,6 +214,9 @@ main.projects {
                         align-items: center;
                         gap: 0.5rem;
                     }
+                    .data {
+                        font-family: 'iranBold';
+                    }
                 }
             }
             .see-more {
@@ -219,7 +226,6 @@ main.projects {
 
                 width: 100%;
 
-                margin-top: auto;
                 padding: 0.75rem;
 
                 background-color: var(--sixty-percent);
