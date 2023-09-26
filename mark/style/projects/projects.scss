@@ -2,7 +2,7 @@ main.projects {
     width: 100%;
 
     // debug
-    height: 100vh;
+    height: 200vh;
 
     display: flex;
     flex-direction: column;
@@ -155,6 +155,33 @@ main.projects {
                     }
                 }
             }
+        }
+    }
+
+    .projects-wrapper {
+        width: 100%;
+        height: 100%;
+
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(min(400px, 100%), 1fr));
+
+        grid-column-gap: calc(5vw + 10px);
+        grid-row-gap: 4vh;
+        justify-items: center;
+
+        .project {
+            display: flex;
+            flex-direction: column;
+
+            width: clamp(0px, 100%, 350px);
+            aspect-ratio: 1/1.5;
+
+            background-color: white;
+            border-radius: 10px;
+
+            position: relative;
+            isolation: isolate;
+            overflow: hidden;
         }
     }
 }
