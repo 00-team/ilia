@@ -58,6 +58,12 @@ async def index(request: Request):
         'projects/index.html',
         {'request': request}
     )
+@app.get('/project/1', response_class=HTMLResponse, include_in_schema=False)
+async def index(request: Request):
+    return templates.TemplateResponse(
+        'project/index.html',
+        {'request': request}
+    )
 
 
 if __name__ == '__main__':
