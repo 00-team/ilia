@@ -135,6 +135,13 @@ async def index(request: Request):
     )
 
 
+@app.get('/project/1', response_class=HTMLResponse, include_in_schema=False)
+async def index(request: Request):
+    return templates.TemplateResponse(
+        'project/index.html',
+        {'request': request}
+    )
+
 for route in app.routes:
     if not isinstance(route, APIRoute):
         continue
