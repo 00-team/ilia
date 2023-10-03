@@ -6,6 +6,48 @@ main.project {
     display: flex;
     justify-content: center;
 
+    position: relative;
+    isolation: isolate;
+    overflow: hidden;
+
+    &::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+
+        scale: 8;
+        transform: translate(-500px, -500px);
+
+        width: 100px;
+        aspect-ratio: 1/1;
+
+        background-color: transparent;
+
+        border: 8px solid var(--sixty-percent);
+        border-radius: 100vmax;
+
+        z-index: -1;
+
+        animation: circle-slidein 2s 0.5s cubic-bezier(0.45, 0.02, 0.09, 0.98)
+            forwards;
+
+        @keyframes circle-slidein {
+            from {
+                transform: translate(-500px, -500px);
+            }
+            to {
+                transform: translate(0, 0);
+            }
+        }
+
+        @media screen and (max-width: 768px) {
+            top: unset;
+            bottom: 0;
+            scale: 5;
+        }
+    }
+
     .project-wrapper {
         display: flex;
         align-items: flex-start;
@@ -36,6 +78,7 @@ main.project {
 
             @media screen and (max-width: 768px) {
                 width: 100%;
+                padding: 1rem;
             }
 
             h2.title_hero {
@@ -104,10 +147,26 @@ main.project {
 
                 background-color: white;
 
+                overflow: hidden;
+
                 .tick {
                     display: flex;
                     align-items: center;
                     gap: 1rem;
+
+                    transform: translateX(200%);
+
+                    animation: tick-slidein 1s
+                        cubic-bezier(0.45, 0.02, 0.09, 0.98) forwards;
+
+                    @keyframes tick-slidein {
+                        from {
+                            transform: translateX(200%);
+                        }
+                        to {
+                            transform: translateX(0);
+                        }
+                    }
                 }
             }
         }
@@ -121,6 +180,10 @@ main.project {
             gap: 2vh;
 
             margin: 0 auto;
+
+            @media screen and (max-width: 1024px) {
+                width: clamp(0px, 100%, 500px);
+            }
 
             .main-img {
                 width: 100%;
@@ -161,6 +224,9 @@ main.project {
 
                     @media screen and (max-width: 768px) {
                         width: 75px;
+                    }
+                    @media screen and (max-width: 375px) {
+                        width: 50px;
                     }
                 }
             }
