@@ -173,7 +173,7 @@ main.project {
             width: clamp(0px, 100%, 500px);
             max-height: 500px;
 
-            object-fit: cover;
+            object-fit: contain;
             border-radius: 10px;
             margin: 0 auto;
 
