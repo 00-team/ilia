@@ -6,11 +6,15 @@ main.project {
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 8vh;
+    gap: 4vh;
 
     position: relative;
     isolation: isolate;
     overflow: hidden;
+
+    @media screen and (max-width: 1024px) {
+        padding: 5vh 3vw;
+    }
 
     section.row {
         display: flex;
@@ -42,11 +46,15 @@ main.project {
 
         article.row-data {
             width: 45%;
+
             display: flex;
             flex-direction: column;
             justify-content: center;
+
             gap: 2vh;
             margin: 0 auto;
+
+            line-height: 1.5em;
 
             @media screen and (max-width: 768px) {
                 width: 100%;
