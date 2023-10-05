@@ -433,7 +433,11 @@ main.project {
             justify-content: unset;
             gap: 8vh;
 
-            height: 100vh;
+            margin-bottom: 4vh;
+
+            @media screen and (max-width: 768px) {
+                padding: 0;
+            }
 
             &.active {
                 h3 {
@@ -488,7 +492,7 @@ main.project {
 
             table {
                 width: 100%;
-                border: 1px solid var(--sixty-percent);
+                border: 2px solid var(--sixty-percent);
                 border-spacing: 0;
 
                 border-radius: 15px;
@@ -515,6 +519,11 @@ main.project {
                 tr {
                     position: relative;
                     isolation: isolate;
+                }
+
+                .price-number {
+                    display: inline-block;
+                    width: 80px;
                 }
 
                 td:nth-child(-1) {
