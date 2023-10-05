@@ -33,7 +33,6 @@ document.addEventListener('DOMContentLoaded', () => {
     }, observerOptions)
 
     observer.observe(attrsSection)
-    observer.observe(payoptionsSection)
 })
 
 // Set the target number you want to count up to
@@ -42,6 +41,8 @@ const step = 1
 
 const countElement = document.querySelector('.percent-number') as HTMLElement
 let currentNumber = 0
+
+const percentSign = document.querySelector('.percent-sign')
 
 function updateCount() {
     if (currentNumber < targetNumber) {
@@ -52,6 +53,8 @@ function updateCount() {
         countElement.innerHTML = currentNumber.toString()
     } else {
         clearInterval(percentInterval)
+        percentSign.className += ' active'
+        return
     }
 }
 
@@ -70,9 +73,9 @@ document.addEventListener('DOMContentLoaded', () => {
     let observer = new IntersectionObserver(([entry]) => {
         if (entry && entry.isIntersecting) {
             entry.target.className += ' active'
-            percentInterval = setTimeout(() => {
-                setInterval(updateCount, 50)
-            }, 1000) // Update every 100 milliseconds
+            setTimeout(() => {
+                percentInterval = setInterval(updateCount, 50)
+            }, 1000)
 
             observer.unobserve(entry.target)
         }
