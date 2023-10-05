@@ -4,6 +4,7 @@ const attrsSection = document.querySelector(
 const payoptionsSection = document.querySelector(
     'section.row.pay-options'
 ) as HTMLElement
+const priceSection = document.querySelector('section.row.price') as HTMLElement
 
 const attrsHeaderSvgs = document.querySelectorAll('.attr-svg')
 const attrsDataSvgs = document.querySelectorAll('.star-svg')
@@ -34,6 +35,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     observer.observe(attrsSection)
     observer.observe(payoptionsSection)
+    observer.observe(priceSection)
 })
 
 // Set the target number you want to count up to
