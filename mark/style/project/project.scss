@@ -425,5 +425,66 @@ main.project {
                 }
             }
         }
+
+        &.price {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: unset;
+            gap: 8vh;
+
+            height: 100vh;
+
+            h3 {
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                gap: 1em;
+
+                width: 100%;
+
+                overflow: hidden;
+
+                svg {
+                    fill: green;
+
+                    transform: translateY(200%);
+                }
+            }
+
+            &.active {
+                h3 {
+                    svg {
+                        &.first {
+                            animation: dollor1 1.5s
+                                cubic-bezier(0.45, 0.02, 0.09, 0.98) forwards;
+                            @keyframes dollor1 {
+                                from {
+                                    transform: translateY(200%);
+                                }
+                                to {
+                                    transform: translateY(-10%) translateX(20%)
+                                        rotate(10deg) scale(1.2);
+                                }
+                            }
+                        }
+                        &.sec {
+                            animation: dollor2 1.5s
+                                cubic-bezier(0.45, 0.02, 0.09, 0.98) forwards;
+
+                            @keyframes dollor2 {
+                                from {
+                                    transform: translateY(200%);
+                                }
+                                to {
+                                    transform: translateY(-10%) translateX(-20%)
+                                        rotate(-10deg) scale(1.2);
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
     }
 }
