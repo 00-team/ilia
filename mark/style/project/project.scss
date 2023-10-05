@@ -435,23 +435,6 @@ main.project {
 
             height: 100vh;
 
-            h3 {
-                display: flex;
-                align-items: center;
-                justify-content: center;
-                gap: 1em;
-
-                width: 100%;
-
-                overflow: hidden;
-
-                svg {
-                    fill: green;
-
-                    transform: translateY(200%);
-                }
-            }
-
             &.active {
                 h3 {
                     svg {
@@ -483,6 +466,61 @@ main.project {
                             }
                         }
                     }
+                }
+            }
+
+            h3 {
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                gap: 1em;
+
+                width: 100%;
+
+                overflow: hidden;
+
+                svg {
+                    fill: green;
+
+                    transform: translateY(200%);
+                }
+            }
+
+            table {
+                width: 100%;
+                border: 1px solid var(--sixty-percent);
+                border-spacing: 0;
+
+                border-radius: 15px;
+                overflow: hidden;
+
+                background-color: var(--accent-color);
+
+                thead {
+                    th {
+                        font-size: clamp(1.1rem, 0.7rem + 2.1vw, 1.4rem);
+                    }
+                }
+
+                td,
+                th {
+                    text-align: center;
+                    border: 1px solid var(--sixty-percent);
+
+                    padding: 0.5rem 0.25rem;
+
+                    font-family: 'iranBold';
+                    font-size: clamp(0.9rem, 0.5rem + 1.9vw, 1.25rem);
+                }
+                tr {
+                    position: relative;
+                    isolation: isolate;
+                }
+
+                td:nth-child(-1) {
+                    width: auto;
+                    border: none;
+                    margin: 1px;
                 }
             }
         }
