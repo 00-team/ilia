@@ -1,6 +1,9 @@
 const attrsSection = document.querySelector(
     'section.row.attributes'
 ) as HTMLElement
+const payoptionsSection = document.querySelector(
+    'section.row.pay-options'
+) as HTMLElement
 
 const attrsHeaderSvgs = document.querySelectorAll('.attr-svg')
 const attrsDataSvgs = document.querySelectorAll('.star-svg')
@@ -30,16 +33,11 @@ document.addEventListener('DOMContentLoaded', () => {
     }, observerOptions)
 
     observer.observe(attrsSection)
+    observer.observe(payoptionsSection)
 })
-
-const payoptionsSection = document.querySelector(
-    'section.row.pay-options'
-) as HTMLElement
 
 // Set the target number you want to count up to
 const targetNumber = 85 // Change this to your desired number
-// const duration = 3000 // Change this to the desired duration in milliseconds
-// const step = Math.ceil(targetNumber / (duration / 100)) // Calculate the step increment
 const step = 1
 
 const countElement = document.querySelector('.percent-number') as HTMLElement
