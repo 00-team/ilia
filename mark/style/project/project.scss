@@ -328,21 +328,40 @@ main.project {
         }
 
         &.pay-options {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: unset;
+
+            width: 100%;
+
             box-shadow: 0 0 0 100vmax var(--sixty-percent);
             clip-path: inset(0 -100vmax);
 
             background-color: var(--sixty-percent);
 
-            .percent-container {
+            .options-wrapper {
                 display: flex;
                 align-items: center;
-                justify-content: space-between;
+                justify-content: center;
+                flex-wrap: wrap;
+                column-gap: calc(2vw + 10px);
+                row-gap: calc(2vh + 10px);
+                width: clamp(0px, 100%, 1750px);
 
-                width: 100%;
-                padding: 1.5rem 2rem;
+                padding: 2rem;
 
-                background-color: var(--accent-color);
-                border-radius: 10px;
+                .percent-container {
+                    display: flex;
+                    align-items: center;
+                    justify-content: space-between;
+
+                    width: 100%;
+                    padding: 1.5rem 2rem;
+
+                    background-color: var(--accent-color);
+                    border-radius: 10px;
+                }
             }
         }
     }
