@@ -333,12 +333,37 @@ main.project {
             align-items: center;
             justify-content: unset;
 
+            gap: 8vh;
+
             width: 100%;
 
             box-shadow: 0 0 0 100vmax var(--sixty-percent);
             clip-path: inset(0 -100vmax);
 
             background-color: var(--sixty-percent);
+
+            &.active {
+                .options-wrapper {
+                    .percent-container {
+                        .percent-sign {
+                            animation: sign-complete 1s 5.5s
+                                cubic-bezier(0.45, 0.02, 0.09, 0.98) forwards;
+
+                            @keyframes sign-complete {
+                                0% {
+                                    transform: none;
+                                }
+                                50% {
+                                    transform: scale(5) rotate(10deg);
+                                }
+                                100% {
+                                    transform: none;
+                                }
+                            }
+                        }
+                    }
+                }
+            }
 
             .options-wrapper {
                 display: flex;
@@ -361,6 +386,10 @@ main.project {
 
                     background-color: var(--accent-color);
                     border-radius: 10px;
+
+                    .percent-sign {
+                        display: inline-block;
+                    }
                 }
             }
         }
