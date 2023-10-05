@@ -33,6 +33,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }, observerOptions)
 
     observer.observe(attrsSection)
+    observer.observe(payoptionsSection)
 })
 
 // Set the target number you want to count up to
