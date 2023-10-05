@@ -341,30 +341,6 @@ main.project {
             clip-path: inset(0 -100vmax);
 
             background-color: var(--sixty-percent);
-
-            &.active {
-                .options-wrapper {
-                    .percent-container {
-                        .percent-sign {
-                            animation: sign-complete 1s 5.5s
-                                cubic-bezier(0.45, 0.02, 0.09, 0.98) forwards;
-
-                            @keyframes sign-complete {
-                                0% {
-                                    transform: none;
-                                }
-                                50% {
-                                    transform: scale(5) rotate(10deg);
-                                }
-                                100% {
-                                    transform: none;
-                                }
-                            }
-                        }
-                    }
-                }
-            }
-
             .options-wrapper {
                 display: flex;
                 align-items: center;
@@ -389,6 +365,23 @@ main.project {
 
                     .percent-sign {
                         display: inline-block;
+
+                        &.active {
+                            animation: sign-complete 1s
+                                cubic-bezier(0.45, 0.02, 0.09, 0.98) forwards;
+                        }
+
+                        @keyframes sign-complete {
+                            0% {
+                                transform: none;
+                            }
+                            50% {
+                                transform: scale(5) rotate(10deg);
+                            }
+                            100% {
+                                transform: none;
+                            }
+                        }
                     }
                 }
             }
