@@ -390,39 +390,6 @@ main.project {
                 width: clamp(0px, 100%, 1750px);
 
                 padding: 2rem;
-
-                .percent-container {
-                    display: flex;
-                    align-items: center;
-                    justify-content: space-between;
-
-                    width: 100%;
-                    padding: 1.5rem 2rem;
-
-                    background-color: var(--accent-color);
-                    border-radius: 10px;
-
-                    .percent-sign {
-                        display: inline-block;
-
-                        &.active {
-                            animation: sign-complete 1s
-                                cubic-bezier(0.45, 0.02, 0.09, 0.98) forwards;
-                        }
-
-                        @keyframes sign-complete {
-                            0% {
-                                transform: none;
-                            }
-                            50% {
-                                transform: scale(5) rotate(10deg);
-                            }
-                            100% {
-                                transform: none;
-                            }
-                        }
-                    }
-                }
             }
         }
 
