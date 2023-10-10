@@ -29,7 +29,7 @@ async def index(request: Request):
 
 
 @app.get('/about', response_class=HTMLResponse, include_in_schema=False)
-async def index(request: Request):
+async def about(request: Request):
     return templates.TemplateResponse(
         'about/index.html',
         {'request': request}
@@ -37,7 +37,7 @@ async def index(request: Request):
 
 
 @app.get('/cyprus', response_class=HTMLResponse, include_in_schema=False)
-async def index(request: Request):
+async def cyprus(request: Request):
     return templates.TemplateResponse(
         'cyprus/index.html',
         {'request': request}
@@ -45,7 +45,7 @@ async def index(request: Request):
 
 
 @app.get('/education', response_class=HTMLResponse, include_in_schema=False)
-async def index(request: Request):
+async def education(request: Request):
     return templates.TemplateResponse(
         'education/index.html',
         {'request': request}
@@ -53,13 +53,15 @@ async def index(request: Request):
 
 
 @app.get('/projects', response_class=HTMLResponse, include_in_schema=False)
-async def index(request: Request):
+async def projects(request: Request):
     return templates.TemplateResponse(
         'projects/index.html',
         {'request': request}
     )
+
+
 @app.get('/project/1', response_class=HTMLResponse, include_in_schema=False)
-async def index(request: Request):
+async def project(request: Request):
     return templates.TemplateResponse(
         'project/index.html',
         {'request': request}
