@@ -1,30 +1,21 @@
-import React, { FC } from 'react'
-import { hydrateRoot } from 'react-dom/client'
+/* @refresh reload */
 
-// import { renderToString } from 'react-dom/server'
-import { Options, Provider as AlertProvider } from '@00-team/react-alert'
-import { BrowserRouter as Router } from 'react-router-dom'
+import { render } from 'solid-js/web'
+import { Router } from '@solidjs/router'
 
-import { Alert } from 'components'
+import App from './app'
 
-import App from './App'
+import 'solid-devtools'
 
-const AlertOptions: Options = {
-    position: 'top-right',
-    timeout: 8000,
-    wrapper: () => ({ className: 'wrapper' }),
-    inner: () => ({ className: 'inner' }),
-}
+import './style.scss'
 
-const Root: FC = () => {
-    return (
-        <AlertProvider template={Alert} options={AlertOptions}>
-            <Router>
-                <App />
-            </Router>
-        </AlertProvider>
-    )
-}
+const root = document.getElementById('root')
 
-const container = document.getElementById('root')!
-hydrateRoot(container, <Root />).render(<Root />)
+render(
+    () => (
+        <Router>
+            <App />
+        </Router>
+    ),
+    root
+)
