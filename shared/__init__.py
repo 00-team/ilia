@@ -23,6 +23,7 @@ class Settings(BaseSettings):
 
     sql_dir: Path = base_dir / 'db/files/'
     record_dir: Path = base_dir / 'records/'
+    user_picture_dir: Path = record_dir / 'users/'
 
     redis_pass: str
     google_client_id: str
@@ -45,6 +46,7 @@ class Settings(BaseSettings):
 settings = Settings(_env_file='.secrets')
 settings.sql_dir.mkdir(parents=True, exist_ok=True)
 settings.record_dir.mkdir(parents=True, exist_ok=True)
+settings.user_picture_dir.mkdir(parents=True, exist_ok=True)
 (settings.base_dir / 'db/versions').mkdir(parents=True, exist_ok=True)
 
 SQL_URL = 'sqlite:///'

@@ -1,7 +1,7 @@
-from .blog import BlogModel, BlogTable, BlogTagTable
+# from .blog import BlogModel, BlogTable, BlogTagTable
 from .common import BaseTable, metadata, model_dict
-from .general import GeneralModel, GeneralTable
-from .record import RecordItemTable, RecordModel, RecordPublic, RecordTable
+# from .general import GeneralModel, GeneralTable
+# from .record import RecordItemTable, RecordModel, RecordPublic, RecordTable
 from .user import AdminPerms, UserModel, UserPublic, UserTable
 
 __all__ = [

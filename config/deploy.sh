@@ -36,7 +36,7 @@ fi
 
 if check_diff "package.json"; then
     echo "$EG install npm packages"
-    npm ci
+    npm i
     echo $SPACER
 fi
 

@@ -17,8 +17,8 @@ red)
     ;;
 
 update_db)
-    alembic -c config/alembic.ini revision --autogenerate
-    alembic -c config/alembic.ini upgrade head
+    DEBUG=1 alembic -c config/alembic.ini revision --autogenerate
+    DEBUG=1 alembic -c config/alembic.ini upgrade head
     ;;
 
 master)

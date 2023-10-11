@@ -1,7 +1,8 @@
 
 from fastapi import APIRouter
 
-from api import admin, auth, blog, user
+# from api import admin, auth, blog, user
+from api import auth, user
 
 # from api.verification import VerificationResponse, verification
 # from shared.errors import bad_verification
@@ -23,6 +24,6 @@ router = APIRouter(
 
 
 router.include_router(auth.router)
-router.include_router(admin.router)
-router.include_router(blog.router)
+# router.include_router(admin.router)
+# router.include_router(blog.router)
 router.include_router(user.router)

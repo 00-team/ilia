@@ -12,17 +12,6 @@ from shared.errors import forbidden
 from .common import BaseTable
 
 
-class UserTable(BaseTable):
-    __tablename__ = 'users'
-
-    user_id = Column(Integer, primary_key=True, index=True, autoincrement=True)
-    phone = Column(String, unique=True, nullable=False)
-    name = Column(String, nullable=False)
-    email = Column(String)
-    token = Column(String)
-    admin = Column(String)
-
-
 class AdminPerms(int, Enum):
     def _generate_next_value_(name, start, count, last_values):
         return 1 << count
@@ -53,14 +42,27 @@ class AdminPerms(int, Enum):
     D_MESSAGE = auto()
 
 
+class UserTable(BaseTable):
+    __tablename__ = 'users'
+
+    user_id = Column(Integer, primary_key=True, index=True, autoincrement=True)
+    email = Column(String, unique=True, nullable=False)
+    phone = Column(String, unique=True, nullable=True)
+    name = Column(String, nullable=False)
+    picture = Column(String)
+    token = Column(String)
+    admin = Column(String)
+
+
 class UserPublic(BaseModel):
     user_id: int
     name: str
+    picture: str | None = None
 
 
 class UserModel(UserPublic):
-    phone: str
-    email: str | None = None
+    email: str
+    phone: str | None = None
     admin: str | None = None
     token: str | None = None
 
@@ -76,7 +78,7 @@ class UserModel(UserPublic):
         if self.admin is None:
             if log:
                 logging.warn(
-                    f'<User {self.user.gene}> tried {required_perms}'
+                    f'<User {self.user_id}> tried {required_perms}'
                 )
             return False
 
@@ -86,7 +88,7 @@ class UserModel(UserPublic):
         if not is_master and not (admin_perms & required_perms):
             if log:
                 logging.warn(
-                    f'<Admin {self.user.gene}> tried {required_perms}'
+                    f'<Admin {self.user_id}> tried {required_perms}'
                 )
             return False
 
@@ -95,8 +97,3 @@ class UserModel(UserPublic):
     def admin_assert(self, required_perms: int):
         if not self.admin_check(required_perms, log=True):
             raise forbidden
-
-    # def __init__(self, birth_date, **data) -> None:
-    #     if isinstance(birth_date, str):
-    #         birth_date = tuple(map(lambda d: int(d), birth_date.split('-')))
-    #     super().__init__(birth_date=birth_date, **data)
