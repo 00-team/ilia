@@ -17,7 +17,7 @@ class Connection(sqlite3.Connection):
 
 class Settings(BaseSettings):
     base_dir: Path = Path(__file__).parent.parent
-    debug: bool = True
+    debug: bool = False
 
     version: str = '0.0.1-beta'
 
@@ -25,6 +25,13 @@ class Settings(BaseSettings):
     record_dir: Path = base_dir / 'records/'
 
     redis_pass: str
+    google_client_id: str
+    google_client_secret: str
+    google_redirect_uri: str = (
+        (
+            'http://localhost:7130' if debug else 'http://localhost:7130'
+        ) + '/api/auth/gcb/'
+    )
 
     verification_expire: int = 2 * 60
     verification_code_len: int = 5
