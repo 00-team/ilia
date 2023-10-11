@@ -1,11 +1,11 @@
 name: Deploy to Server 👻
 
 on:
-  # push:
-  #   branches:
-  #     - main
-  #   paths:
-  #     - 'VERSION'
+  push:
+    branches:
+      - main
+    paths:
+      - 'VERSION'
 
 jobs:
   deploy:
