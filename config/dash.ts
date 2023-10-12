@@ -1,6 +1,7 @@
 import { defineConfig } from 'vite'
 import solidPlugin from 'vite-plugin-solid'
 import devtools from 'solid-devtools/vite'
+import { resolve } from 'path'
 
 export default defineConfig({
     plugins: [
@@ -10,14 +11,27 @@ export default defineConfig({
                 key: 'Meta',
             },
         }),
-        solidPlugin(),
+        solidPlugin({ hot: false }),
     ],
-    root: 'app',
     server: {
         port: 8130,
+        proxy: {
+            '/api/': {
+                target: 'http://localhost:7130',
+                changeOrigin: true,
+            },
+        },
     },
     build: {
         target: 'esnext',
-        outDir: '../static/dash/',
+        outDir: 'static/dash/',
+        watch: {
+            clearScreen: true,
+        },
+        rollupOptions: {},
+    },
+    base: '/static/dash/',
+    resolve: {
+        alias: { '!': resolve(__dirname, '../app') },
     },
 })

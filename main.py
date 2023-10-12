@@ -96,15 +96,21 @@ async def sitemap(request: Request):
 
 
 @app.get('/', response_class=HTMLResponse, include_in_schema=False)
-async def index(request: Request):
+async def t_index(request: Request):
     return templates.TemplateResponse(
         'home/index.html',
         {'request': request}
     )
 
 
+@app.get('/admin/', response_class=HTMLResponse, include_in_schema=False)
+async def t_admin(request: Request):
+    with open(settings.base_dir / 'static/dash/index.html', 'r') as f:
+        return f.read()
+
+
 @app.get('/about', response_class=HTMLResponse, include_in_schema=False)
-async def about(request: Request):
+async def t_about(request: Request):
     return templates.TemplateResponse(
         'about/index.html',
         {'request': request}
@@ -112,7 +118,7 @@ async def about(request: Request):
 
 
 @app.get('/cyprus', response_class=HTMLResponse, include_in_schema=False)
-async def cyprus(request: Request):
+async def t_cyprus(request: Request):
     return templates.TemplateResponse(
         'cyprus/index.html',
         {'request': request}
@@ -120,7 +126,7 @@ async def cyprus(request: Request):
 
 
 @app.get('/education', response_class=HTMLResponse, include_in_schema=False)
-async def education(request: Request):
+async def t_education(request: Request):
     return templates.TemplateResponse(
         'education/index.html',
         {'request': request}
@@ -128,7 +134,7 @@ async def education(request: Request):
 
 
 @app.get('/projects', response_class=HTMLResponse, include_in_schema=False)
-async def projects(request: Request):
+async def t_projects(request: Request):
     return templates.TemplateResponse(
         'projects/index.html',
         {'request': request}
@@ -136,11 +142,12 @@ async def projects(request: Request):
 
 
 @app.get('/project/1', response_class=HTMLResponse, include_in_schema=False)
-async def project(request: Request):
+async def t_project(request: Request):
     return templates.TemplateResponse(
         'project/index.html',
         {'request': request}
     )
+
 
 for route in app.routes:
     if not isinstance(route, APIRoute):

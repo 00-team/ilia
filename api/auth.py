@@ -61,7 +61,7 @@ async def update_user(data: dict):
 
     picture_filename = download_picture(picture, user)
 
-    if created:
+    if created or not user.picture:
         await user_update(
             UserTable.user_id == user.user_id,
             picture=picture_filename

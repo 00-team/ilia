@@ -169,6 +169,7 @@ db/versions/
 records/
 media/
 static/style/
+static/dash/
 static/js/mark/
 mark/tmpl/head.html
 

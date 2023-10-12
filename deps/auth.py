@@ -64,15 +64,24 @@ def user_required():
     '''user token is required'''
 
     async def decorator(
-        request: Request, response: Response,
-        token=Depends(user_schema)
+        request: Request, response: Response
     ):
         state = getattr(request.state, 'user', None)
 
         if isinstance(state, UserModel):
             return state
 
-        user_id, token = id_token(token.credentials)
+        authorization = request.headers.get(
+            'Authorization', request.cookies.get('Authorization')
+        )
+        if not authorization:
+            raise bad_auth
+
+        schema, _, value = authorization.partition(' ')
+        if schema.lower() != 'bearer':
+            raise bad_auth
+
+        user_id, token = id_token(value)
         user = await user_get(UserTable.user_id == user_id)
 
         if user is None:
