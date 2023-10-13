@@ -103,8 +103,22 @@ async def t_index(request: Request):
     )
 
 
-@app.get('/admin/', response_class=HTMLResponse, include_in_schema=False)
+@app.get(
+    '/admin/{_:path}',
+    response_class=HTMLResponse,
+    include_in_schema=False
+)
 async def t_admin(request: Request):
+    with open(settings.base_dir / 'static/dash/index.html', 'r') as f:
+        return f.read()
+
+
+@app.get(
+    '/dash/{_:path}',
+    response_class=HTMLResponse,
+    include_in_schema=False
+)
+async def t_dash(request: Request):
     with open(settings.base_dir / 'static/dash/index.html', 'r') as f:
         return f.read()
 
