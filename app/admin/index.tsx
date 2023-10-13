@@ -1,7 +1,7 @@
-import { user } from '!/shared'
+import { user } from '!/stores'
 import { createEffect, createSignal } from 'solid-js'
 
-import './style.scss'
+import './style/index.scss'
 import { CloseIcon, MenuIcon } from '!/icon'
 import { Outlet, A } from '@solidjs/router'
 
@@ -49,6 +49,7 @@ export default () => {
                     <Outlet />
                 </div>
                 <div class='sidebar' classList={{ open: sidebar() }}>
+                    <A href='/admin/'>General</A>
                     <A href='/admin/users/'>Users</A>
                 </div>
             </div>

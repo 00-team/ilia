@@ -7,15 +7,11 @@ import 'solid-devtools'
 
 import './index.scss'
 import { lazy } from 'solid-js'
-import { UserData } from './shared'
+import { UserData } from './stores'
 
 render(
     () => (
         <Router>
-            {/*<div style={{ display: 'flex', gap: '1rem' }}>
-                <A href='/admin/'>admin</A>
-                <A href='/dash/'>dash</A>
-            </div>*/}
             <Routes>
                 <Route
                     path='/dash/'
@@ -23,10 +19,19 @@ render(
                     data={UserData}
                 />
                 <Route
-                    path='/admin/'
+                    path='/admin'
                     component={lazy(() => import('./admin'))}
                     data={UserData}
-                />
+                >
+                    <Route
+                        path='/'
+                        component={lazy(() => import('./admin/general'))}
+                    />
+                    <Route
+                        path='/users/'
+                        component={lazy(() => import('./admin/users'))}
+                    />
+                </Route>
             </Routes>
         </Router>
     ),
