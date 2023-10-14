@@ -136,7 +136,8 @@ async def google_callback(request: Request, response: Response):
         key='Authorization',
         value=f'Bearer {id_token}',
         secure=True,
-        samesite='strict'
+        samesite='strict',
+        max_age=30 * 24 * 3600  # 1 month
     )
 
     return next
