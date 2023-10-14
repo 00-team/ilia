@@ -3,7 +3,7 @@ from sqlalchemy import insert, select, update
 
 from shared import sqlx
 
-from .models import GeneralModel, GeneralTable
+from .models import DEFAULT_GENERAL, GeneralModel, GeneralTable
 
 
 async def general_get() -> GeneralModel:
@@ -13,8 +13,8 @@ async def general_get() -> GeneralModel:
     )
 
     if row is None:
-        await sqlx.execute(insert(GeneralTable), {'general_id': 0})
-        return GeneralModel(general_id=0, tags=[])
+        await sqlx.execute(insert(GeneralTable), dict(DEFAULT_GENERAL))
+        return DEFAULT_GENERAL
 
     return GeneralModel(**row)
 
