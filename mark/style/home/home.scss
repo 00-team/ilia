@@ -557,10 +557,10 @@ main.home {
                         position: absolute;
                     }
 
-                    &.next {
-                        animation: card-next 1.5s
+                    &.prev {
+                        animation: card-prev 1.5s
                             cubic-bezier(0.45, 0.02, 0.09, 0.98) forwards;
-                        @keyframes card-next {
+                        @keyframes card-prev {
                             0% {
                                 position: absolute;
                                 translate: 0;
@@ -578,6 +578,32 @@ main.home {
                                 transform: scale(0.6);
                                 translate: -50% 50%;
                                 z-index: -1;
+                                filter: blur(2px);
+                            }
+                        }
+                    }
+
+                    &.next {
+                        animation: card-next 1.5s
+                            cubic-bezier(0.45, 0.02, 0.09, 0.98) forwards;
+                        @keyframes card-next {
+                            0% {
+                                filter: blur(0);
+                                translate: 0;
+                                scale: 1;
+                                z-index: 1;
+                            }
+                            80% {
+                                filter: blur(2px);
+                                z-index: -1;
+                                scale: 0.6;
+
+                                translate: -50% -50%;
+                            }
+                            100% {
+                                opacity: 1;
+                                translate: -50% -50%;
+                                scale: 0.6;
                                 filter: blur(2px);
                             }
                         }
@@ -605,31 +631,6 @@ main.home {
                             }
                         }
                     }
-                    &.prev {
-                        animation: card-prev 1.5s
-                            cubic-bezier(0.45, 0.02, 0.09, 0.98) forwards;
-                        @keyframes card-prev {
-                            0% {
-                                filter: blur(0);
-                                translate: 0;
-                                scale: 1;
-                                z-index: 1;
-                            }
-                            80% {
-                                filter: blur(2px);
-                                z-index: -1;
-                                scale: 0.6;
-
-                                translate: -50% -50%;
-                            }
-                            100% {
-                                opacity: 1;
-                                translate: -50% -50%;
-                                scale: 0.6;
-                                filter: blur(2px);
-                            }
-                        }
-                    }
 
                     @media screen and (max-width: 1024px) {
                         &.next {
@@ -637,22 +638,22 @@ main.home {
                                 cubic-bezier(0.45, 0.02, 0.09, 0.98) forwards;
                             @keyframes card-next {
                                 0% {
-                                    position: absolute;
+                                    filter: blur(0);
                                     translate: 0;
-                                    z-index: -1;
-                                    transform: scale(0.6);
+                                    scale: 1;
+                                    z-index: 1;
                                 }
-                                50% {
-                                    position: absolute;
-                                    transform: scale(0.6);
-                                    translate: -50% 50%;
+                                80% {
+                                    filter: blur(2px);
                                     z-index: -1;
+                                    scale: 0.6;
+
+                                    translate: 50% 50%;
                                 }
                                 100% {
-                                    position: absolute;
-                                    transform: scale(0.6);
-                                    translate: -50% 50%;
-                                    z-index: -1;
+                                    opacity: 1;
+                                    translate: 50% 50%;
+                                    scale: 0.6;
                                     filter: blur(2px);
                                 }
                             }
@@ -685,22 +686,22 @@ main.home {
                                 cubic-bezier(0.45, 0.02, 0.09, 0.98) forwards;
                             @keyframes card-prev {
                                 0% {
-                                    filter: blur(0);
+                                    position: absolute;
                                     translate: 0;
-                                    scale: 1;
-                                    z-index: 1;
-                                }
-                                80% {
-                                    filter: blur(2px);
                                     z-index: -1;
-                                    scale: 0.6;
-
-                                    translate: 50% 50%;
+                                    transform: scale(0.6);
+                                }
+                                50% {
+                                    position: absolute;
+                                    transform: scale(0.6);
+                                    translate: -50% 50%;
+                                    z-index: -1;
                                 }
                                 100% {
-                                    opacity: 1;
-                                    translate: 50% 50%;
-                                    scale: 0.6;
+                                    position: absolute;
+                                    transform: scale(0.6);
+                                    translate: -50% 50%;
+                                    z-index: -1;
                                     filter: blur(2px);
                                 }
                             }
@@ -771,8 +772,7 @@ main.home {
                                 margin-left: unset;
                             }
 
-                            .adv,
-                            .disadv {
+                            .adv {
                                 display: flex;
                                 flex-direction: column;
                                 gap: 1vh;
@@ -791,12 +791,12 @@ main.home {
                                         color: rgb(67, 160, 71);
                                     }
                                 }
-                            }
-                            .disadv {
-                                h5 {
-                                    svg {
-                                        color: var(--alert-error);
-                                    }
+
+                                .advantage {
+                                    display: flex;
+                                    align-items: center;
+                                    justify-self: center;
+                                    gap: 1rem;
                                 }
                             }
                         }
