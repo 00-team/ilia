@@ -5,13 +5,13 @@
     "main": "index.js",
     "type": "module",
     "scripts": {
-        "style": "sass mark/style:static/style -s compressed",
-        "style:watch": "sass mark/style:static/style -w -c",
+        "style": "sass mark:static/mark/css -s compressed",
+        "style:watch": "sass mark:static/mark/css -w -c",
         "mark": "webpack --config config/mark.js",
         "mark:watch": "webpack --config config/mark.js --watch",
         "start": "vite -c config/dash.ts",
         "build": "vite build -c config/dash.ts",
-        "serve": "vite preview -c config/dash.ts"
+        "serve": "local_api_target=1 vite -c config/dash.ts"
     },
     "author": "00-team",
     "license": "GPL-3",

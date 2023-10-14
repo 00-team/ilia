@@ -1,37 +1,51 @@
-import { defineConfig } from 'vite'
+import { UserConfig, defineConfig } from 'vite'
 import solidPlugin from 'vite-plugin-solid'
 import devtools from 'solid-devtools/vite'
 import { resolve } from 'path'
 
-export default defineConfig({
-    plugins: [
-        devtools({
-            autoname: true,
-            locator: {
-                key: 'Meta',
-            },
-        }),
-        solidPlugin({ hot: false }),
-    ],
-    server: {
-        port: 8130,
-        proxy: {
-            '/api/': {
-                target: 'http://localhost:7130',
-                changeOrigin: true,
+let target = 'http://194.5.178.12'
+if (process.env.local_api_target) {
+    target = 'http://localhost:7130'
+}
+
+console.log('api target: ' + target)
+
+export default defineConfig(env => {
+    let other: Partial<UserConfig> = {}
+    if (env.command == 'build') {
+        other.base = '/static/dash/'
+    }
+
+    return {
+        ...other,
+        plugins: [
+            devtools({
+                autoname: true,
+                locator: {
+                    key: 'Meta',
+                },
+            }),
+            solidPlugin({ hot: false }),
+        ],
+        server: {
+            port: 8130,
+            proxy: {
+                '/api/': {
+                    target,
+                    changeOrigin: true,
+                },
             },
         },
-    },
-    build: {
-        target: 'esnext',
-        outDir: 'static/dash/',
-        watch: {
-            clearScreen: true,
+        build: {
+            target: 'esnext',
+            outDir: 'static/dash/',
+            watch: {
+                clearScreen: true,
+            },
+            rollupOptions: {},
         },
-        rollupOptions: {},
-    },
-    base: '/static/dash/',
-    resolve: {
-        alias: { '!': resolve(__dirname, '../app') },
-    },
+        resolve: {
+            alias: { '!': resolve(__dirname, '../app') },
+        },
+    }
 })

@@ -170,7 +170,7 @@ records/
 media/
 static/style/
 static/dash/
-static/js/mark/
+static/mark/
 mark/tmpl/head.html
 
 bun.lockb

@@ -1,24 +1,35 @@
-// import { BundleAnalyzerPlugin } from 'webpack-bundle-analyzer'
-
-import { readdirSync } from 'fs'
+import { readdirSync, lstatSync } from 'fs'
 import { resolve } from 'path'
 
 const BASE_DIR = resolve('.')
-const DIR = resolve(BASE_DIR, 'mark/script/')
+const DIR = resolve(BASE_DIR, 'mark/')
 
 let entry = {}
-readdirSync(DIR)
-    .filter(f => f.endsWith('.ts'))
-    .forEach(i => {
-        let e = i.substring(0, i.lastIndexOf('.'))
-        entry[e] = resolve(DIR, i)
-    })
+
+function load_paths(path) {
+    let stats = lstatSync(path)
+    if (stats.isDirectory()) {
+        readdirSync(path).forEach(e => {
+            load_paths(resolve(path, e))
+        })
+        return
+    }
+
+    if (stats.isFile() && path.endsWith('.ts')) {
+        let fn = path.substring(path.lastIndexOf('/') + 1)
+        fn = fn.substring(0, fn.lastIndexOf('.'))
+        entry[fn] = path
+        return
+    }
+}
+
+load_paths(DIR)
 
 const Config = {
     mode: 'production',
     entry,
     output: {
-        path: resolve(BASE_DIR, 'static/js/mark/'),
+        path: resolve(BASE_DIR, 'static/mark/js/'),
         clean: true,
         filename: '[name].js',
         sourceMapFilename: 'source_maps/[file].map',
@@ -34,14 +45,10 @@ const Config = {
         ],
     },
     devtool: 'source-map',
-    plugins: [
-        // new BundleAnalyzerPlugin({ openAnalyzer: false, analyzerPort: 7777 }),
-    ],
+    plugins: [],
     resolve: {
         extensions: ['.mjs', '.tsx', '.ts', '.js'],
-        plugins: [
-            // new TsPaths({ configFile: resolve(APP_DIR, 'tsconfig.json') }),
-        ],
+        plugins: [],
     },
     optimization: {
         emitOnErrors: false,
