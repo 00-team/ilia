@@ -795,8 +795,11 @@ main.home {
                                 .advantage {
                                     display: flex;
                                     align-items: center;
-                                    justify-self: center;
                                     gap: 1rem;
+
+                                    svg {
+                                        fill: rgb(67, 160, 71);
+                                    }
                                 }
                             }
                         }
