@@ -31,6 +31,10 @@ render(
                         path='/users/'
                         component={lazy(() => import('./admin/users'))}
                     />
+                    <Route
+                        path='/projects/'
+                        component={lazy(() => import('./admin/projects'))}
+                    />
                 </Route>
             </Routes>
         </Router>

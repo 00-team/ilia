@@ -74,8 +74,6 @@ class RecordModel(BaseModel):
             url=self.url,
             name=self.name,
             owner=owner,
-            item=self.item,
-            item_table=self.item_table,
         )
 
 

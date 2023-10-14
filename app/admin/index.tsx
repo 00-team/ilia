@@ -51,6 +51,7 @@ export default () => {
                 <div class='sidebar' classList={{ open: sidebar() }}>
                     <A href='/admin/'>General</A>
                     <A href='/admin/users/'>Users</A>
+                    <A href='/admin/projects/'>Projects</A>
                 </div>
             </div>
         </div>

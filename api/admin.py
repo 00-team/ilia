@@ -3,15 +3,15 @@
 import mimetypes
 import os
 # from sqlite3 import IntegrityError
-from typing import Annotated, Literal
+from typing import Annotated, ClassVar, Literal
 
 import magic
 from fastapi import APIRouter, Form, Request, UploadFile
 from pydantic import BaseModel, constr
 
-from db.blog import blog_add, blog_delete, blog_get, blog_update
+# from db.blog import blog_add, blog_delete, blog_get, blog_update
 from db.models import AdminPerms as AP
-from db.models import BlogTable, RecordItemTable, RecordModel, RecordPublic
+from db.models import ProjectModel, ProjectTable, RecordModel, RecordPublic
 from db.models import RecordTable, UserModel, UserPublic
 from db.record import record_add, record_delete, record_exists, record_get
 from db.user import user_exists, user_public
@@ -27,7 +27,7 @@ router = APIRouter(
     dependencies=[admin_required()]
 )
 
-
+"""
 class AddBlogBody(BaseModel):
     slug: constr(min_length=1)
     title: constr(min_length=1)
@@ -150,6 +150,45 @@ async def delete_blog(request: Request, blog_id: int):
     return {
         'ok': bool(await blog_delete(BlogTable.blog_id == blog_id))
     }
+"""
+
+
+@router.get(
+    '/projects/', response_model=list[ProjectModel]
+)
+async def get_projects(request: Request, page: int = 0):
+    user: UserModel = request.state.user
+    user.admin_assert(AP.V_PROJECT)
+
+    rows = await sqlx.fetch_all(
+        f'''
+        SELECT * from projects
+        LIMIT {settings.page_size} OFFSET {page * settings.page_size}
+        '''
+    )
+
+    return [ProjectModel(**row) for row in rows]
+
+
+class AddProjectModel(ProjectModel):
+    project_id: ClassVar
+
+
+@router.post(
+    '/projects/', response_model=ProjectModel
+)
+async def add_project(request: Request, page: int = 0):
+    user: UserModel = request.state.user
+    user.admin_assert(AP.V_PROJECT)
+
+    rows = await sqlx.fetch_all(
+        f'''
+        SELECT * from projects
+        LIMIT {settings.page_size} OFFSET {page * settings.page_size}
+        '''
+    )
+
+    return [ProjectModel(**row) for row in rows]
 
 
 @router.delete(
@@ -174,12 +213,7 @@ async def delete_record(request: Request, record_id: int):
     '/records/', response_model=RecordPublic,
     openapi_extra={'errors': [bad_file]}
 )
-async def add_record(
-    request: Request,
-    file: UploadFile,
-    item: Annotated[int, Form()] = None,
-    item_table: Annotated[RecordItemTable, Form()] = RecordItemTable.LOST,
-):
+async def add_record(request: Request, file: UploadFile):
     user: UserModel = request.state.user
     user.admin_assert(AP.A_RECORD)
 
@@ -203,8 +237,6 @@ async def add_record(
         mime=mime,
         ext=ext[1:],
         timestamp=utc_now(),
-        item=item,
-        item_table=item_table,
     )
 
     args = record.dict()

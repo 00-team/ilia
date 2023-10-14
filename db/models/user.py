@@ -28,6 +28,11 @@ class AdminPerms(int, Enum):
     C_RECORD = auto()
     D_RECORD = auto()
 
+    V_PROJECT = auto()
+    A_PROJECT = auto()
+    C_PROJECT = auto()
+    D_PROJECT = auto()
+
     V_BLOG = auto()
     A_BLOG = auto()
     C_BLOG = auto()
