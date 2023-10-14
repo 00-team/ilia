@@ -13,7 +13,7 @@ async def general_get() -> GeneralModel:
     )
 
     if row is None:
-        await sqlx.execute(insert(GeneralTable), dict(DEFAULT_GENERAL))
+        await sqlx.execute(insert(GeneralTable), DEFAULT_GENERAL.dict())
         return DEFAULT_GENERAL
 
     return GeneralModel(**row)

@@ -1,5 +1,6 @@
 
 # import logging
+import json
 import mimetypes
 import os
 # from sqlite3 import IntegrityError
@@ -13,6 +14,7 @@ from pydantic import BaseModel, constr
 from db.models import AdminPerms as AP
 from db.models import ProjectModel, ProjectTable, RecordModel, RecordPublic
 from db.models import RecordTable, UserModel, UserPublic
+from db.project import project_add, project_delete, project_get, project_update
 from db.record import record_add, record_delete, record_exists, record_get
 from db.user import user_exists, user_public
 from deps import admin_required
@@ -167,7 +169,15 @@ async def get_projects(request: Request, page: int = 0):
         '''
     )
 
-    return [ProjectModel(**row) for row in rows]
+    result = []
+    for row in rows:
+        args = dict(row)
+        args['features'] = json.loads(args['features'])
+        args['prices'] = json.loads(args['prices'])
+        args['images'] = json.loads(args['images'])
+        result.append(ProjectModel(**args))
+
+    return result
 
 
 class AddProjectModel(ProjectModel):
@@ -177,18 +187,58 @@ class AddProjectModel(ProjectModel):
 @router.post(
     '/projects/', response_model=ProjectModel
 )
-async def add_project(request: Request, page: int = 0):
+async def add_project(request: Request, body: AddProjectModel):
     user: UserModel = request.state.user
-    user.admin_assert(AP.V_PROJECT)
+    user.admin_assert(AP.A_PROJECT)
 
-    rows = await sqlx.fetch_all(
-        f'''
-        SELECT * from projects
-        LIMIT {settings.page_size} OFFSET {page * settings.page_size}
-        '''
-    )
+    args = body.dict()
+    project_id = await project_add(**args)
 
-    return [ProjectModel(**row) for row in rows]
+    return ProjectModel(project_id=project_id, **args)
+
+
+@router.put(
+    '/projects/', response_model=OkModel,
+    openapi_extra={'errors': [bad_id]}
+)
+async def update_project(request: Request, body: ProjectModel):
+    user: UserModel = request.state.user
+    user.admin_assert(AP.C_PROJECT)
+
+    args = body.dict()
+    project_id = args.pop('project_id')
+
+    project = await project_get(project_id)
+    if project is None:
+        raise bad_id('Project', project_id, id=project_id)
+
+    await project_update(project_id, **args)
+
+    return {'ok': True}
+
+
+@router.delete(
+    '/projects/{project_id}/', response_model=OkModel,
+    openapi_extra={'errors': [bad_id]}
+)
+async def delete_project(request: Request, project_id: int, del_imgs: bool):
+    user: UserModel = request.state.user
+    user.admin_assert(AP.D_PROJECT)
+
+    project = await project_get(project_id)
+    if project is None:
+        raise bad_id('Project', project_id, id=project_id)
+
+    if not del_imgs:
+        return {'ok': bool(await project_delete(project_id))}
+
+    for v in project.images.dict().values():
+        record = await record_get(v['id'])
+        if record:
+            record.path.unlink(True)
+            await record_delete(record.record_id)
+
+    return {'ok': bool(await project_delete(project_id))}
 
 
 @router.delete(
@@ -199,14 +249,13 @@ async def delete_record(request: Request, record_id: int):
     user: UserModel = request.state.user
     user.admin_assert(AP.D_RECORD)
 
-    record = await record_get(RecordTable.record_id == record_id)
+    record = await record_get(record_id)
     if record is None:
         raise bad_id('Record', record_id, id=record_id)
 
     record.path.unlink(True)
-    await record_delete(RecordTable.record_id == record_id)
 
-    return {'ok': True}
+    return {'ok': bool(await record_delete(record_id))}
 
 
 @router.post(
