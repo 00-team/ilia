@@ -11,6 +11,7 @@
         "mark:watch": "webpack --config config/mark.js --watch",
         "start": "vite -c config/dash.ts",
         "build": "vite build -c config/dash.ts",
+        "build:dev": "vite build -c config/dash.ts --mode development",
         "serve": "local_api_target=1 vite -c config/dash.ts"
     },
     "author": "00-team",

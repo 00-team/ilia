@@ -1,4 +1,5 @@
 import { UserConfig, defineConfig } from 'vite'
+import type { WatcherOptions } from 'rollup'
 import solidPlugin from 'vite-plugin-solid'
 import devtools from 'solid-devtools/vite'
 import { resolve } from 'path'
@@ -14,6 +15,13 @@ export default defineConfig(env => {
     let other: Partial<UserConfig> = {}
     if (env.command == 'build') {
         other.base = '/static/dash/'
+    }
+
+    let watch: WatcherOptions | null = null
+    if (env.mode == 'development') {
+        watch = {
+            clearScreen: true,
+        }
     }
 
     return {
@@ -39,9 +47,7 @@ export default defineConfig(env => {
         build: {
             target: 'esnext',
             outDir: 'static/dash/',
-            watch: {
-                clearScreen: true,
-            },
+            watch,
             rollupOptions: {},
         },
         resolve: {
