@@ -1,5 +1,6 @@
 
 
+from hashlib import sha3_256, sha3_512
 from io import StringIO
 
 from fastapi import FastAPI, Request, Response
@@ -11,6 +12,8 @@ from fastapi.staticfiles import StaticFiles
 import api
 import pages
 import shared.logger
+from db.models import UserModel, UserTable
+from db.user import user_get
 from deps import get_ip
 from shared import redis, settings, sqlx
 from shared.errors import Error, all_errors
@@ -20,13 +23,15 @@ app = FastAPI(
     version='0.0.1',
     dependencies=[get_ip()]
 )
-app.include_router(api.router)
-app.include_router(pages.router)
 
 
 if settings.debug:
     app.mount('/static', StaticFiles(directory='static'), name='static')
     app.mount('/records', StaticFiles(directory='records'), name='records')
+
+
+app.include_router(api.router)
+app.include_router(pages.router)
 
 
 @app.exception_handler(Error)

@@ -28,11 +28,7 @@ class Settings(BaseSettings):
     redis_pass: str
     google_client_id: str
     google_client_secret: str
-    google_redirect_uri: str = (
-        (
-            'http://localhost:7130' if debug else ''
-        ) + '/api/auth/gcb/'
-    )
+    google_redirect_uri: str = ''
 
     verification_expire: int = 2 * 60
     verification_code_len: int = 5
@@ -48,6 +44,16 @@ settings.sql_dir.mkdir(parents=True, exist_ok=True)
 settings.record_dir.mkdir(parents=True, exist_ok=True)
 settings.user_picture_dir.mkdir(parents=True, exist_ok=True)
 (settings.base_dir / 'db/versions').mkdir(parents=True, exist_ok=True)
+
+
+if settings.debug:
+    settings.google_redirect_uri = 'http://localhost:7130'
+else:
+    settings.google_redirect_uri = ''
+
+
+settings.google_redirect_uri += '/api/auth/gcb/'
+
 
 SQL_URL = 'sqlite:///'
 if settings.debug:

@@ -52,47 +52,50 @@ async def rate_limit(request, path_id):
     await rate_limit_set(key, period)
 
 
-def id_token(raw: str):
+async def user_by_token(request: Request) -> UserModel | None:
+    state = getattr(request.state, 'user', None)
+
+    if isinstance(state, UserModel):
+        return state
+
+    authorization = request.headers.get(
+        'Authorization', request.cookies.get('Authorization')
+    )
+    if not authorization:
+        return None
+
+    schema, _, value = authorization.partition(' ')
+    if schema.lower() != 'bearer':
+        return None
+
     try:
-        identifier, token = raw.split(':')
-        return int(identifier), token
+        user_id, token = value.split(':')
+        user_id = int(user_id)
     except ValueError:
-        raise bad_auth
+        return None
+
+    user = await user_get(UserTable.user_id == user_id)
+
+    if user is None:
+        return None
+
+    if user.token != sha3_512(token.encode()).hexdigest():
+        return None
+
+    request.state.user = user
+    return user
 
 
 def user_required():
     '''user token is required'''
 
-    async def decorator(
-        request: Request, response: Response
-    ):
-        state = getattr(request.state, 'user', None)
-
-        if isinstance(state, UserModel):
-            return state
-
-        authorization = request.headers.get(
-            'Authorization', request.cookies.get('Authorization')
-        )
-        if not authorization:
-            raise bad_auth
-
-        schema, _, value = authorization.partition(' ')
-        if schema.lower() != 'bearer':
-            raise bad_auth
-
-        user_id, token = id_token(value)
-        user = await user_get(UserTable.user_id == user_id)
+    async def decorator(request: Request, response: Response):
+        user = await user_by_token(request)
 
         if user is None:
             await rate_limit(request, 'user_token_check')
             raise bad_auth
 
-        if user.token != sha3_512(token.encode()).hexdigest():
-            await rate_limit(request, 'user_token_check')
-            raise bad_auth
-
-        request.state.user = user
         return user
 
     dep = Depends(decorator)

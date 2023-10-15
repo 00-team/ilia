@@ -5,8 +5,10 @@ from fastapi import APIRouter, Request
 from fastapi.responses import HTMLResponse
 from fastapi.templating import Jinja2Templates
 
-from db.models import ProjectModel, ProjectTable
+from db.models import ProjectModel, ProjectTable, UserModel
 from db.project import project_get
+from db.user import user_get
+from deps import user_by_token
 from shared import settings, sqlx
 
 templates = Jinja2Templates(
@@ -14,7 +16,7 @@ templates = Jinja2Templates(
 )
 
 router = APIRouter(
-    include_in_schema=False
+    include_in_schema=False,
 )
 
 
@@ -22,7 +24,7 @@ router = APIRouter(
 async def index(request: Request):
     return templates.TemplateResponse(
         'home/index.html',
-        {'request': request}
+        {'request': request, 'user': await user_by_token(request)}
     )
 
 

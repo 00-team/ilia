@@ -34,7 +34,10 @@ function headerType() {
 if (!search_input.value) headerType()
 
 document.getElementById('search_btn').onclick = function () {
-    if (!search_input.value) return
+    if (!search_input.value) {
+        location.search = ''
+        return
+    }
 
     location.search = '?q=' + search_input.value
 }

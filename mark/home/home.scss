@@ -894,69 +894,86 @@ main.home {
                 padding: 1rem;
             }
 
-            form.email {
+            .contact-form {
+                width: 50%;
                 display: flex;
                 flex-direction: column;
                 gap: calc(2vh + 5px);
-
-                width: 50%;
 
                 @media screen and (max-width: 768px) {
                     width: 100%;
                 }
 
-                .name,
-                .email,
-                .subject {
+                .login-btn {
+                    background: white;
+                    padding: 1rem 3rem;
+                    text-align: center;
+                }
+
+                .contact-inner {
                     display: flex;
                     flex-direction: column;
-                    gap: 1vh;
+                    gap: calc(2vh + 5px);
 
-                    width: 100%;
-
-                    .holder {
-                        display: flex;
-                        align-items: center;
-                        gap: 10px;
+                    &.locked {
+                        opacity: 0.4;
+                        pointer-events: none;
                     }
 
-                    input {
+                    .subject {
+                        display: flex;
+                        flex-direction: column;
+                        gap: 1vh;
+
                         width: 100%;
 
-                        padding: 0.5rem 1rem;
+                        .holder {
+                            display: flex;
+                            align-items: center;
+                            gap: 10px;
+                        }
 
-                        border: none;
-                        background-color: white;
+                        input {
+                            width: 100%;
+
+                            padding: 0.5rem 1rem;
+
+                            border: none;
+                            background-color: white;
+                            border-radius: 5px;
+
+                            box-shadow: 0px 3px 15px -7px #000;
+
+                            color: black;
+
+                            font: inherit;
+                        }
+                    }
+
+                    textarea {
                         border-radius: 5px;
+                        background-color: white;
+                        color: black;
+                        border: none;
 
+                        padding: 1rem;
+                        box-shadow: 0px 3px 15px -7px #000;
+                        resize: vertical;
+                    }
+
+                    button.form-btn {
+                        padding: 1rem 2rem;
+                        background-color: white;
+
+                        border-radius: 5px;
                         box-shadow: 0px 3px 15px -7px #000;
 
-                        color: black;
+                        transition: 0.2s ease-in-out;
 
-                        font: inherit;
-                    }
-                }
-                textarea {
-                    border-radius: 5px;
-                    background-color: white;
-                    color: black;
-                    border: none;
-
-                    padding: 1rem;
-                    box-shadow: 0px 3px 15px -7px #000;
-                }
-                button.form-btn {
-                    padding: 1rem 2rem;
-                    background-color: white;
-
-                    border-radius: 5px;
-                    box-shadow: 0px 3px 15px -7px #000;
-
-                    transition: 0.2s ease-in-out;
-
-                    &:hover {
-                        background-color: black;
-                        color: white;
+                        &:hover {
+                            background-color: black;
+                            color: white;
+                        }
                     }
                 }
             }

@@ -143,6 +143,32 @@ setInterval(() => {
 
 // contact
 const contactWrapper = document.querySelector('section.contact') as HTMLElement
+
+const form_subject =
+    document.querySelector<HTMLInputElement>('input#form_subject')
+const form_content = document.querySelector<HTMLTextAreaElement>(
+    'textarea#form_content'
+)
+document.getElementById('form_submit').onclick = async function () {
+    let subject = form_subject.value
+    let content = form_content.value
+
+    if (!subject || !content) return
+
+    const response = await fetch('/api/user/contact/', {
+        method: 'POST',
+        body: JSON.stringify({
+            subject,
+            content,
+        }),
+        headers: {
+            'Content-Type': 'application/json',
+        },
+    })
+
+    // alert(await response.text())
+}
+
 // contact end
 
 // blogs

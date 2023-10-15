@@ -64,3 +64,17 @@ async def update(request: Request, body: UpdateBody):
 
     await user_update(**patch)
     return {'ok': True}
+
+
+class ContactBody(BaseModel):
+    subject: str
+    content: str
+
+
+@router.post('/contact/', dependencies=[rate_limit('user:contact', 3600, 1)])
+async def contact(request: Request, body: ContactBody):
+    user: UserModel = request.state.user
+
+    print(user, body)
+
+    return {'ok': True}
