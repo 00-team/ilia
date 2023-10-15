@@ -1,9 +1,12 @@
 
+import json
+
 from fastapi import APIRouter, Request
 from fastapi.responses import HTMLResponse
 from fastapi.templating import Jinja2Templates
 
-from shared import settings
+from db.models import ProjectModel, ProjectTable
+from shared import settings, sqlx
 
 templates = Jinja2Templates(
     directory=settings.base_dir / 'mark/'
@@ -59,10 +62,39 @@ async def education(request: Request):
 
 
 @router.get('/projects/', response_class=HTMLResponse)
-async def projects(request: Request):
+async def projects(request: Request, q: str = '', page: int = 0):
+
+    search = ''
+    values = {}
+
+    if q:
+        search = 'WHERE title LIKE :query'
+        values['query'] = '%' + q + '%'
+
+    rows = await sqlx.fetch_all(
+        f'''
+        SELECT * from projects {search}
+        LIMIT {settings.page_size} OFFSET {page * settings.page_size}
+        ''',
+        values
+    )
+
+    result = []
+    for row in rows:
+        args = dict(row)
+        args['features'] = json.loads(args['features'])
+        args['prices'] = json.loads(args['prices'])
+        args['images'] = json.loads(args['images'])
+        result.append(ProjectModel(**args))
+
     return templates.TemplateResponse(
         'projects/index.html',
-        {'request': request, 'search_query': 'hey'}
+        {
+            'request': request,
+            'search_query': q,
+            'page': page,
+            'projects': result
+        }
     )
 
 
