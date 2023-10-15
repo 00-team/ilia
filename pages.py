@@ -6,6 +6,7 @@ from fastapi.responses import HTMLResponse
 from fastapi.templating import Jinja2Templates
 
 from db.models import ProjectModel, ProjectTable
+from db.project import project_get
 from shared import settings, sqlx
 
 templates = Jinja2Templates(
@@ -98,9 +99,14 @@ async def projects(request: Request, q: str = '', page: int = 0):
     )
 
 
-@router.get('/project/1', response_class=HTMLResponse)
-async def project(request: Request):
+@router.get('/projects/{project_id}/', response_class=HTMLResponse)
+async def project(request: Request, project_id: int):
+
+    project = await project_get(project_id)
+    if project is None:
+        return HTMLResponse('not found', 404)
+
     return templates.TemplateResponse(
         'project/index.html',
-        {'request': request}
+        {'request': request, 'project': project}
     )

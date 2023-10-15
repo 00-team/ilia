@@ -12,7 +12,7 @@
 <main class="project">
     <header class="section_title">
         <span>
-            Caesar Cliff
+            {{ project.title }}
 
             <div class="line"></div>
             <div class="line"></div>
@@ -29,33 +29,10 @@
                 </span>
             </h3>
 
-            <p>
-
-                Caesar Cliff یک مجتمع مسکونی مدرن است که توسط گروه آفیک طراحی شده است و ویلاها و آپارتمان های نیمه مستقل
-                را ارائه می دهد.
-                این پروژه واقع شده در موقعیتی با تنها 100 متر فاصله از ساحل و احاطه شده با مناظر خیره کننده دریای
-                مدیترانه و
-                کوه ها که مکان مناسبی برای زندگی آرام یا صرفا برای لذت بردن از تعطیلات.
-
-                26 کیلومتر رانندگی تا گیرنه، مرکز شهر
-                <br />
-                7 کیلومتر رانندگی تا منطقه گلف، بزرگترین در قبرس
-                <br />
-                46 کیلومتر رانندگی تا فرودگاه ارجان
-                <br />
-                32 کیلومتر رانندگی تا کوه های بشپرمک
-                <br />
-                55 کیلومتر رانندگی تا فاماگوستا، شهر باستانی
-                <br />
-                5 کیلومتر رانندگی تا ساحل خلیج لاک پشت
-                <br />
-                56 کیلومتر رانندگی تا لفکوشا، پایتخت
-                <br />
-                2.5 کیلومتری روستای Esentepe
-            </p>
+            <p>{{ project.description|replace('\n', '<br />')|safe }}</p>
 
         </article>
-        <img class="row-img" src="https://picsum.photos/1920/1080" alt="">
+        <img class="row-img" src="{{ project.images.desc.url }}" alt="">
     </section>
 
     <section class="row attributes">
@@ -66,24 +43,17 @@
                     ویژگی ها
                 </span>
 
+                {% for i in range(3) %}
                 <svg class="attr-svg" stroke="currentColor" fill="currentColor" stroke-width="0" version="1"
                     viewBox="0 0 48 48" enable-background="new 0 0 48 48" height='40' width='40'
                     xmlns="http://www.w3.org/2000/svg">
                     <polygon fill="#43A047" points="40.6,12.1 17,35.7 7.4,26.1 4.6,29 17,41.3 43.4,14.9"></polygon>
                 </svg>
-                <svg class="attr-svg" stroke="currentColor" fill="currentColor" stroke-width="0" version="1"
-                    viewBox="0 0 48 48" enable-background="new 0 0 48 48" height='40' width='40'
-                    xmlns="http://www.w3.org/2000/svg">
-                    <polygon fill="#43A047" points="40.6,12.1 17,35.7 7.4,26.1 4.6,29 17,41.3 43.4,14.9"></polygon>
-                </svg>
-                <svg class="attr-svg" stroke="currentColor" fill="currentColor" stroke-width="0" version="1"
-                    viewBox="0 0 48 48" enable-background="new 0 0 48 48" height='40' width='40'
-                    xmlns="http://www.w3.org/2000/svg">
-                    <polygon fill="#43A047" points="40.6,12.1 17,35.7 7.4,26.1 4.6,29 17,41.3 43.4,14.9"></polygon>
-                </svg>
+                {% endfor %}
             </h3>
 
             <div class="title_small attributes-data">
+                {% for f in project.features %}
                 <p>
                     <svg class="star-svg" stroke="currentColor" fill="currentColor" stroke-width="0"
                         viewBox="0 0 256 256" height='35' width='35' xmlns="http://www.w3.org/2000/svg">
@@ -91,57 +61,13 @@
                             d="M234.5,114.38l-45.1,39.36,13.51,58.6a16,16,0,0,1-23.84,17.34l-51.11-31-51,31a16,16,0,0,1-23.84-17.34L66.61,153.8,21.5,114.38a16,16,0,0,1,9.11-28.06l59.46-5.15,23.21-55.36a15.95,15.95,0,0,1,29.44,0h0L166,81.17l59.44,5.15a16,16,0,0,1,9.11,28.06Z">
                         </path>
                     </svg>
-                    دو خوابه مستر
+                    {{ f }}
                 </p>
-                <p>
-                    <svg class="star-svg" stroke="currentColor" fill="currentColor" stroke-width="0"
-                        viewBox="0 0 256 256" height='35' width='35' xmlns="http://www.w3.org/2000/svg">
-                        <path
-                            d="M234.5,114.38l-45.1,39.36,13.51,58.6a16,16,0,0,1-23.84,17.34l-51.11-31-51,31a16,16,0,0,1-23.84-17.34L66.61,153.8,21.5,114.38a16,16,0,0,1,9.11-28.06l59.46-5.15,23.21-55.36a15.95,15.95,0,0,1,29.44,0h0L166,81.17l59.44,5.15a16,16,0,0,1,9.11,28.06Z">
-                        </path>
-                    </svg>
-                    حیاط در سمت شمالی ملک
-                </p>
-                <p>
-                    <svg class="star-svg" stroke="currentColor" fill="currentColor" stroke-width="0"
-                        viewBox="0 0 256 256" height='35' width='35' xmlns="http://www.w3.org/2000/svg">
-                        <path
-                            d="M234.5,114.38l-45.1,39.36,13.51,58.6a16,16,0,0,1-23.84,17.34l-51.11-31-51,31a16,16,0,0,1-23.84-17.34L66.61,153.8,21.5,114.38a16,16,0,0,1,9.11-28.06l59.46-5.15,23.21-55.36a15.95,15.95,0,0,1,29.44,0h0L166,81.17l59.44,5.15a16,16,0,0,1,9.11,28.06Z">
-                        </path>
-                    </svg>
-                    نور گیری عالی
-                </p>
-                <p>
-                    <svg class="star-svg" stroke="currentColor" fill="currentColor" stroke-width="0"
-                        viewBox="0 0 256 256" height='35' width='35' xmlns="http://www.w3.org/2000/svg">
-                        <path
-                            d="M234.5,114.38l-45.1,39.36,13.51,58.6a16,16,0,0,1-23.84,17.34l-51.11-31-51,31a16,16,0,0,1-23.84-17.34L66.61,153.8,21.5,114.38a16,16,0,0,1,9.11-28.06l59.46-5.15,23.21-55.36a15.95,15.95,0,0,1,29.44,0h0L166,81.17l59.44,5.15a16,16,0,0,1,9.11,28.06Z">
-                        </path>
-                    </svg>
-                    توالت فرهنگی و ایرانی
-                </p>
-                <p>
-                    <svg class="star-svg" stroke="currentColor" fill="currentColor" stroke-width="0"
-                        viewBox="0 0 256 256" height='35' width='35' xmlns="http://www.w3.org/2000/svg">
-                        <path
-                            d="M234.5,114.38l-45.1,39.36,13.51,58.6a16,16,0,0,1-23.84,17.34l-51.11-31-51,31a16,16,0,0,1-23.84-17.34L66.61,153.8,21.5,114.38a16,16,0,0,1,9.11-28.06l59.46-5.15,23.21-55.36a15.95,15.95,0,0,1,29.44,0h0L166,81.17l59.44,5.15a16,16,0,0,1,9.11,28.06Z">
-                        </path>
-                    </svg>
-                    بالکن بزرگ
-                </p>
-                <p>
-                    <svg class="star-svg" stroke="currentColor" fill="currentColor" stroke-width="0"
-                        viewBox="0 0 256 256" height='35' width='35' xmlns="http://www.w3.org/2000/svg">
-                        <path
-                            d="M234.5,114.38l-45.1,39.36,13.51,58.6a16,16,0,0,1-23.84,17.34l-51.11-31-51,31a16,16,0,0,1-23.84-17.34L66.61,153.8,21.5,114.38a16,16,0,0,1,9.11-28.06l59.46-5.15,23.21-55.36a15.95,15.95,0,0,1,29.44,0h0L166,81.17l59.44,5.15a16,16,0,0,1,9.11,28.06Z">
-                        </path>
-                    </svg>
-                    انباری 4*4
-                </p>
+                {% endfor %}
             </div>
 
         </article>
-        <img class="row-img" src="https://picsum.photos/1920/1081" alt="">
+        <img class="row-img" src="{{ project.images.feat.url }}" alt="">
     </section>
 
     <section class="row pay-options">
@@ -153,19 +79,9 @@
         <div class="options-wrapper">
 
             <article class="row-data title_small">
-                <p>
-
-                    لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان گرافیک است چاپگرها
-                    و
-                    متون
-                    بلکه روزنامه و مجله در ستون و سطرآنچنان که لازم است و برای شرایط فعلی تکنولوژی مورد نیاز و کاربردهای
-                    متنوع
-                    بلکه روزنامه و مجله در ستون و سطرآنچنان که لازم است و برای شرایط فعلی تکنولوژی مورد نیاز و کاربردهای
-                    متنوع
-                    با هدف بهبود ابزارهای کاربردی می باشد کتابهای زیادی در شصت و سه درصد گذشته حال و آینده
-                </p>
+                <p>{{ project.payment_terms|replace('\n', '<br />')|safe }}</p>
             </article>
-            <img class="row-img" src="https://picsum.photos/1920/1081" alt="">
+            <img class="row-img" src="{{ project.images.term.url }}" alt="">
         </div>
 
     </section>
@@ -198,66 +114,15 @@
                 </tr>
             </thead>
             <tbody className='title_smaller'>
+                {% for p in project.prices %}
                 <tr>
-                    <td>یه خواب</td>
-                    <td>125</td>
+                    <td>{{ p.layout }}</td>
+                    <td>{{ p.area }}</td>
                     <td>
-                        <span class="price-number">
-
-                            0
-                        </span>
+                        <span class="price-number">{{ p.price }}</span>
                     </td>
                 </tr>
-                <tr>
-                    <td>دو خواب</td>
-                    <td>125</td>
-                    <td>
-                        <span class="price-number">
-
-                            0
-                        </span>
-                    </td>
-                </tr>
-                <tr>
-                    <td>یه خواب</td>
-                    <td>125</td>
-                    <td>
-                        <span class="price-number">
-
-                            0
-                        </span>
-                    </td>
-                </tr>
-                <tr>
-                    <td>سه خواب</td>
-                    <td>125</td>
-                    <td>
-                        <span class="price-number">
-
-                            0
-                        </span>
-                    </td>
-                </tr>
-                <tr>
-                    <td>استودیو</td>
-                    <td>125</td>
-                    <td>
-                        <span class="price-number">
-
-                            0
-                        </span>
-                    </td>
-                </tr>
-                <tr>
-                    <td>ویلا</td>
-                    <td>125</td>
-                    <td>
-                        <span class="price-number">
-
-                            0
-                        </span>
-                    </td>
-                </tr>
+                {% endfor %}
             </tbody>
         </table>
     </section>
