@@ -7,9 +7,9 @@ from fastapi.openapi.utils import get_openapi
 from fastapi.responses import HTMLResponse, PlainTextResponse
 from fastapi.routing import APIRoute
 from fastapi.staticfiles import StaticFiles
-from fastapi.templating import Jinja2Templates
 
 import api
+import pages
 import shared.logger
 from deps import get_ip
 from shared import redis, settings, sqlx
@@ -21,9 +21,8 @@ app = FastAPI(
     dependencies=[get_ip()]
 )
 app.include_router(api.router)
-templates = Jinja2Templates(
-    directory=settings.base_dir / 'mark/'
-)
+app.include_router(pages.router)
+
 
 if settings.debug:
     app.mount('/static', StaticFiles(directory='static'), name='static')
@@ -93,74 +92,6 @@ async def sitemap(request: Request):
 
     out.seek(0)
     return Response(out.read(), media_type='application/xml')
-
-
-@app.get('/', response_class=HTMLResponse, include_in_schema=False)
-async def t_index(request: Request):
-    return templates.TemplateResponse(
-        'home/index.html',
-        {'request': request}
-    )
-
-
-@app.get(
-    '/admin/{_:path}',
-    response_class=HTMLResponse,
-    include_in_schema=False
-)
-async def t_admin(request: Request):
-    with open(settings.base_dir / 'static/dash/index.html', 'r') as f:
-        return f.read()
-
-
-@app.get(
-    '/dash/{_:path}',
-    response_class=HTMLResponse,
-    include_in_schema=False
-)
-async def t_dash(request: Request):
-    with open(settings.base_dir / 'static/dash/index.html', 'r') as f:
-        return f.read()
-
-
-@app.get('/about', response_class=HTMLResponse, include_in_schema=False)
-async def t_about(request: Request):
-    return templates.TemplateResponse(
-        'about/index.html',
-        {'request': request}
-    )
-
-
-@app.get('/cyprus', response_class=HTMLResponse, include_in_schema=False)
-async def t_cyprus(request: Request):
-    return templates.TemplateResponse(
-        'cyprus/index.html',
-        {'request': request}
-    )
-
-
-@app.get('/education', response_class=HTMLResponse, include_in_schema=False)
-async def t_education(request: Request):
-    return templates.TemplateResponse(
-        'education/index.html',
-        {'request': request}
-    )
-
-
-@app.get('/projects', response_class=HTMLResponse, include_in_schema=False)
-async def t_projects(request: Request):
-    return templates.TemplateResponse(
-        'projects/index.html',
-        {'request': request}
-    )
-
-
-@app.get('/project/1', response_class=HTMLResponse, include_in_schema=False)
-async def t_project(request: Request):
-    return templates.TemplateResponse(
-        'project/index.html',
-        {'request': request}
-    )
 
 
 for route in app.routes:

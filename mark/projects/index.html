@@ -11,11 +11,10 @@
 {% block content %}
 <main class="projects">
     <header class="project-header">
-        <label for="search-project" class="input-wrapper">
-            <input class="title" id="search-project" type="text">
+        <label for="search_project_inp" class="input-wrapper">
+            <input class="title" id="search_project_inp" type="text" value='{{ search_query }}'>
 
-            <button class="label-svg">
-
+            <button class="label-svg" id="search_btn">
                 <svg stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 24 24" height='25'
                     width='25' xmlns="http://www.w3.org/2000/svg">
                     <path

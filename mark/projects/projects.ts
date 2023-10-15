@@ -7,9 +7,14 @@ const headerLabel = document.querySelector(
     'label.input-wrapper'
 ) as HTMLLabelElement
 
+const search_input = document.querySelector<HTMLInputElement>(
+    'input#search_project_inp'
+)
+
 headerLabel.addEventListener('click', () => {
     headerTyperWrapper.style.display = 'none'
 })
+if (search_input.value) headerTyperWrapper.style.display = 'none'
 
 const typerText = 'جستجو کنید ...'
 
@@ -26,5 +31,10 @@ function headerType() {
         }
     }, 150)
 }
+if (!search_input.value) headerType()
 
-headerType()
+document.getElementById('search_btn').onclick = function () {
+    if (!search_input.value) return
+
+    location.search = '?q=' + search_input.value
+}

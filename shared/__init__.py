@@ -30,7 +30,7 @@ class Settings(BaseSettings):
     google_client_secret: str
     google_redirect_uri: str = (
         (
-            'http://localhost:7130' if debug else 'http://localhost:7130'
+            'http://localhost:7130' if debug else ''
         ) + '/api/auth/gcb/'
     )
 
