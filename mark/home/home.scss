@@ -908,6 +908,13 @@ main.home {
                     background: white;
                     padding: 1rem 3rem;
                     text-align: center;
+
+                    border-radius: 5px;
+
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    gap: 0.5rem;
                 }
 
                 .contact-inner {
