@@ -1,6 +1,8 @@
 import { readdirSync, lstatSync } from 'fs'
 import { resolve } from 'path'
 
+import { platform } from 'os'
+
 const BASE_DIR = resolve('.')
 const DIR = resolve(BASE_DIR, 'mark/')
 
@@ -16,9 +18,17 @@ function load_paths(path) {
     }
 
     if (stats.isFile() && path.endsWith('.ts')) {
-        let fn = path.substring(path.lastIndexOf('/') + 1)
+        let fn = ''
+
+        if (platform() === 'win32') {
+            fn = path.substring(path.lastIndexOf('\\') + 1)
+        } else {
+            fn = path.substring(path.lastIndexOf('/') + 1)
+        }
+
         fn = fn.substring(0, fn.lastIndexOf('.'))
         entry[fn] = path
+
         return
     }
 }
