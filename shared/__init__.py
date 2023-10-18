@@ -49,7 +49,7 @@ settings.user_picture_dir.mkdir(parents=True, exist_ok=True)
 if settings.debug:
     settings.google_redirect_uri = 'http://localhost:7130'
 else:
-    settings.google_redirect_uri = ''
+    settings.google_redirect_uri = 'https://brightfuture-cyprus.com'
 
 
 settings.google_redirect_uri += '/api/auth/gcb/'
