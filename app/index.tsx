@@ -5,7 +5,11 @@ import { Router, Routes, Route } from '@solidjs/router'
 
 import 'solid-devtools'
 
-import './index.scss'
+import './style/base.scss'
+import './style/buttons.scss'
+import './style/config.scss'
+import './style/theme.scss'
+
 import { lazy } from 'solid-js'
 import { UserData } from './stores'
 
