@@ -1,0 +1,56 @@
+section.projects {
+    gap: 8vh;
+
+    // debug
+    height: 100vh;
+
+    .projects-header {
+        display: flex;
+        align-items: stretch;
+        justify-content: space-between;
+
+        width: 100%;
+
+        gap: 50px;
+
+        .search {
+            width: 80%;
+
+            background-color: white;
+
+            padding: 1em 1.5em;
+            border-radius: 10px;
+
+            position: relative;
+            isolation: isolate;
+
+            svg {
+                position: absolute;
+                top: 50%;
+                left: 0;
+                transform: translate(50%, -50%);
+            }
+
+            input {
+                width: 100%;
+                height: 100%;
+
+                // reset
+                background-color: transparent;
+                border: none;
+                color: black;
+                // reset end
+
+                direction: rtl;
+            }
+        }
+        .new-project {
+            flex: 1 0 0;
+            border-radius: 10px;
+
+            background-color: orange;
+
+            padding: 1em 1.5em;
+        }
+    }
+}
