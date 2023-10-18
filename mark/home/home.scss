@@ -66,6 +66,10 @@ main.home {
 
             z-index: 1;
 
+            @media screen and (max-width: 1024px) {
+                width: 800px;
+            }
+
             @media screen and (max-width: 768px) {
                 transform: translate(20%, -20%);
                 width: 700px;
@@ -89,7 +93,7 @@ main.home {
 
                 color: black;
 
-                @media screen and (max-width: 768px) {
+                @media screen and (max-width: 1024px) {
                     margin-right: 25%;
                 }
                 @media screen and (max-width: 375px) {
