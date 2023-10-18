@@ -1,7 +1,7 @@
 import { SendIcon } from '!/icons/actions'
 import { ProjectsIcon, SiteIcon } from '!/icons/dashboard'
 import { user } from '!/stores'
-import { A } from '@solidjs/router'
+import { A, Outlet } from '@solidjs/router'
 import { createEffect } from 'solid-js'
 
 import './style/index.scss'
@@ -47,7 +47,9 @@ export default () => {
                     </A>
                 </div>
             </aside>
-            <aside class='wrapper'></aside>
+            <aside class='wrapper'>
+                <Outlet />
+            </aside>
         </main>
     )
 }
