@@ -11,7 +11,12 @@ export default () => {
         }
     })
 
-    return <main class='admin-container'></main>
+    return (
+        <main class='admin-container'>
+            <aside class='sidebar'></aside>
+            <aside class='wrapper'></aside>
+        </main>
+    )
 }
 
 // ;<div class='img-wrapper'>
