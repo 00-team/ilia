@@ -1,3 +1,5 @@
+import { SendIcon } from '!/icons/actions'
+import { ProjectsIcon, SiteIcon } from '!/icons/dashboard'
 import { user } from '!/stores'
 import { A } from '@solidjs/router'
 import { createEffect } from 'solid-js'
@@ -29,12 +31,23 @@ export default () => {
                         <span>{user.name}</span>
                     </h2>
                 </div>
+                <div class='sidebar-wrapper'>
+                    <A
+                        class='column-wrapper title_small'
+                        href='/admin/projects'
+                    >
+                        <ProjectsIcon />
+                        <span>پروژه ها</span>
+                        <SendIcon />
+                    </A>
+                    <A class='column-wrapper goto title_small' href='/'>
+                        <SiteIcon />
+                        <span>رفتن به سایت</span>
+                        <SendIcon />
+                    </A>
+                </div>
             </aside>
-            <aside class='wrapper'>
-                <A href='/projects'>
-                    <span></span>
-                </A>
-            </aside>
+            <aside class='wrapper'></aside>
         </main>
     )
 }
