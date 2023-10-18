@@ -4,7 +4,7 @@ import solidPlugin from 'vite-plugin-solid'
 import devtools from 'solid-devtools/vite'
 import { resolve } from 'path'
 
-let target = 'http://194.5.178.12'
+let target = 'https://brightfuture-cyprus.com'
 if (process.env.local_api_target) {
     target = 'http://localhost:7130'
 }
