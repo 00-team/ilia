@@ -1,4 +1,5 @@
 import { user } from '!/stores'
+import { A } from '@solidjs/router'
 import { createEffect } from 'solid-js'
 
 import './style/index.scss'
@@ -29,7 +30,11 @@ export default () => {
                     </h2>
                 </div>
             </aside>
-            <aside class='wrapper'></aside>
+            <aside class='wrapper'>
+                <A href='/projects'>
+                    <span></span>
+                </A>
+            </aside>
         </main>
     )
 }
