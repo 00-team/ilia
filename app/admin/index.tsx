@@ -21,7 +21,7 @@ export default () => {
                     <img
                         src={
                             !user.picture
-                                ? '/static/image/cyprus/thief.png'
+                                ? '/static/image/dashboard/empty_avatar.webp'
                                 : '/records/users/' + user.picture
                         }
                         class='profile-avatar'
