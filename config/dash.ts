@@ -42,6 +42,10 @@ export default defineConfig(env => {
                     target,
                     changeOrigin: true,
                 },
+                '/records': {
+                    target,
+                    changeOrigin: true,
+                },
             },
         },
         build: {
