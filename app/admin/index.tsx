@@ -4,8 +4,6 @@ import { createEffect, createSignal } from 'solid-js'
 import './style/index.scss'
 
 export default () => {
-    const [sidebar, setSidebar] = createSignal(true)
-
     createEffect(() => {
         if (user.user_id && !user.perms) {
             location.replace('/')
