@@ -1,5 +1,5 @@
 import { user } from '!/stores'
-import { createEffect, createSignal } from 'solid-js'
+import { createEffect } from 'solid-js'
 
 import './style/index.scss'
 
@@ -13,7 +13,22 @@ export default () => {
 
     return (
         <main class='admin-container'>
-            <aside class='sidebar'></aside>
+            <aside class='sidebar'>
+                <div class='avatar'>
+                    <img
+                        src={
+                            !user.picture
+                                ? '/static/image/cyprus/thief.png'
+                                : '/records/users/' + user.picture
+                        }
+                        class='profile-avatar'
+                        alt=''
+                    />
+                    <h2 class='name-avatar title_small'>
+                        <span>{user.name}</span>
+                    </h2>
+                </div>
+            </aside>
             <aside class='wrapper'></aside>
         </main>
     )
