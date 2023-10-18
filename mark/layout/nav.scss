@@ -162,6 +162,10 @@ nav.nav-container {
         position: relative;
         isolation: isolate;
 
+        @media screen and (max-width: 1024px) {
+            padding: 0.5rem 1em;
+        }
+
         .pc-wrapper {
             display: flex;
             align-items: center;
@@ -183,6 +187,10 @@ nav.nav-container {
 
                 position: relative;
                 isolation: isolate;
+
+                @media screen and (max-width: 1024px) {
+                    padding: 1rem 0.5em;
+                }
 
                 &:nth-child(1) {
                     padding-right: 0;
