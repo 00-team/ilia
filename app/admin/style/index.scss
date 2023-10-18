@@ -48,6 +48,23 @@
                 width: 100px;
                 aspect-ratio: 1/1;
                 border-radius: 100vmax;
+
+                transform: translateY(-100%);
+                opacity: 0;
+
+                animation: img-fadeIn 1s cubic-bezier(0.45, 0.02, 0.09, 0.98)
+                    forwards;
+
+                @keyframes img-fadeIn {
+                    from {
+                        transform: translateY(-100%);
+                        opacity: 0;
+                    }
+                    to {
+                        opacity: 1;
+                        transform: translateY(0);
+                    }
+                }
             }
             .name-avatar {
                 display: flex;
@@ -55,6 +72,8 @@
                 justify-content: center;
 
                 width: 100%;
+
+                font-family: cursive;
 
                 padding: 0 10px;
 
@@ -66,7 +85,7 @@
                     display: inline-block;
                     transform: translateY(100%);
                     white-space: nowrap;
-                    animation: header-fadeIn 1s
+                    animation: header-fadeIn 1s 1s
                         cubic-bezier(0.45, 0.02, 0.09, 0.98) forwards;
 
                     @keyframes header-fadeIn {
