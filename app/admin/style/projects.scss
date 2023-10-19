@@ -14,21 +14,33 @@ section.projects {
         gap: 50px;
 
         .search {
+            display: flex;
             width: 80%;
 
             background-color: white;
 
-            padding: 1em 1.5em;
+            padding: 0.5em 1.5em;
             border-radius: 10px;
 
-            position: relative;
-            isolation: isolate;
+            // position: relative;
+            // isolation: isolate;
 
-            svg {
-                position: absolute;
-                top: 50%;
-                left: 0;
-                transform: translate(50%, -50%);
+            .search-btn {
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                color: #040404;
+                background: transparent;
+                height: 100%;
+
+                svg {
+                    // position: absolute;
+                    // top: 50%;
+                    // left: 0;
+                    height: 70%;
+                    max-height: 40px;
+                    // transform: translate(50%, -50%);
+                }
             }
 
             input {
@@ -54,12 +66,18 @@ section.projects {
         }
     }
     .projects-wrapper {
-        display: grid;
-        grid-column-gap: calc(5vw + 10px);
-        grid-row-gap: 4vh;
+        // display: grid;
+        // grid-column-gap: calc(5vw + 10px);
+        // grid-row-gap: 4vh;
+        // direction: rtl;
+        // grid-template-columns: repeat(auto-fill, minmax(min(300px, 100%), 1fr));
+        // justify-items: center;
+
+        display: flex;
+        flex-wrap: wrap;
         direction: rtl;
-        grid-template-columns: repeat(auto-fill, minmax(min(300px, 100%), 1fr));
-        justify-items: center;
+        gap: 1rem;
+        justify-content: center;
 
         padding: 0.5rem;
         width: 100%;
