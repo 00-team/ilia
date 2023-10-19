@@ -55,6 +55,18 @@ export default () => {
         setState({ data: await result.json() })
     }
 
+    async function add_project(project: Omit<Project, 'project_id'>) {
+        const result = await fetch('/api/admin/projects/', {
+            method: 'POST',
+            body: JSON.stringify(project),
+            headers: {
+                'Content-Type': 'application/json',
+            },
+        })
+        console.log('add project was successful: ', result.ok)
+        await fetch_projects()
+    }
+
     onMount(() => {
         fetch_projects()
     })
@@ -62,7 +74,30 @@ export default () => {
     return (
         <section class='projects'>
             <header class='projects-header'>
-                <button class='new-project basic-button title_small'>
+                <button
+                    onClick={() => {
+                        add_project({
+                            prices: [
+                                { layout: '1 room', area: 120, price: 10099 },
+                                { layout: '2 room', area: 138, price: 6996 },
+                            ],
+                            images: {
+                                desc: { url: '', id: 0 },
+                                feat: { url: '', id: 0 },
+                                term: { id: 0, url: '' },
+                            },
+                            title: 'new Project',
+                            sector: 'some where in cyprus',
+                            features: ['feature 1', 'feat 2', 'ggez'],
+                            latitude: 35.244760367069,
+                            longitude: 33.53814253215689,
+                            description:
+                                'some description that \n can be mutilline',
+                            payment_terms: 'the payment_terms',
+                        })
+                    }}
+                    class='new-project basic-button title_small'
+                >
                     پروژه جدید
                 </button>
                 <div class='search'>
