@@ -120,7 +120,8 @@ async def google_callback(request: Request, response: Response):
 
     result = httpx.get(
         'https://www.googleapis.com/userinfo/v2/me',
-        headers={'Authorization': 'Bearer ' + access_token}
+        headers={'Authorization': 'Bearer ' + access_token},
+        timeout=30
     )
 
     if result.status_code != 200:
