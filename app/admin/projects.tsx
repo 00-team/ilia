@@ -4,40 +4,12 @@ import './style/projects.scss'
 import { A } from '@solidjs/router'
 import { onMount } from 'solid-js'
 
-type RecordData = {
-    id: number
-    url: string
-}
-
-type ImagesModel = {
-    desc: RecordData
-    feat: RecordData
-    term: RecordData
-}
-
-type PriceModel = {
-    layout: string
-    area: number
-    price: number
-}
-
-type Project = {
-    project_id: number
-    title: string
-    description: string
-    features: string[]
-    sector: string
-    latitude: number
-    longitude: number
-    payment_terms: string
-    prices: PriceModel[]
-    images: ImagesModel
-}
+import type { ProjectModel } from 'types'
 
 type State = {
     page: number
     query: string
-    data: Project[]
+    data: ProjectModel[]
 }
 
 let search_input: HTMLInputElement
@@ -55,7 +27,7 @@ export default () => {
         setState({ data: await result.json() })
     }
 
-    async function add_project(project: Omit<Project, 'project_id'>) {
+    async function add_project(project: Omit<ProjectModel, 'project_id'>) {
         const result = await fetch('/api/admin/projects/', {
             method: 'POST',
             body: JSON.stringify(project),
