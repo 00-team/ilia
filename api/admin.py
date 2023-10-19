@@ -30,15 +30,22 @@ router = APIRouter(
 @router.get(
     '/projects/', response_model=list[ProjectModel]
 )
-async def get_projects(request: Request, page: int = 0):
+async def get_projects(request: Request, page: int = 0, q: str = ''):
     user: UserModel = request.state.user
     user.admin_assert(AP.V_PROJECT)
 
+    search = ''
+    values = {}
+
+    if q:
+        search = 'WHERE title LIKE :query'
+        values['query'] = '%' + q + '%'
+
     rows = await sqlx.fetch_all(
         f'''
-        SELECT * from projects
+        SELECT * from projects {search}
         LIMIT {settings.page_size} OFFSET {page * settings.page_size}
-        '''
+        ''', values
     )
 
     result = []
@@ -50,6 +57,21 @@ async def get_projects(request: Request, page: int = 0):
         result.append(ProjectModel(**args))
 
     return result
+
+
+@router.get(
+    '/projects/{project_id}/', response_model=ProjectModel,
+    openapi_extra={'errors': [bad_id]}
+)
+async def get_project(request: Request, project_id: int):
+    user: UserModel = request.state.user
+    user.admin_assert(AP.V_PROJECT)
+
+    project = await project_get(project_id)
+    if project is None:
+        raise bad_id('Project', project_id, id=project_id)
+
+    return project
 
 
 class AddProjectModel(ProjectModel):
