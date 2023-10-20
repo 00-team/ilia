@@ -8,9 +8,10 @@
 
     overflow: hidden;
 
-    // @media screen and (max-width: 1024px) {
-    //     display: inline-block;
-    // }
+    @media screen and (max-width: 1024px) {
+        display: inline-block;
+        height: auto;
+    }
 
     aside.sidebar {
         width: clamp(280px, 20%, 300px);
@@ -28,6 +29,7 @@
 
         @media screen and (max-width: 1024px) {
             width: 100%;
+            min-height: 90vh;
         }
 
         .avatar {
