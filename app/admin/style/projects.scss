@@ -10,6 +10,10 @@ section.projects {
 
         gap: 50px;
 
+        @media screen and (max-width: 1024px) {
+            gap: 25px;
+        }
+
         .search {
             display: flex;
             width: 80%;
@@ -21,6 +25,10 @@ section.projects {
 
             // position: relative;
             // isolation: isolate;
+
+            @media screen and (max-width: 1024px) {
+                width: 65%;
+            }
 
             .search-btn {
                 display: flex;
