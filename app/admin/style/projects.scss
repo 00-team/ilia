@@ -147,6 +147,32 @@ section.projects {
                     align-items: center;
                     justify-content: center;
                     gap: 0.7rem;
+
+                    &:hover {
+                        svg {
+                            animation: shake-svg 0.7s ease-in-out;
+                            @keyframes shake-svg {
+                                0% {
+                                    rotate: 0deg;
+                                }
+                                20% {
+                                    rotate: 6deg;
+                                }
+                                40% {
+                                    rotate: -6deg;
+                                }
+                                60% {
+                                    rotate: 4deg;
+                                }
+                                80% {
+                                    rotate: -4deg;
+                                }
+                                100% {
+                                    rotate: 0deg;
+                                }
+                            }
+                        }
+                    }
                 }
 
                 .edit {
