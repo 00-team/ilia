@@ -39,6 +39,15 @@ export default () => {
         console.log('add project was successful: ', result.ok)
         await fetch_projects()
     }
+    async function delete_project(project: ProjectModel) {
+        const result = await fetch(
+            `/api/admin/projects/${project.project_id}/?del_imgs=true`,
+            {
+                method: 'DELETE',
+            }
+        )
+        await fetch_projects()
+    }
 
     onMount(() => {
         fetch_projects()
@@ -213,7 +222,12 @@ export default () => {
                                 <EditIcon />
                                 تنظیم
                             </A>
-                            <button class='basic-button title_smaller delete'>
+                            <button
+                                onclick={() => {
+                                    delete_project(p)
+                                }}
+                                class='basic-button title_smaller delete'
+                            >
                                 <DeleteIcon />
                                 حذف
                             </button>
