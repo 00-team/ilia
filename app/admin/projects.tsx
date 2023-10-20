@@ -1,9 +1,10 @@
 import { SearchIcon } from '!/icons/dashboard'
-import { createStore } from 'solid-js/store'
-import './style/projects.scss'
 import { A } from '@solidjs/router'
 import { onMount } from 'solid-js'
+import { createStore } from 'solid-js/store'
+import './style/projects.scss'
 
+import { DeleteIcon, EditIcon } from '!/icons/actions'
 import type { ProjectModel } from 'types'
 
 type State = {
@@ -204,12 +205,19 @@ export default () => {
                                 </div>
                             </div>
                         </figcaption>
-                        <A
-                            href={`/admin/projects/${p.project_id}/`}
-                            class='see-more title_small'
-                        >
-                            دیدن بیشتر
-                        </A>
+                        <div class='btns'>
+                            <A
+                                href={`/admin/projects/${p.project_id}/`}
+                                class='edit title_smaller'
+                            >
+                                <EditIcon />
+                                تنظیم
+                            </A>
+                            <button class='basic-button title_smaller delete'>
+                                <DeleteIcon />
+                                حذف
+                            </button>
+                        </div>
                     </figure>
                 ))}
             </div>
