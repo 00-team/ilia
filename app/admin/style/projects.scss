@@ -132,17 +132,47 @@ section.projects {
                     }
                 }
             }
-            .see-more {
+            .btns {
                 display: flex;
                 align-items: center;
-                justify-content: center;
+                justify-content: space-between;
+
+                gap: 10px;
 
                 width: 100%;
 
-                padding: 0.75rem;
+                .edit,
+                .delete {
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    gap: 0.7rem;
+                }
 
-                background-color: var(--sixty-percent);
-                border-radius: 5px;
+                .edit {
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+
+                    flex-shrink: 0;
+
+                    width: 50%;
+
+                    padding: 0.75rem;
+
+                    background-color: rgb(255, 152, 0);
+                    border-radius: 5px;
+                }
+                .delete {
+                    width: 50%;
+
+                    padding: 0.75rem;
+
+                    width: 100%;
+                    background-color: var(--alert-error);
+                    border-radius: 5px;
+                    color: white;
+                }
             }
         }
     }
