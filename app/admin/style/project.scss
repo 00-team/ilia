@@ -1,0 +1,26 @@
+section.project-container {
+    .name-wrapper {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        width: 100%;
+        margin-top: 4vh;
+
+        position: relative;
+        isolation: isolate;
+
+        input {
+            width: clamp(0px, 100%, 500px);
+
+            background-color: transparent;
+            border: none;
+
+            text-align: center;
+
+            border-bottom: 2px solid black;
+            color: black;
+            direction: rtl;
+        }
+    }
+}
