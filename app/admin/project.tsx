@@ -3,6 +3,8 @@ import { useNavigate, useParams } from '@solidjs/router'
 import { onMount } from 'solid-js'
 import { createStore } from 'solid-js/store'
 
+import './style/project.scss'
+
 export default () => {
     const { id } = useParams()
     const navigate = useNavigate()
@@ -34,8 +36,16 @@ export default () => {
     })
 
     return (
-        <div>
-            the project page {id} {state.title} <p>{state.description}</p>
-        </div>
+        <section class='project-container'>
+            <div class='name-wrapper'>
+                <input
+                    type='text'
+                    class='title_hero'
+                    autofocus
+                    value={state.title}
+                    placeholder='اسم پروژه...'
+                />
+            </div>
+        </section>
     )
 }
