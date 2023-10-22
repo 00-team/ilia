@@ -242,6 +242,9 @@ export default () => {
                     </div>
                 </div>
             </div>
+            <button type='submit' class='title submit-project'>
+                ذخیره
+            </button>
         </section>
     )
 }
