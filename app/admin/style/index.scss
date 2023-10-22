@@ -248,6 +248,10 @@
         position: relative;
         isolation: isolate;
 
+        @media screen and (max-width: 1024px) {
+            height: auto;
+        }
+
         &::-webkit-scrollbar {
             background-color: white;
             border: 2px solid white;
