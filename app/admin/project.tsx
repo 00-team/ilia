@@ -1,3 +1,4 @@
+import { ImageIcon } from '!/icons/dashboard'
 import { ProjectDescription, ProjectNameIcon } from '!/icons/project'
 import { ProjectModel } from '!/types'
 import { useNavigate, useParams } from '@solidjs/router'
@@ -64,7 +65,17 @@ export default () => {
                         id=''
                         cols='35'
                         rows='10'
+                        value={state.description}
                     ></textarea>
+                </div>
+                <div class='input-wrapper'>
+                    <div class='holder title'>
+                        <ImageIcon size={30} />
+                        <span>عکس توضیحات</span>
+                    </div>
+                    <div class='img-upload'>
+                        <div class='upload'></div>
+                    </div>
                 </div>
             </div>
         </section>
