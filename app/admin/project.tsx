@@ -73,9 +73,19 @@ export default () => {
                         <ImageIcon size={30} />
                         <span>عکس توضیحات</span>
                     </div>
-                    <div class='img-upload'>
-                        <div class='upload'></div>
-                    </div>
+                    <label for='img-uploader' class='img-upload'>
+                        <div class='upload'>
+                            <input type='file' name='' id='img-uploader' />
+                            <img
+                                src='/static/image/dashboard/projectImg.png'
+                                alt=''
+                            />
+                            <p class='title_small'>عکس رو اینجا بنداز ! </p>
+                            <p class='title_smaller support'>
+                                فایل های عکس: jpg, png
+                            </p>
+                        </div>
+                    </label>
                 </div>
             </div>
         </section>
