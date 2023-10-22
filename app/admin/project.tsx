@@ -125,6 +125,59 @@ export default () => {
                         </button>
                     </div>
                 </div>
+
+                <div class='input-wrapper'>
+                    <div class='holder title'>
+                        <ImageIcon size={30} />
+                        <span>عکس ویژگی ها</span>
+                    </div>
+                    <label for='img-uploader' class='img-upload'>
+                        <div class='upload'>
+                            <input type='file' name='' id='img-uploader' />
+                            <img
+                                src='/static/image/dashboard/projectImg.png'
+                                alt=''
+                            />
+                            <p class='title_small'>عکس رو اینجا بنداز ! </p>
+                            <p class='title_smaller support'>
+                                فایل های عکس: jpg, png
+                            </p>
+                        </div>
+                    </label>
+                </div>
+                <div class='input-wrapper'>
+                    <div class='holder title'>
+                        <ProjectDescription size={30} />
+                        <span>شرایط پرداخت</span>
+                    </div>
+                    <textarea
+                        name='projectDesc'
+                        class='title_smaller'
+                        id=''
+                        cols='35'
+                        rows='10'
+                        value={state.description}
+                    ></textarea>
+                </div>
+                <div class='input-wrapper'>
+                    <div class='holder title'>
+                        <ImageIcon size={30} />
+                        <span>عکس شرایط پرداخت</span>
+                    </div>
+                    <label for='img-uploader' class='img-upload'>
+                        <div class='upload'>
+                            <input type='file' name='' id='img-uploader' />
+                            <img
+                                src='/static/image/dashboard/projectImg.png'
+                                alt=''
+                            />
+                            <p class='title_small'>عکس رو اینجا بنداز ! </p>
+                            <p class='title_smaller support'>
+                                فایل های عکس: jpg, png
+                            </p>
+                        </div>
+                    </label>
+                </div>
             </div>
         </section>
     )
