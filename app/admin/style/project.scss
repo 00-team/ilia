@@ -166,6 +166,65 @@ section.project-container {
                     }
                 }
             }
+
+            .prices-wrapper {
+                width: clamp(0px, 100%, 350px);
+
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+
+                border-radius: 5px;
+                overflow: hidden;
+
+                table.prices {
+                    width: 100%;
+
+                    border: 1px solid black;
+                    border-spacing: 0;
+
+                    overflow: hidden;
+
+                    background-color: var(--accent-color);
+
+                    thead {
+                        th {
+                            font-size: clamp(0.8rem, 0.4rem + 1.6vw, 1rem);
+                        }
+                    }
+
+                    td,
+                    th {
+                        text-align: center;
+                        border: 1px solid black;
+
+                        padding: 0.5rem 0.25rem;
+
+                        font-family: 'iranBold';
+                        font-size: clamp(0.8rem, 0.4rem + 1.6vw, 1rem);
+                    }
+                    tr {
+                        position: relative;
+                        isolation: isolate;
+                    }
+
+                    .price-number {
+                        display: inline-block;
+                        width: 80px;
+                    }
+
+                    td:nth-child(-1) {
+                        width: auto;
+                        border: none;
+                        margin: 1px;
+                    }
+                }
+                .add-price {
+                    width: 100%;
+                    padding: 1rem;
+                    background-color: rgb(255, 152, 0);
+                }
+            }
         }
     }
 }
