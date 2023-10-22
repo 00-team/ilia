@@ -1,5 +1,9 @@
 import { DbCheckIcon, ImageIcon } from '!/icons/dashboard'
-import { ProjectDescription, ProjectNameIcon } from '!/icons/project'
+import {
+    ProjectDescription,
+    ProjectNameIcon,
+    ProjectStar,
+} from '!/icons/project'
 import { ProjectModel } from '!/types'
 import { useNavigate, useParams } from '@solidjs/router'
 import { onMount } from 'solid-js'
@@ -92,6 +96,33 @@ export default () => {
                     <div class='holder title'>
                         <DbCheckIcon size={24} />
                         <span>ویژگی ها</span>
+                    </div>
+                    <div class='options-container'>
+                        {state.features && state.features.length >= 1 ? (
+                            <div class='options-wrapper'>
+                                {state.features.map(option => {
+                                    return (
+                                        <div class='option'>
+                                            <div class='holder'>
+                                                <ProjectStar size={30} />
+                                            </div>
+                                            <input
+                                                type='text'
+                                                class='option-inp title_smaller'
+                                                value={option}
+                                            />
+                                        </div>
+                                    )
+                                })}
+                            </div>
+                        ) : (
+                            <p class='title_small empty-option'>
+                                ویژگی ای وجود ندارد!
+                            </p>
+                        )}
+                        <button class='add-option title_smaller'>
+                            اضافه کردن
+                        </button>
                     </div>
                 </div>
             </div>
