@@ -1,4 +1,4 @@
-import { ProjectNameIcon } from '!/icons/project'
+import { ProjectDescription, ProjectNameIcon } from '!/icons/project'
 import { ProjectModel } from '!/types'
 import { useNavigate, useParams } from '@solidjs/router'
 import { onMount } from 'solid-js'
@@ -49,7 +49,22 @@ export default () => {
                         name='projectName'
                         class='title_small'
                         id=''
+                        value={state.title}
+                        autofocus
                     />
+                </div>
+                <div class='input-wrapper'>
+                    <div class='holder title'>
+                        <ProjectDescription size={30} />
+                        <span>توضیحات</span>
+                    </div>
+                    <textarea
+                        name='projectDesc'
+                        class='title_smaller'
+                        id=''
+                        cols='35'
+                        rows='10'
+                    ></textarea>
                 </div>
             </div>
         </section>
