@@ -30,6 +30,15 @@ section.project-container {
                 border-bottom: 1px solid black;
                 border-radius: 10px;
             }
+            textarea {
+                padding: 0.5rem;
+                border-radius: 10px;
+
+                background-color: white;
+                color: black;
+
+                resize: none;
+            }
         }
     }
 }
