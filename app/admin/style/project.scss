@@ -29,6 +29,8 @@ section.project-container {
                 border: none;
                 border-bottom: 1px solid black;
                 border-radius: 10px;
+
+                width: clamp(0px, 100%, 350px);
             }
             textarea {
                 padding: 0.5rem;
@@ -38,6 +40,8 @@ section.project-container {
                 color: black;
 
                 resize: none;
+
+                width: clamp(0px, 100%, 350px);
             }
         }
     }
