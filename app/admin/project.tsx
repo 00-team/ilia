@@ -1,4 +1,4 @@
-import { ImageIcon } from '!/icons/dashboard'
+import { DbCheckIcon, ImageIcon } from '!/icons/dashboard'
 import { ProjectDescription, ProjectNameIcon } from '!/icons/project'
 import { ProjectModel } from '!/types'
 import { useNavigate, useParams } from '@solidjs/router'
@@ -86,6 +86,13 @@ export default () => {
                             </p>
                         </div>
                     </label>
+                </div>
+
+                <div class='input-wrapper'>
+                    <div class='holder title'>
+                        <DbCheckIcon size={24} />
+                        <span>ویژگی ها</span>
+                    </div>
                 </div>
             </div>
         </section>
