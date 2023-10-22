@@ -4,6 +4,7 @@ import {
     ProjectLocation,
     ProjectNameIcon,
     ProjectStar,
+    ProjectStartPrice,
 } from '!/icons/project'
 import { ProjectModel } from '!/types'
 import { useNavigate, useParams } from '@solidjs/router'
@@ -199,7 +200,7 @@ export default () => {
 
                 <div class='input-wrapper'>
                     <div class='holder title'>
-                        <ImageIcon size={30} />
+                        <ProjectStartPrice size={30} />
                         <span>قیمت</span>
                     </div>
                     <div class='prices-wrapper'>
