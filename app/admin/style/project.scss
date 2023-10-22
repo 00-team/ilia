@@ -1,26 +1,35 @@
 section.project-container {
-    .name-wrapper {
+    .inputs-wrapper {
         display: flex;
         align-items: center;
-        justify-content: center;
+        flex-direction: column;
+        gap: 4vh;
 
-        width: 100%;
-        margin-top: 4vh;
+        width: clamp(0px, 100%, 1000px);
 
-        position: relative;
-        isolation: isolate;
+        padding-top: 4vh;
+        .input-wrapper {
+            width: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
 
-        input {
-            width: clamp(0px, 100%, 500px);
-
-            background-color: transparent;
-            border: none;
-
-            text-align: center;
-
-            border-bottom: 2px solid black;
-            color: black;
             direction: rtl;
+
+            .holder {
+                display: flex;
+                align-items: center;
+                gap: 1em;
+            }
+            input {
+                background-color: white;
+                color: black;
+                padding: 0.5rem 1rem;
+
+                border: none;
+                border-bottom: 1px solid black;
+                border-radius: 10px;
+            }
         }
     }
 }
