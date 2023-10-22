@@ -1,6 +1,7 @@
 import { DbCheckIcon, ImageIcon } from '!/icons/dashboard'
 import {
     ProjectDescription,
+    ProjectLocation,
     ProjectNameIcon,
     ProjectStar,
 } from '!/icons/project'
@@ -53,8 +54,20 @@ export default () => {
                         type='text'
                         name='projectName'
                         class='title_small'
-                        id=''
                         value={state.title}
+                        autofocus
+                    />
+                </div>
+                <div class='input-wrapper'>
+                    <div class='holder title'>
+                        <ProjectLocation size={30} />
+                        <span>محله پروژه</span>
+                    </div>
+                    <input
+                        type='text'
+                        name='projectLoc'
+                        class='title_small'
+                        value={state.sector}
                         autofocus
                     />
                 </div>
@@ -156,7 +169,7 @@ export default () => {
                         id=''
                         cols='35'
                         rows='10'
-                        value={state.description}
+                        value={state.payment_terms}
                     ></textarea>
                 </div>
                 <div class='input-wrapper'>
