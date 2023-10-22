@@ -58,6 +58,7 @@ export default () => {
                         autofocus
                     />
                 </div>
+
                 <div class='input-wrapper'>
                     <div class='holder title'>
                         <ProjectLocation size={30} />
@@ -71,6 +72,7 @@ export default () => {
                         autofocus
                     />
                 </div>
+
                 <div class='input-wrapper'>
                     <div class='holder title'>
                         <ProjectDescription size={30} />
@@ -85,6 +87,7 @@ export default () => {
                         value={state.description}
                     ></textarea>
                 </div>
+
                 <div class='input-wrapper'>
                     <div class='holder title'>
                         <ImageIcon size={30} />
@@ -158,6 +161,7 @@ export default () => {
                         </div>
                     </label>
                 </div>
+
                 <div class='input-wrapper'>
                     <div class='holder title'>
                         <ProjectDescription size={30} />
@@ -172,6 +176,7 @@ export default () => {
                         value={state.payment_terms}
                     ></textarea>
                 </div>
+
                 <div class='input-wrapper'>
                     <div class='holder title'>
                         <ImageIcon size={30} />
@@ -190,6 +195,50 @@ export default () => {
                             </p>
                         </div>
                     </label>
+                </div>
+
+                <div class='input-wrapper'>
+                    <div class='holder title'>
+                        <ImageIcon size={30} />
+                        <span>قیمت</span>
+                    </div>
+                    <div class='prices-wrapper'>
+                        <table class='prices'>
+                            <thead class='title_smaller'>
+                                <tr>
+                                    <th class='id'>واحد</th>
+                                    <th class='name'>متراژ</th>
+                                    <th class='lname'>قیمت</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {state.prices && state.prices.length >= 1 ? (
+                                    <>
+                                        {state.prices.map(price => (
+                                            <tr>
+                                                <td contentEditable>
+                                                    {price.layout}
+                                                </td>
+                                                <td contentEditable>
+                                                    {price.area}
+                                                </td>
+                                                <td contentEditable>
+                                                    <span class='price-number'>
+                                                        {price.price}
+                                                    </span>
+                                                </td>
+                                            </tr>
+                                        ))}
+                                    </>
+                                ) : (
+                                    <p class='title'>قیمتی وجود ندارد!</p>
+                                )}
+                            </tbody>
+                        </table>
+                        <button class='add-price title_smaller'>
+                            اضافه کردن
+                        </button>
+                    </div>
                 </div>
             </div>
         </section>
