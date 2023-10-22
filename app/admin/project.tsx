@@ -1,3 +1,4 @@
+import { ProjectNameIcon } from '!/icons/project'
 import { ProjectModel } from '!/types'
 import { useNavigate, useParams } from '@solidjs/router'
 import { onMount } from 'solid-js'
@@ -37,14 +38,19 @@ export default () => {
 
     return (
         <section class='project-container'>
-            <div class='name-wrapper'>
-                <input
-                    type='text'
-                    class='title_hero'
-                    autofocus
-                    value={state.title}
-                    placeholder='اسم پروژه...'
-                />
+            <div class='inputs-wrapper'>
+                <div class='input-wrapper'>
+                    <div class='holder title'>
+                        <ProjectNameIcon size={30} />
+                        <span>اسم پروژه</span>
+                    </div>
+                    <input
+                        type='text'
+                        name='projectName'
+                        class='title_small'
+                        id=''
+                    />
+                </div>
             </div>
         </section>
     )
