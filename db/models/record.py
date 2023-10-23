@@ -52,7 +52,7 @@ class RecordModel(BaseModel):
 
     @cached_property
     def url(self) -> str:
-        return f'{settings.record_dir.name}/{self.name}.{self.ext}'
+        return f'/{settings.record_dir.name}/{self.name}.{self.ext}'
 
     @cached_property
     def name(self) -> str:
