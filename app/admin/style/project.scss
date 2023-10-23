@@ -288,6 +288,12 @@ section.project-container {
                     tr {
                         position: relative;
                         isolation: isolate;
+
+                        &:hover {
+                            .remove-price {
+                                transform: translate(0, -50%);
+                            }
+                        }
                     }
 
                     .price-number {
@@ -299,6 +305,33 @@ section.project-container {
                         width: auto;
                         border: none;
                         margin: 1px;
+                    }
+
+                    .remove-price {
+                        position: absolute;
+
+                        top: 50%;
+                        left: 0;
+
+                        transform: translate(-200%, -50%);
+
+                        height: 100%;
+                        aspect-ratio: 1/1;
+
+                        display: grid;
+                        place-items: center;
+
+                        background-color: transparent;
+
+                        border: none;
+                        cursor: pointer;
+
+                        transition: transform 0.3s
+                            cubic-bezier(0.45, 0.02, 0.09, 0.98);
+
+                        svg {
+                            fill: var(--alert-error);
+                        }
                     }
                 }
                 .add-price {
