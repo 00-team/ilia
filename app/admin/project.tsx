@@ -35,6 +35,48 @@ export default () => {
         navigate('/admin/projects/')
     }
 
+    type records = 'desc' | 'term' | 'feat'
+
+    const update_records = async (file: File | null, type: records) => {
+        if (!file) return
+
+        const IMAGE_MIMETYPE = ['image/png', 'image/jpeg', 'image/jpg']
+
+        if (!IMAGE_MIMETYPE.includes(file.type)) {
+            return alert('فورمت فایل عکس نیست!')
+        }
+
+        let fd = new FormData()
+        fd.set('file', file)
+
+        try {
+            const response = await fetch('/api/admin/records/', {
+                method: 'POST',
+                body: fd,
+            })
+
+            let result = await response.json()
+
+            if (!result) {
+                alert('خطا درهنگام اپلود فایل')
+                return
+            }
+
+            setState(
+                produce(s => {
+                    s.images[type] = {
+                        id: result.record_id,
+                        url: result.url,
+                    }
+                })
+            )
+        } catch (err) {
+            console.log(err)
+        }
+
+        return
+    }
+
     onMount(() => {
         if (isNaN(parseInt(id))) {
             navigate('/admin/projects/')
@@ -135,14 +177,26 @@ export default () => {
                     ) : (
                         <label for='img-uploader' class='img-upload'>
                             <div class='upload'>
-                                <input type='file' name='' id='img-uploader' />
+                                <input
+                                    type='file'
+                                    name=''
+                                    id='img-uploader'
+                                    onChange={e =>
+                                        update_records(
+                                            e.currentTarget.files[0],
+                                            'desc'
+                                        )
+                                    }
+                                    multiple={false}
+                                    accept='.jpg, .jpeg, .png, image/jpg, image/jpeg, image/png'
+                                />
                                 <img
                                     src='/static/image/dashboard/projectImg.png'
                                     alt=''
                                 />
                                 <p class='title_small'>عکس رو اینجا بنداز ! </p>
                                 <p class='title_smaller support'>
-                                    فایل های عکس: jpg, png
+                                    فایل های عکس: jpg, png, jpeg
                                 </p>
                             </div>
                         </label>
