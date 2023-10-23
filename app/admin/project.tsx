@@ -1,3 +1,4 @@
+import { CloseIcon } from '!/icons/actions'
 import { DbCheckIcon, ImageIcon } from '!/icons/dashboard'
 import {
     ProjectDescription,
@@ -9,7 +10,7 @@ import {
 import { ProjectModel } from '!/types'
 import { useNavigate, useParams } from '@solidjs/router'
 import { onMount } from 'solid-js'
-import { createStore } from 'solid-js/store'
+import { createStore, produce } from 'solid-js/store'
 
 import './style/project.scss'
 
@@ -57,6 +58,7 @@ export default () => {
                         class='title_small'
                         value={state.title}
                         autofocus
+                        onchange={e => setState({ title: e.target.value })}
                     />
                 </div>
 
@@ -71,6 +73,7 @@ export default () => {
                         class='title_small'
                         value={state.sector}
                         autofocus
+                        onchange={e => setState({ sector: e.target.value })}
                     />
                 </div>
 
@@ -86,6 +89,9 @@ export default () => {
                         cols='35'
                         rows='10'
                         value={state.description}
+                        onchange={e =>
+                            setState({ description: e.target.value })
+                        }
                     ></textarea>
                 </div>
 
@@ -94,19 +100,53 @@ export default () => {
                         <ImageIcon size={30} />
                         <span>عکس توضیحات</span>
                     </div>
-                    <label for='img-uploader' class='img-upload'>
-                        <div class='upload'>
-                            <input type='file' name='' id='img-uploader' />
-                            <img
-                                src='/static/image/dashboard/projectImg.png'
-                                alt=''
-                            />
-                            <p class='title_small'>عکس رو اینجا بنداز ! </p>
-                            <p class='title_smaller support'>
-                                فایل های عکس: jpg, png
-                            </p>
+                    {state.images && state.images.desc.url ? (
+                        <div
+                            class='img-loader'
+                            onclick={() => {
+                                try {
+                                    const result = fetch(
+                                        `/api/admin/records/${state.images.desc.id}/`,
+                                        {
+                                            method: 'DELETE',
+                                        }
+                                    )
+
+                                    setState(
+                                        produce(s => {
+                                            s.images.desc = {
+                                                id: 0,
+                                                url: '',
+                                            }
+                                        })
+                                    )
+
+                                    console.log(result)
+                                } catch (error) {
+                                    console.log(error)
+                                }
+                            }}
+                        >
+                            <img src={state.images.desc.url} />
+                            <div class='remove-img'>
+                                <CloseIcon size={30} />
+                            </div>
                         </div>
-                    </label>
+                    ) : (
+                        <label for='img-uploader' class='img-upload'>
+                            <div class='upload'>
+                                <input type='file' name='' id='img-uploader' />
+                                <img
+                                    src='/static/image/dashboard/projectImg.png'
+                                    alt=''
+                                />
+                                <p class='title_small'>عکس رو اینجا بنداز ! </p>
+                                <p class='title_smaller support'>
+                                    فایل های عکس: jpg, png
+                                </p>
+                            </div>
+                        </label>
+                    )}
                 </div>
 
                 <div class='input-wrapper'>
@@ -117,7 +157,7 @@ export default () => {
                     <div class='options-container'>
                         {state.features && state.features.length >= 1 ? (
                             <div class='options-wrapper'>
-                                {state.features.map(option => {
+                                {state.features.map((option, idx01) => {
                                     return (
                                         <div class='option'>
                                             <div class='holder'>
@@ -127,7 +167,31 @@ export default () => {
                                                 type='text'
                                                 class='option-inp title_smaller'
                                                 value={option}
+                                                onchange={e => {
+                                                    setState(
+                                                        produce(s => {
+                                                            s.features[idx01] =
+                                                                e.target.value
+                                                        })
+                                                    )
+                                                }}
                                             />
+                                            <div
+                                                class='remove-option'
+                                                onclick={() => {
+                                                    setState({
+                                                        features: [
+                                                            ...state.features.filter(
+                                                                (_, idx02) =>
+                                                                    idx01 !==
+                                                                    idx02
+                                                            ),
+                                                        ],
+                                                    })
+                                                }}
+                                            >
+                                                <CloseIcon size={20} />
+                                            </div>
                                         </div>
                                     )
                                 })}
@@ -137,7 +201,14 @@ export default () => {
                                 ویژگی ای وجود ندارد!
                             </p>
                         )}
-                        <button class='add-option title_smaller'>
+                        <button
+                            onclick={() =>
+                                setState({
+                                    features: [...state.features, 'ویژگی جدید'],
+                                })
+                            }
+                            class='add-option title_smaller'
+                        >
                             اضافه کردن
                         </button>
                     </div>
