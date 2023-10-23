@@ -49,28 +49,30 @@ export default () => {
         let fd = new FormData()
         fd.set('file', file)
 
-        const response = await fetch('/api/admin/records/', {
-            method: 'POST',
-            body: fd,
-        })
+        try {
+            const response = await fetch('/api/admin/records/', {
+                method: 'POST',
+                body: fd,
+            })
 
-        console.log(response)
+            let result = await response.json()
 
-        if (!response) {
-            alert('خطا درهنگام اپلود فایل')
-            return
+            if (!result) {
+                alert('خطا درهنگام اپلود فایل')
+                return
+            }
+
+            setState(
+                produce(s => {
+                    s.images[type] = {
+                        id: result.record_id,
+                        url: result.url,
+                    }
+                })
+            )
+        } catch (err) {
+            console.log(err)
         }
-
-        // setState(
-        //     produce(s => {
-        //         s.images[type] = {
-        //             id: response.record_id,
-        //             url: response.url,
-        //         }
-        //     })
-        // )
-
-        // setRecords([result])
 
         return
     }
