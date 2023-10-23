@@ -79,6 +79,21 @@ export default () => {
         return
     }
 
+    const update_project = async () => {
+        try {
+            const response = await fetch('/api/admin/projects/', {
+                method: 'PUT',
+                body: JSON.stringify(state),
+            })
+
+            let result = await response.json()
+
+            console.log(result)
+        } catch (err) {
+            console.log(err)
+        }
+    }
+
     onMount(() => {
         if (isNaN(parseInt(id))) {
             navigate('/admin/projects/')
@@ -501,7 +516,11 @@ export default () => {
                     </div>
                 </div>
             </div>
-            <button type='submit' class='title submit-project'>
+            <button
+                type='submit'
+                class='title submit-project'
+                onclick={() => update_project()}
+            >
                 ذخیره
             </button>
         </section>
