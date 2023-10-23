@@ -246,6 +246,9 @@ export default () => {
                         cols='35'
                         rows='10'
                         value={state.payment_terms}
+                        onchange={e =>
+                            setState({ payment_terms: e.target.value })
+                        }
                     ></textarea>
                 </div>
 
@@ -286,7 +289,7 @@ export default () => {
                             <tbody>
                                 {state.prices && state.prices.length >= 1 ? (
                                     <>
-                                        {state.prices.map(price => (
+                                        {state.prices.map((price, idx01) => (
                                             <tr>
                                                 <td contentEditable>
                                                     {price.layout}
@@ -299,6 +302,27 @@ export default () => {
                                                         {price.price}
                                                     </span>
                                                 </td>
+                                                <td
+                                                    class='remove-price'
+                                                    onclick={() => {
+                                                        setState(
+                                                            (s, idx02) => ({
+                                                                prices: [
+                                                                    ...s.prices.filter(
+                                                                        (
+                                                                            _,
+                                                                            idx02
+                                                                        ) =>
+                                                                            idx01 !==
+                                                                            idx02
+                                                                    ),
+                                                                ],
+                                                            })
+                                                        )
+                                                    }}
+                                                >
+                                                    <CloseIcon />
+                                                </td>
                                             </tr>
                                         ))}
                                     </>
@@ -307,7 +331,23 @@ export default () => {
                                 )}
                             </tbody>
                         </table>
-                        <button class='add-price title_smaller'>
+                        <button
+                            class='add-price title_smaller'
+                            onclick={() =>
+                                setState(
+                                    produce(s => {
+                                        s.prices = [
+                                            ...s.prices,
+                                            {
+                                                layout: 'اتاق',
+                                                area: 0,
+                                                price: 0,
+                                            },
+                                        ]
+                                    })
+                                )
+                            }
+                        >
                             اضافه کردن
                         </button>
                     </div>
