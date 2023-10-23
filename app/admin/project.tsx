@@ -70,6 +70,8 @@ export default () => {
                     }
                 })
             )
+
+            console.log(result)
         } catch (err) {
             console.log(err)
         }
@@ -273,19 +275,65 @@ export default () => {
                         <ImageIcon size={30} />
                         <span>عکس ویژگی ها</span>
                     </div>
-                    <label for='img-uploader' class='img-upload'>
-                        <div class='upload'>
-                            <input type='file' name='' id='img-uploader' />
-                            <img
-                                src='/static/image/dashboard/projectImg.png'
-                                alt=''
-                            />
-                            <p class='title_small'>عکس رو اینجا بنداز ! </p>
-                            <p class='title_smaller support'>
-                                فایل های عکس: jpg, png
-                            </p>
+                    {state.images && state.images.feat.url ? (
+                        <div
+                            class='img-loader'
+                            onclick={() => {
+                                try {
+                                    const result = fetch(
+                                        `/api/admin/records/${state.images.feat.id}/`,
+                                        {
+                                            method: 'DELETE',
+                                        }
+                                    )
+
+                                    setState(
+                                        produce(s => {
+                                            s.images.feat = {
+                                                id: 0,
+                                                url: '',
+                                            }
+                                        })
+                                    )
+
+                                    console.log(result)
+                                } catch (error) {
+                                    console.log(error)
+                                }
+                            }}
+                        >
+                            <img src={state.images.feat.url} />
+                            <div class='remove-img'>
+                                <CloseIcon size={30} />
+                            </div>
                         </div>
-                    </label>
+                    ) : (
+                        <label for='img-uploader' class='img-upload'>
+                            <div class='upload'>
+                                <input
+                                    type='file'
+                                    name=''
+                                    id='img-uploader'
+                                    onChange={e =>
+                                        update_records(
+                                            e.currentTarget.files[0],
+                                            'feat'
+                                        )
+                                    }
+                                    multiple={false}
+                                    accept='.jpg, .jpeg, .png, image/jpg, image/jpeg, image/png'
+                                />
+                                <img
+                                    src='/static/image/dashboard/projectImg.png'
+                                    alt=''
+                                />
+                                <p class='title_small'>عکس رو اینجا بنداز ! </p>
+                                <p class='title_smaller support'>
+                                    فایل های عکس: jpg, png, jpeg
+                                </p>
+                            </div>
+                        </label>
+                    )}
                 </div>
 
                 <div class='input-wrapper'>
@@ -311,19 +359,65 @@ export default () => {
                         <ImageIcon size={30} />
                         <span>عکس شرایط پرداخت</span>
                     </div>
-                    <label for='img-uploader' class='img-upload'>
-                        <div class='upload'>
-                            <input type='file' name='' id='img-uploader' />
-                            <img
-                                src='/static/image/dashboard/projectImg.png'
-                                alt=''
-                            />
-                            <p class='title_small'>عکس رو اینجا بنداز ! </p>
-                            <p class='title_smaller support'>
-                                فایل های عکس: jpg, png
-                            </p>
+                    {state.images && state.images.term.url ? (
+                        <div
+                            class='img-loader'
+                            onclick={() => {
+                                try {
+                                    const result = fetch(
+                                        `/api/admin/records/${state.images.term.id}/`,
+                                        {
+                                            method: 'DELETE',
+                                        }
+                                    )
+
+                                    setState(
+                                        produce(s => {
+                                            s.images.term = {
+                                                id: 0,
+                                                url: '',
+                                            }
+                                        })
+                                    )
+
+                                    console.log(result)
+                                } catch (error) {
+                                    console.log(error)
+                                }
+                            }}
+                        >
+                            <img src={state.images.term.url} />
+                            <div class='remove-img'>
+                                <CloseIcon size={30} />
+                            </div>
                         </div>
-                    </label>
+                    ) : (
+                        <label for='img-uploader' class='img-upload'>
+                            <div class='upload'>
+                                <input
+                                    type='file'
+                                    name=''
+                                    id='img-uploader'
+                                    onChange={e =>
+                                        update_records(
+                                            e.currentTarget.files[0],
+                                            'term'
+                                        )
+                                    }
+                                    multiple={false}
+                                    accept='.jpg, .jpeg, .png, image/jpg, image/jpeg, image/png'
+                                />
+                                <img
+                                    src='/static/image/dashboard/projectImg.png'
+                                    alt=''
+                                />
+                                <p class='title_small'>عکس رو اینجا بنداز ! </p>
+                                <p class='title_smaller support'>
+                                    فایل های عکس: jpg, png, jpeg
+                                </p>
+                            </div>
+                        </label>
+                    )}
                 </div>
 
                 <div class='input-wrapper'>
