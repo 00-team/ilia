@@ -306,8 +306,8 @@ export default () => {
                                                     class='remove-price'
                                                     onclick={() => {
                                                         setState(
-                                                            (s, idx02) => ({
-                                                                prices: [
+                                                            produce(s => {
+                                                                s.prices = [
                                                                     ...s.prices.filter(
                                                                         (
                                                                             _,
@@ -316,7 +316,7 @@ export default () => {
                                                                             idx01 !==
                                                                             idx02
                                                                     ),
-                                                                ],
+                                                                ]
                                                             })
                                                         )
                                                     }}
