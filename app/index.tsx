@@ -1,6 +1,6 @@
 /* @refresh reload */
 
-import { Route, Router, Routes } from '@solidjs/router'
+import { Navigate, Route, Router, Routes } from '@solidjs/router'
 import { render } from 'solid-js/web'
 
 import 'solid-devtools'
@@ -19,23 +19,18 @@ render(
         <Router>
             <Routes>
                 <Route
-                    path='/dash/'
-                    component={lazy(() => import('./dash'))}
-                    data={UserData}
-                />
-                <Route
                     path='/admin'
                     component={lazy(() => import('./admin'))}
                     data={UserData}
                 >
                     <Route
                         path='/'
-                        component={lazy(() => import('./admin/general'))}
+                        component={lazy(() => import('./admin/projects'))}
                     />
-                    <Route
+                    {/*<Route
                         path='/users/'
                         component={lazy(() => import('./admin/users'))}
-                    />
+                    />*/}
                     <Route
                         path='/projects/'
                         component={lazy(() => import('./admin/projects'))}
@@ -43,6 +38,10 @@ render(
                     <Route
                         path='/projects/:id/'
                         component={lazy(() => import('./admin/project'))}
+                    />
+                    <Route
+                        path='/*'
+                        component={() => <Navigate href='/admin/' />}
                     />
                 </Route>
             </Routes>

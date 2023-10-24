@@ -34,10 +34,10 @@ async def admin(request: Request):
         return f.read()
 
 
-@router.get('/dash/{_:path}', response_class=HTMLResponse)
-async def dash(request: Request):
-    with open(settings.base_dir / 'static/dash/index.html', 'r') as f:
-        return f.read()
+# @router.get('/dash/{_:path}', response_class=HTMLResponse)
+# async def dash(request: Request):
+#     with open(settings.base_dir / 'static/dash/index.html', 'r') as f:
+#         return f.read()
 
 
 @router.get('/about', response_class=HTMLResponse)

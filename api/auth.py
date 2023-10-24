@@ -71,7 +71,7 @@ async def update_user(data: dict):
 
 
 @router.get('/login/')
-async def login(request: Request, next: str = '/dash/'):
+async def login(request: Request, next: str = '/'):
     url = httpx.URL(
         'https://accounts.google.com/o/oauth2/v2/auth',
         params={

@@ -1,5 +1,5 @@
 import { SearchIcon } from '!/icons/dashboard'
-import { A } from '@solidjs/router'
+import { A, useNavigate } from '@solidjs/router'
 import { onMount } from 'solid-js'
 import { createStore } from 'solid-js/store'
 import './style/projects.scss'
@@ -15,6 +15,7 @@ type State = {
 
 let search_input: HTMLInputElement
 export default () => {
+    const navigate = useNavigate()
     const [state, setState] = createStore<State>({
         page: 0,
         query: '',
@@ -36,8 +37,11 @@ export default () => {
                 'Content-Type': 'application/json',
             },
         })
-        console.log('add project was successful: ', result.ok)
-        await fetch_projects()
+        if (result.ok) {
+            let pid = (await result.json()).project_id
+            navigate(`/admin/projects/${pid}/`)
+        }
+        // await fetch_projects()
     }
     async function delete_project(project: ProjectModel) {
         const result = await fetch(
@@ -46,7 +50,9 @@ export default () => {
                 method: 'DELETE',
             }
         )
-        await fetch_projects()
+        if (result.ok && (await result.json()).ok) {
+            await fetch_projects()
+        }
     }
 
     onMount(() => {
@@ -64,8 +70,8 @@ export default () => {
                                 { layout: '2 room', area: 138, price: 6996 },
                             ],
                             images: {
-                                desc: { url: '', id: 0 },
-                                feat: { url: '', id: 0 },
+                                desc: { id: 0, url: '' },
+                                feat: { id: 0, url: '' },
                                 term: { id: 0, url: '' },
                             },
                             title: 'new Project',

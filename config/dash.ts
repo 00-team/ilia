@@ -6,7 +6,7 @@ import { resolve } from 'path'
 
 let target = 'https://brightfuture-cyprus.com'
 if (process.env.local_api_target) {
-    target = 'http://localhost:7130'
+    target = 'http://127.0.0.1:7130'
 }
 
 console.log('api target: ' + target)

@@ -61,8 +61,11 @@ section.project-container {
                 overflow: hidden;
 
                 img {
-                    width: clamp(0px, 100%, 350px);
+                    width: 320px;
+                    // width: clamp(0px, 100%, 350px);
                     max-height: 400px;
+                    min-height: 100px;
+                    object-fit: contain;
                 }
 
                 &:hover {
