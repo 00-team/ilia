@@ -38,99 +38,99 @@ document.addEventListener('DOMContentLoaded', () => {
     observer.observe(priceSection)
 })
 
-// Set the target number you want to count up to
-const targetNumber = 85 // Change this to your desired number
-const step = 1
+// // Set the target number you want to count up to
+// const targetNumber = 85 // Change this to your desired number
+// const step = 1
+//
+// const countElement = document.querySelector('.percent-number') as HTMLElement
+// let currentNumber = 0
+//
+// const percentSign = document.querySelector('.percent-sign')
+//
+// function updateCount() {
+//     if (currentNumber < targetNumber) {
+//         currentNumber += step
+//         if (currentNumber > targetNumber) {
+//             currentNumber = targetNumber
+//         }
+//         countElement.innerHTML = currentNumber.toString()
+//     } else {
+//         clearInterval(percentInterval)
+//         percentSign.className += ' active'
+//         return
+//     }
+// }
+//
+// let percentInterval = null
+//
+// document.addEventListener('DOMContentLoaded', () => {
+//     const observerOptions =
+//         innerWidth <= 768
+//             ? {
+//                   threshHold: 0.7,
+//               }
+//             : {
+//                   rootMargin: '-300px',
+//               }
+//
+//     let observer = new IntersectionObserver(([entry]) => {
+//         if (entry && entry.isIntersecting) {
+//             entry.target.className += ' active'
+//             setTimeout(() => {
+//                 percentInterval = setInterval(updateCount, 50)
+//             }, 1000)
+//
+//             observer.unobserve(entry.target)
+//         }
+//     }, observerOptions)
+//
+//     observer.observe(payoptionsSection)
+// })
 
-const countElement = document.querySelector('.percent-number') as HTMLElement
-let currentNumber = 0
-
-const percentSign = document.querySelector('.percent-sign')
-
-function updateCount() {
-    if (currentNumber < targetNumber) {
-        currentNumber += step
-        if (currentNumber > targetNumber) {
-            currentNumber = targetNumber
-        }
-        countElement.innerHTML = currentNumber.toString()
-    } else {
-        clearInterval(percentInterval)
-        percentSign.className += ' active'
-        return
-    }
-}
-
-let percentInterval = null
-
-document.addEventListener('DOMContentLoaded', () => {
-    const observerOptions =
-        innerWidth <= 768
-            ? {
-                  threshHold: 0.7,
-              }
-            : {
-                  rootMargin: '-300px',
-              }
-
-    let observer = new IntersectionObserver(([entry]) => {
-        if (entry && entry.isIntersecting) {
-            entry.target.className += ' active'
-            setTimeout(() => {
-                percentInterval = setInterval(updateCount, 50)
-            }, 1000)
-
-            observer.unobserve(entry.target)
-        }
-    }, observerOptions)
-
-    observer.observe(payoptionsSection)
-})
-
-const priceNumbers = document.querySelectorAll('.price-number')
-
-// Set the target number you want to count up to
-const priceTarget = 1008000 // Change this to your desired number
-const priceStep = 10000
-
-function updatePrice() {
-    if (currentNumber < priceTarget) {
-        currentNumber += priceStep
-        if (currentNumber > priceTarget) {
-            currentNumber = priceTarget
-        }
-
-        priceNumbers.forEach(
-            number => (number.innerHTML = currentNumber.toString())
-        )
-    } else {
-        clearInterval(priceInterval)
-        percentSign.className += ' active'
-        return
-    }
-}
-
-let priceInterval = null
-
-document.addEventListener('DOMContentLoaded', () => {
-    const observerOptions =
-        innerWidth <= 768
-            ? {
-                  threshHold: 0.7,
-              }
-            : {
-                  rootMargin: '-300px',
-              }
-
-    let observer = new IntersectionObserver(([entry]) => {
-        if (entry && entry.isIntersecting) {
-            setTimeout(() => {
-                priceInterval = setInterval(updatePrice, 50)
-            }, 1000)
-
-            observer.unobserve(entry.target)
-        }
-    }, observerOptions)
-
-    observer.observe(priceSection)
-})
+// const priceNumbers = document.querySelectorAll('.price-number')
+//
+// // Set the target number you want to count up to
+// const priceTarget = 1008000 // Change this to your desired number
+// const priceStep = 10000
+//
+// function updatePrice() {
+//     if (currentNumber < priceTarget) {
+//         currentNumber += priceStep
+//         if (currentNumber > priceTarget) {
+//             currentNumber = priceTarget
+//         }
+//
+//         priceNumbers.forEach(
+//             number => (number.innerHTML = currentNumber.toString())
+//         )
+//     } else {
+//         clearInterval(priceInterval)
+//         percentSign.className += ' active'
+//         return
+//     }
+// }
+//
+// let priceInterval = null
+//
+// document.addEventListener('DOMContentLoaded', () => {
+//     const observerOptions =
+//         innerWidth <= 768
+//             ? {
+//                   threshHold: 0.7,
+//               }
+//             : {
+//                   rootMargin: '-300px',
+//               }
+//
+//     let observer = new IntersectionObserver(([entry]) => {
+//         if (entry && entry.isIntersecting) {
+//             setTimeout(() => {
+//                 priceInterval = setInterval(updatePrice, 50)
+//             }, 1000)
+//
+//             observer.unobserve(entry.target)
+//         }
+//     }, observerOptions)
+//
+//     observer.observe(priceSection)
+// })
