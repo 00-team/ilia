@@ -145,57 +145,52 @@ export default () => {
                             <span>ویژگی ها</span>
                         </div>
                         <div class='options-container'>
-                            {state.features && state.features.length >= 1 ? (
+                            <Show
+                                fallback={
+                                    <p class='title_small empty-option'>
+                                        ویژگی ای وجود ندارد!
+                                    </p>
+                                }
+                                when={state.features.length}
+                            >
                                 <div class='options-wrapper'>
-                                    {state.features.map((option, idx01) => {
-                                        return (
-                                            <div class='option'>
-                                                <div class='holder'>
-                                                    <ProjectStar size={30} />
-                                                </div>
-                                                <input
-                                                    type='text'
-                                                    class='option-inp title_smaller'
-                                                    value={option}
-                                                    onchange={e => {
-                                                        setState(
-                                                            produce(s => {
-                                                                s.features[
-                                                                    idx01
-                                                                ] =
-                                                                    e.target.value
-                                                            })
-                                                        )
-                                                    }}
-                                                />
-                                                <div
-                                                    class='remove-option'
-                                                    onclick={() => {
-                                                        setState({
-                                                            features: [
-                                                                ...state.features.filter(
-                                                                    (
-                                                                        _,
-                                                                        idx02
-                                                                    ) =>
-                                                                        idx01 !==
-                                                                        idx02
-                                                                ),
-                                                            ],
-                                                        })
-                                                    }}
-                                                >
-                                                    <CloseIcon size={20} />
-                                                </div>
+                                    {state.features.map((option, i) => (
+                                        <div class='option'>
+                                            <div class='holder'>
+                                                <ProjectStar size={30} />
                                             </div>
-                                        )
-                                    })}
+                                            <input
+                                                type='text'
+                                                class='option-inp title_smaller'
+                                                value={option}
+                                                onchange={e => {
+                                                    setState(
+                                                        produce(s => {
+                                                            s.features[i] =
+                                                                e.target.value
+                                                        })
+                                                    )
+                                                }}
+                                            />
+                                            <div
+                                                class='remove-option'
+                                                onclick={() => {
+                                                    setState(
+                                                        produce(s => {
+                                                            s.features.splice(
+                                                                i,
+                                                                1
+                                                            )
+                                                        })
+                                                    )
+                                                }}
+                                            >
+                                                <CloseIcon size={20} />
+                                            </div>
+                                        </div>
+                                    ))}
                                 </div>
-                            ) : (
-                                <p class='title_small empty-option'>
-                                    ویژگی ای وجود ندارد!
-                                </p>
-                            )}
+                            </Show>
                             <button
                                 onclick={() =>
                                     setState({

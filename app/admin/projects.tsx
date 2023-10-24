@@ -41,7 +41,6 @@ export default () => {
             let pid = (await result.json()).project_id
             navigate(`/admin/projects/${pid}/`)
         }
-        // await fetch_projects()
     }
     async function delete_project(project: ProjectModel) {
         const result = await fetch(
