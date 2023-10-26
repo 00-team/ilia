@@ -9,7 +9,7 @@ import {
 } from '!/icons/project'
 import { ProjectModel, RecordDataModel } from '!/types'
 import { useNavigate, useParams } from '@solidjs/router'
-import { Component, Switch, onMount, Match, Show } from 'solid-js'
+import { Component, Match, onMount, Show, Switch } from 'solid-js'
 import { createStore, produce } from 'solid-js/store'
 
 import './style/project.scss'
@@ -37,15 +37,24 @@ export default () => {
 
     const update_project = async () => {
         try {
-            const response = await fetch('/api/admin/projects/', {
+            await fetch('/api/admin/projects/', {
+                method: 'PUT',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify(state),
+            })
+        } catch (err) {
+            console.log(err)
+        }
+    }
+    const save_project = async () => {
+        try {
+            await fetch('/api/admin/projects/', {
                 method: 'PUT',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify(state),
             })
 
-            let result = await response.json()
-
-            console.log(result)
+            navigate('/admin/projects/')
         } catch (err) {
             console.log(err)
         }
@@ -372,7 +381,7 @@ export default () => {
                 <button
                     type='submit'
                     class='title submit-project'
-                    onclick={() => update_project()}
+                    onclick={() => save_project()}
                 >
                     ذخیره
                 </button>
@@ -417,7 +426,83 @@ const ImageInput: Component<ImageInputProps> = props => {
                 </div>
             </Match>
             <Match when={!props.record.id}>
-                <label for='img-uploader' class='img-upload'>
+                <label
+                    for='img-uploader'
+                    class='img-upload'
+                    ondrop={async e => {
+                        e.preventDefault()
+                        e.stopPropagation()
+
+                        let dt = e.dataTransfer
+                        let files = dt.files
+
+                        if (!files) return
+                        const file = files[0]
+                        if (!file) return
+
+                        const IMAGE_MIMETYPE = [
+                            'image/png',
+                            'image/jpeg',
+                            'image/jpg',
+                            'image/gif',
+                        ]
+
+                        if (!IMAGE_MIMETYPE.includes(file.type)) {
+                            return alert('فورمت فایل عکس نیست!')
+                        }
+
+                        let fd = new FormData()
+                        fd.set('file', file)
+
+                        try {
+                            const response = await fetch(
+                                '/api/admin/records/',
+                                {
+                                    method: 'POST',
+                                    body: fd,
+                                }
+                            )
+
+                            if (!response.ok) {
+                                alert('خطا درهنگام اپلود فایل')
+                                return
+                            }
+
+                            let result = await response.json()
+
+                            props.update({
+                                id: result.record_id,
+                                url: result.url,
+                            })
+
+                            console.log(result)
+                        } catch (err) {
+                            console.log(err)
+                        }
+                    }}
+                    ondrag={e => {
+                        e.preventDefault()
+                        e.stopPropagation()
+                    }}
+                    ondragenter={e => {
+                        e.target.className += ' anim'
+                        e.preventDefault()
+                        e.stopPropagation()
+                    }}
+                    ondragleave={e => {
+                        e.target.className = e.target.className.replace(
+                            'anim',
+                            ''
+                        )
+
+                        e.preventDefault()
+                        e.stopPropagation()
+                    }}
+                    ondragover={e => {
+                        e.preventDefault()
+                        e.stopPropagation()
+                    }}
+                >
                     <div class='upload'>
                         <input
                             type='file'
