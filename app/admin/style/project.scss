@@ -123,6 +123,16 @@ section.project-container {
 
                 cursor: pointer;
 
+                * {
+                    pointer-events: none;
+                }
+
+                &.anim {
+                    img {
+                        animation: bounce 0.5s alternate infinite;
+                    }
+                }
+
                 &:hover {
                     .upload {
                         img {
